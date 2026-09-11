@@ -1,0 +1,4063 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>AM PREMIUMS</title>
+<link rel="stylesheet" href="animations.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07090d;
+  --panel:#0f1219;
+  --panel2:#121620;
+  --line:rgba(255,255,255,.09);
+  --text:#f4f6fb;
+  --muted:#8d94a3;
+  --blue:#1687ff;
+  --blue2:#0067ee;
+  --purple:#8d75ff;
+  --green:#19c99a;
+}
+html,body{
+  min-height:100%;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body{overflow-x:hidden}
+button,input{font:inherit}
+button{cursor:pointer;border:0}
+
+/* Smooth Background Animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.app{
+  min-height:100vh;
+  padding-bottom:92px;
+  background:
+    radial-gradient(circle at 50% -10%,rgba(23,115,255,.08),transparent 35%),
+    linear-gradient(180deg,#090c11 0%,#06080b 70%);
+  animation: gradientShift 20s ease-in-out infinite;
+  background-size: 200% 200%;
+  will-change: background-position;
+}
+
+/* Smooth Floating Particles */
+@keyframes float1 {
+  0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.04; }
+  50% { transform: translateY(-30px) translateX(15px); opacity: 0.08; }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.04; }
+  50% { transform: translateY(30px) translateX(-15px); opacity: 0.08; }
+}
+
+@keyframes float3 {
+  0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.04; }
+  50% { transform: translateY(-25px) translateX(-10px); opacity: 0.08; }
+}
+
+.particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle:nth-child(1) { width: 300px; height: 300px; left: 10%; top: 10%; animation: float1 25s ease-in-out infinite; }
+.particle:nth-child(2) { width: 200px; height: 200px; right: 15%; top: 50%; animation: float2 30s ease-in-out infinite; }
+.particle:nth-child(3) { width: 250px; height: 250px; left: 50%; bottom: 10%; animation: float3 28s ease-in-out infinite; }
+
+/* pages */
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page{
+  display:none;
+  max-width:760px;
+  margin:auto;
+  padding:42px 20px 30px;
+  animation: pageIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: opacity, transform;
+}
+.page.active{display:block}
+.center{text-align:center}
+
+/* Enhanced Smooth Keyframes */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes softPulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes smoothFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Enhanced Animations */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(22,135,255,.3); }
+  50% { box-shadow: 0 0 40px rgba(22,135,255,.6); }
+}
+
+@keyframes slideUpReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes staggerFade {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hoverLift {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(22, 135, 255, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(22, 135, 255, 0.6);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Badge Animation */
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:9px 18px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.08);
+  background:#101217;
+  font-weight:700;
+  font-size:16px;
+  box-shadow:0 0 25px rgba(0,119,255,.08);
+  animation: slideInDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, box-shadow, border-color;
+}
+
+.badge:hover {
+  box-shadow: 0 0 40px rgba(0,119,255,.2), inset 0 0 20px rgba(0,119,255,.15);
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(22,135,255,.3);
+  animation: glow 2s ease-in-out infinite;
+}
+
+.dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:var(--blue);
+  box-shadow:0 0 12px var(--blue);
+  animation: softPulse 2.5s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+.hero h1{
+  font-size:clamp(38px,8vw,58px);
+  line-height:1.05;
+  margin:42px 0 22px;
+  letter-spacing:-2px;
+  animation: slideInDown 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s backwards;
+  background: linear-gradient(135deg, #1687ff 0%, #8d75ff 50%, #19c99a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  will-change: transform;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero h1:hover {
+  animation: textGlow 2s ease-in-out infinite;
+  transform: scale(1.02);
+}
+
+.hero p{
+  font-size:20px;
+  line-height:1.55;
+  color:var(--muted);
+  max-width:650px;
+  margin:auto;
+  animation: slideInUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s backwards;
+  will-change: transform;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero p:hover {
+  color: var(--text);
+  transform: translateY(-2px);
+}
+
+/* Button Animation & Ripple Effect */
+button, .btn {
+  position: relative;
+  overflow: hidden;
+  transform-origin: center;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Ripple effect for primary buttons */
+.primary::before, .action::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.primary:active::before, .action:active::before {
+  animation: ripple 0.6s ease-out;
+}
+
+/* Card Animations */
+.card {
+  animation: slideUpReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s backwards;
+}
+
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+
+/* Feature Card Animation */
+.feature {
+  animation: scaleIn 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.feature:nth-child(1) { animation-delay: 0.1s; }
+.feature:nth-child(2) { animation-delay: 0.2s; }
+.feature:nth-child(3) { animation-delay: 0.3s; }
+
+.feature:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(22, 135, 255, 0.15);
+}
+
+.feature .icon {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+/* Input Animations */
+.input, input {
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+}
+
+.input:focus, input:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 2px rgba(22, 135, 255, 0.2) !important;
+}
+
+/* Tool Item Animation */
+.tool-item {
+  animation: scaleIn 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tool-item:nth-child(1) { animation-delay: 0.1s; }
+.tool-item:nth-child(2) { animation-delay: 0.15s; }
+.tool-item:nth-child(3) { animation-delay: 0.2s; }
+.tool-item:nth-child(4) { animation-delay: 0.25s; }
+
+.tool-item:hover {
+  transform: scale(1.05) translateY(-4px);
+  box-shadow: 0 12px 35px rgba(22, 135, 255, 0.2);
+}
+
+.tool-item:active {
+  transform: scale(0.98);
+}
+
+.tool-icon {
+  display: inline-block;
+  animation: smoothFloat 2s ease-in-out infinite;
+  font-size: 28px;
+}
+
+.tool-item:nth-child(2) .tool-icon { animation-delay: -0.5s; }
+.tool-item:nth-child(3) .tool-icon { animation-delay: -1s; }
+.tool-item:nth-child(4) .tool-icon { animation-delay: -1.5s; }
+
+/* List Item Animations */
+.surah-item, .cnn-item, .tv-item {
+  animation: slideInRight 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.surah-item:hover, .cnn-item:hover, .tv-item:hover {
+  transform: translateX(4px);
+  background: rgba(22, 135, 255, 0.1);
+}
+
+/* Chip Animation */
+.tv-chip {
+  animation: scaleIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tv-chip:nth-child(1) { animation-delay: 0.05s; }
+.tv-chip:nth-child(2) { animation-delay: 0.1s; }
+.tv-chip:nth-child(3) { animation-delay: 0.15s; }
+.tv-chip:nth-child(4) { animation-delay: 0.2s; }
+.tv-chip:nth-child(5) { animation-delay: 0.25s; }
+
+.tv-chip:hover {
+  transform: scale(1.08);
+}
+
+.tv-chip.active {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Loading Animation */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top: 2px solid var(--blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.cnn-loading, .tv-loading {
+  animation: fadeIn 0.5s ease-in-out;
+  padding: 20px;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* Result Animations */
+.nik-result, .tv-result, .cnn-list, #quranContent {
+  animation: slideUpReveal 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nik-result > *, .tv-result > *, .cnn-list > * {
+  animation: staggerFade 0.4s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.nik-result > *:nth-child(1) { animation-delay: 0.1s; }
+.nik-result > *:nth-child(2) { animation-delay: 0.2s; }
+.nik-result > *:nth-child(3) { animation-delay: 0.3s; }
+
+.tv-result > *:nth-child(1) { animation-delay: 0.1s; }
+.tv-result > *:nth-child(2) { animation-delay: 0.2s; }
+.tv-result > *:nth-child(3) { animation-delay: 0.3s; }
+
+.cnn-list > *:nth-child(1) { animation-delay: 0.1s; }
+.cnn-list > *:nth-child(2) { animation-delay: 0.15s; }
+.cnn-list > *:nth-child(3) { animation-delay: 0.2s; }
+.cnn-list > *:nth-child(4) { animation-delay: 0.25s; }
+.cnn-list > *:nth-child(5) { animation-delay: 0.3s; }
+
+/* Surah Item Animation */
+.surah-item {
+  animation: staggerFade 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.surah-item:nth-child(odd) { animation-delay: 0.05s; }
+.surah-item:nth-child(even) { animation-delay: 0.1s; }
+
+/* Back Button Animation */
+.back-btn {
+  animation: slideInLeft 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.back-btn:hover {
+  transform: translateX(-4px);
+  color: var(--blue);
+}
+
+.back-btn:active {
+  transform: translateX(-2px);
+}
+
+/* Nav Animations */
+.nav button {
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+}
+
+.nav button:hover {
+  transform: translateY(-3px);
+  color: var(--blue);
+}
+
+.nav button.active::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 3px;
+  background: var(--blue);
+  border-radius: 2px;
+  animation: slideInDown 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 0 10px var(--blue);
+}
+@keyframes buttonShimmer {
+  0% { left: -100%; }
+  50% { left: 50%; }
+  100% { left: 100%; }
+}
+
+.primary{
+  margin-top:45px;
+  min-height:72px;
+  padding:0 34px;
+  border-radius:24px;
+  color:#fff;
+  font-weight:800;
+  font-size:23px;
+  background:linear-gradient(135deg,#168dff,#0874f3);
+  box-shadow:0 15px 35px rgba(0,115,255,.22);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.35s ease;
+  animation: slideInUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s backwards;
+  position: relative;
+  overflow: hidden;
+  will-change: transform, box-shadow;
+}
+
+.primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+  animation: buttonShimmer 4s ease-in-out infinite;
+  will-change: left;
+}
+
+.primary:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 20px 45px rgba(0,115,255,.35);
+}
+
+.primary:active {
+  transform: translateY(-2px);
+}
+
+.primary:disabled {
+  opacity: 0.75;
+}
+
+/* Features Animation */
+@keyframes featureSlide {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.features{
+  display:grid;
+  gap:28px;
+  margin-top:90px;
+}
+
+.feature{
+  min-height:255px;
+  padding:42px 25px;
+  border-radius:40px;
+  text-align:center;
+  background:linear-gradient(145deg,#111111,#0e0f12);
+  border:1px solid var(--line);
+  box-shadow:0 18px 45px rgba(0,0,0,.25);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: featureSlide 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+  position: relative;
+  overflow: hidden;
+  will-change: transform, border-color, box-shadow;
+}
+
+.feature:nth-child(1) { animation-delay: 0.6s; }
+.feature:nth-child(2) { animation-delay: 0.75s; }
+.feature:nth-child(3) { animation-delay: 0.9s; }
+
+.feature::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(22,135,255,.12) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: opacity;
+}
+
+.feature:hover::before {
+  opacity: 1;
+}
+
+.feature:hover {
+  transform: translateY(-10px);
+  border-color: rgba(22,135,255,.35);
+  box-shadow: 0 28px 70px rgba(22,135,255,.18);
+}
+
+.icon{
+  width:86px;
+  height:86px;
+  margin:auto;
+  border-radius:26px;
+  display:grid;
+  place-items:center;
+  font-size:38px;
+  color:#1687ff;
+  background:#071d39;
+  border:1px solid rgba(0,132,255,.2);
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: slideInDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, box-shadow, background;
+}
+
+.feature:hover .icon {
+  transform: scale(1.12);
+  box-shadow: 0 0 35px rgba(22,135,255,.5);
+  background: linear-gradient(135deg, #1687ff, #0874f3);
+  color: white;
+}
+
+.feature h3{
+  font-size:27px;
+  margin:27px 0 12px;
+  transition: color 0.4s ease;
+}
+
+.feature:hover h3 {
+  color: #1687ff;
+}
+
+.feature p{
+  font-size:18px;
+  color:var(--muted);
+  transition: color 0.4s ease;
+}
+
+.feature:hover p {
+  color: #f4f6fb;
+}
+
+/* Card Animation */
+.card{
+  padding:34px 21px;
+  border-radius:22px;
+  background:linear-gradient(145deg,#11151d,#0c1017);
+  border:1px solid rgba(255,255,255,.1);
+  box-shadow:0 25px 70px rgba(0,0,0,.28);
+  animation: slideInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, box-shadow;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(22,135,255,.25);
+  box-shadow: 0 32px 85px rgba(22,135,255,.12);
+}
+
+.pill{
+  display:inline-block;
+  padding:9px 14px;
+  border-radius:999px;
+  font-size:14px;
+  color:#b6a8ff;
+  background:#171326;
+  border:1px solid rgba(141,117,255,.2);
+  margin-bottom:28px;
+  animation: slideInDown 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: background, border-color, box-shadow;
+}
+
+.pill:hover {
+  background: #241a4d;
+  border-color: rgba(141,117,255,.6);
+  box-shadow: 0 0 18px rgba(141,117,255,.25);
+}
+
+.card h1{
+  font-size:29px;
+  margin-bottom:30px;
+  animation: slideInDown 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s backwards;
+}
+
+.card h3{
+  font-size:25px;
+  margin:0 0 30px;
+  animation: slideInDown 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s backwards;
+}
+
+.desc{
+  font-size:19px;
+  color:#9ca3b1;
+  line-height:1.5;
+  margin-bottom:28px;
+  animation: slideInUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s backwards;
+}
+
+label{
+  display:block;
+  color:#a6acb8;
+  font-weight:600;
+  font-size:16px;
+  margin:0 0 10px;
+  animation: slideInLeft 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
+.input{
+  width:100%;
+  height:64px;
+  padding:0 18px;
+  border-radius:15px;
+  outline:none;
+  background:#090c11;
+  border:1px solid rgba(255,255,255,.1);
+  color:#f3f5fa;
+  font-size:17px;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+  animation: slideInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+  will-change: border-color, box-shadow, transform;
+}
+
+.input:nth-of-type(1) { animation-delay: 0.2s; }
+.input:nth-of-type(2) { animation-delay: 0.3s; }
+
+.input:focus{
+  border-color:rgba(22,135,255,.8);
+  box-shadow: 0 0 0 5px rgba(22,135,255,.1), inset 0 0 12px rgba(22,135,255,.06);
+  transform: translateY(-3px);
+}
+
+.input::placeholder {
+  color: rgba(243,245,250,.35);
+}
+
+.action{
+  width:100%;
+  height:60px;
+  margin-top:24px;
+  border-radius:15px;
+  color:white;
+  font-weight:800;
+  font-size:18px;
+  background:linear-gradient(135deg,#8d75ff,#6d56ef);
+  box-shadow:0 12px 28px rgba(109,86,239,.2);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              filter 0.35s ease;
+  position: relative;
+  overflow: hidden;
+  animation: slideInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+  will-change: transform, box-shadow;
+}
+
+.action::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent);
+  animation: buttonShimmer 4s ease-in-out infinite;
+  will-change: left;
+}
+
+.action.verify{
+  background:linear-gradient(135deg,#1bb69a,#128f7d);
+  box-shadow:0 12px 28px rgba(18,143,125,.18);
+}
+
+.action:hover{
+  transform: translateY(-4px);
+  filter: brightness(1.1);
+  box-shadow: 0 20px 45px rgba(109,86,239,.4);
+}
+
+.action:active {
+  transform: translateY(-1px);
+}
+
+.action:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  animation: softPulse 2.5s ease-in-out infinite;
+}
+
+.divider{
+  height:1px;
+  background:rgba(255,255,255,.09);
+  margin:25px 0 45px;
+  animation: slideInLeft 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Message Animation */
+@keyframes messageIn {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.message{
+  margin-top:14px;
+  font-size:14px;
+  min-height:20px;
+  animation: messageIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: color 0.3s ease;
+  will-change: opacity, transform;
+}
+
+.message:not(:empty) {
+  color: #1bb69a;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: rgba(27,182,154,.08);
+  border-left: 3px solid #1bb69a;
+}
+
+/* Topbar Animation */
+.topbar{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:45px;
+  animation: slideInDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.topbar h2{
+  font-size:27px;
+  margin-bottom:8px;
+}
+
+.topbar p{
+  color:#7e8696;
+  font-size:15px;
+}
+
+@keyframes softStatusPulse {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(46,215,158,.3);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(46,215,158,.5);
+  }
+}
+
+.status{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:11px 16px;
+  border-radius:999px;
+  background:#0d1515;
+  border:1px solid rgba(255,255,255,.07);
+  color:#9ca3b1;
+  font-size:14px;
+  white-space:nowrap;
+  animation: slideInDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s backwards;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: border-color, background;
+}
+
+.status:hover {
+  border-color: rgba(46,215,158,.4);
+  background: rgba(46,215,158,.08);
+}
+
+.status i{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#2ed79e;
+  box-shadow:0 0 10px #2ed79e;
+  animation: softStatusPulse 2.5s ease-in-out infinite;
+  will-change: box-shadow;
+}
+
+/* bottom nav */
+@keyframes navIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav{
+  position:fixed;
+  z-index:20;
+  left:0;
+  right:0;
+  bottom:0;
+  height:86px;
+  background:rgba(5,7,10,.95);
+  border-top:1px solid rgba(255,255,255,.07);
+  display:flex;
+  justify-content:center;
+  animation: navIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  backdrop-filter: blur(12px);
+}
+
+.nav-inner{width:min(760px,100%);display:grid;grid-template-columns:repeat(5,1fr)}
+
+.nav button{
+  background:none;
+  color:#555b66;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.5px;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  will-change: color, transform;
+}
+
+.nav button:hover {
+  color: #1485ff;
+  transform: translateY(-3px);
+}
+
+.nav button.active{
+  color:#1485ff;
+}
+
+@keyframes navIconGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(20,133,255,.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 14px rgba(20,133,255,.7));
+  }
+}
+
+.nav-icon{
+  font-size:27px;
+  line-height:1;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: filter, transform;
+}
+
+.nav button.active .nav-icon{
+  animation: navIconGlow 2.5s ease-in-out infinite;
+}
+
+.nav button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #1485ff, transparent);
+  border-radius: 2px;
+  animation: slideInDown 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+
+/* === Back buttons === */
+.back-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  min-height:42px;padding:0 14px;margin-bottom:18px;
+  border-radius:12px;color:#cfd6e4;background:#111722;
+  border:1px solid rgba(255,255,255,.08);font-size:14px;font-weight:700;
+}
+.back-btn:hover{color:#fff;border-color:rgba(20,133,255,.45);background:#151d2a}
+.tools-topback{margin-bottom:14px}
+
+/* === Tools Center — compact square cards === */
+.tool-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+  margin-top:28px;
+}
+.tool-item{
+  width:100%;
+  min-height:168px;
+  padding:20px 18px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  gap:14px;
+  text-align:left;
+  color:#f4f6fb;
+  background:linear-gradient(145deg,rgba(9,31,58,.96),rgba(11,16,27,.98));
+  border:1px solid rgba(20,133,255,.58);
+  border-radius:24px;
+  box-shadow:0 10px 28px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.035);
+  transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease, background .25s ease;
+  overflow:hidden;
+  position:relative;
+}
+.tool-item::before{
+  content:'';
+  position:absolute;
+  width:110px;
+  height:110px;
+  left:-35px;
+  top:-45px;
+  border-radius:50%;
+  background:rgba(20,133,255,.13);
+  filter:blur(16px);
+  pointer-events:none;
+}
+.tool-item:hover{
+  transform:translateY(-4px);
+  border-color:rgba(45,164,255,.9);
+  box-shadow:0 16px 38px rgba(20,133,255,.16), 0 0 0 1px rgba(20,133,255,.08);
+  background:linear-gradient(145deg,rgba(10,39,72,.98),rgba(11,17,30,.99));
+}
+.tool-icon{
+  width:58px;
+  height:58px;
+  flex:0 0 58px;
+  display:grid;
+  place-items:center;
+  border-radius:17px;
+  background:linear-gradient(145deg,#087cff,#0751b8);
+  border:1px solid rgba(91,184,255,.32);
+  box-shadow:0 8px 22px rgba(8,124,255,.24);
+  font-size:27px;
+  color:#fff;
+  position:relative;
+  z-index:1;
+}
+.tool-item span:last-child{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  position:relative;
+  z-index:1;
+}
+.tool-item b{font-size:15px;line-height:1.2}
+.tool-item small{color:#59b7ff;font-size:10px;line-height:1.3}
+@media(max-width:380px){
+  .tool-grid{gap:11px}
+  .tool-item{min-height:150px;padding:16px 14px;border-radius:20px}
+  .tool-icon{width:52px;height:52px;flex-basis:52px;border-radius:15px;font-size:24px}
+  .tool-item b{font-size:14px}
+}
+
+/* GPU Acceleration for smooth animations */
+.page, .card, .feature, .tool-item, .nav button, .surah-item, .cnn-card, .tv-item {
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Smooth Scroll Behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Accessibility: Respect prefers-reduced-motion */
+@media(prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* small phones */
+@media(max-width:480px){
+  .page{padding:32px 20px 24px}
+  .hero h1{font-size:43px;margin-top:38px}
+  .hero p{font-size:18px}
+  .primary{width:100%;font-size:20px;height:66px}
+  .features{margin-top:75px}
+  .feature{min-height:245px;padding-top:38px;border-radius:38px}
+  .topbar{margin-bottom:38px}
+  .topbar h2{font-size:25px}
+  .status{font-size:13px;padding:10px 13px}
+  .card{padding:32px 20px}
+  .card h1{font-size:28px}
+  .desc{font-size:18px}
+}
+
+/* === Smooth Animation Upgrade === */
+* {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.page,
+.badge,
+.hero h1,
+.hero p,
+.primary,
+.feature,
+.icon,
+.card,
+.pill,
+.input,
+.action,
+.topbar,
+.status,
+.nav,
+.nav button,
+.nav-icon,
+.message {
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.feature,
+.card,
+.primary,
+.action,
+.badge,
+.nav button,
+.input,
+.icon {
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+/* Reduce heavy motion that causes mobile stutter */
+.app {
+  animation-duration: 35s;
+}
+
+.particle {
+  opacity: .07;
+  transform: translateZ(0);
+  filter: blur(10px);
+  mix-blend-mode: screen;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .feature:hover,
+  .card:hover,
+  .primary:hover,
+  .action:hover,
+  .nav button:hover {
+    transition-duration: .25s;
+  }
+}
+
+/* GPU acceleration */
+.page,
+.feature,
+.card,
+.primary,
+.action,
+.nav,
+.particle {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+
+/* === Login Screen === */
+body.login-locked .app,
+body.login-locked .nav { display:none !important; }
+
+.login-screen{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:grid;
+  place-items:center;
+  min-height:100dvh;
+  padding:24px;
+  overflow:auto;
+  background:
+    radial-gradient(circle at 50% 40%,rgba(0,110,255,.08),transparent 34%),
+    #000;
+}
+.login-box{
+  width:min(484px,100%);
+  padding:54px 42px 52px;
+  border:1px solid rgba(0,119,255,.75);
+  border-radius:38px;
+  background:rgba(2,10,28,.94);
+  box-shadow:
+    0 0 25px rgba(0,119,255,.16),
+    0 0 90px rgba(0,119,255,.08),
+    inset 0 0 35px rgba(0,119,255,.025);
+  transform:translateZ(0);
+  animation:loginBoxIn .8s cubic-bezier(.22,1,.36,1) both;
+}
+@keyframes loginBoxIn{
+  from{opacity:0;transform:translate3d(0,28px,0) scale(.97)}
+  to{opacity:1;transform:translate3d(0,0,0) scale(1)}
+}
+.login-avatar{
+  width:128px;height:128px;margin:0 auto 28px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  font-size:48px;
+  background:
+    radial-gradient(circle at 35% 28%,#62eaff 0 7%,transparent 8%),
+    linear-gradient(145deg,#263fbb,#07c9ed);
+  border:2px solid rgba(42,224,255,.9);
+  box-shadow:0 0 22px rgba(0,221,255,.55),0 0 55px rgba(0,119,255,.22);
+  animation:avatarFloat 3.5s ease-in-out infinite;
+}
+@keyframes avatarFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-5px)}
+}
+.login-title{
+  text-align:center;
+  font-size:36px;
+  font-weight:900;
+  letter-spacing:-1px;
+  margin-bottom:7px;
+  color:#f5fbff;
+  text-shadow:0 0 14px rgba(0,211,255,.6);
+}
+.login-subtitle{
+  text-align:center;
+  color:#8993a8;
+  font-size:15px;
+  margin-bottom:42px;
+}
+.login-field{
+  position:relative;
+  margin-bottom:18px;
+}
+.login-field input{
+  width:100%;
+  height:72px;
+  padding:0 54px 0 62px;
+  border-radius:20px;
+  outline:none;
+  color:#f4f7ff;
+  background:#111827;
+  border:1px solid rgba(0,198,255,.28);
+  font-size:18px;
+  transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease;
+}
+.login-field input:focus{
+  border-color:#20dfff;
+  box-shadow:0 0 0 4px rgba(0,211,255,.08),0 0 25px rgba(0,211,255,.12);
+  transform:translateY(-1px);
+}
+.login-field .field-icon{
+  position:absolute;
+  left:21px;top:50%;
+  transform:translateY(-50%);
+  color:#45e4ff;
+  font-size:27px;
+  pointer-events:none;
+}
+.login-toggle{
+  position:absolute;
+  right:17px;top:50%;
+  transform:translateY(-50%);
+  background:none;
+  color:#45e4ff;
+  font-size:25px;
+  padding:7px;
+}
+.login-submit{
+  width:100%;
+  height:70px;
+  margin-top:22px;
+  border-radius:22px;
+  color:white;
+  font-weight:900;
+  font-size:20px;
+  background:linear-gradient(100deg,#0069ec,#09cbe9);
+  box-shadow:0 14px 35px rgba(0,122,255,.25);
+  transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
+}
+.login-submit:hover{transform:translateY(-3px);box-shadow:0 20px 45px rgba(0,174,255,.32);filter:brightness(1.06)}
+.login-submit:active{transform:translateY(0)}
+.login-error{
+  min-height:22px;
+  margin-top:14px;
+  text-align:center;
+  color:#ff7080;
+  font-size:14px;
+}
+.login-user{
+  margin-top:14px;
+  text-align:center;
+  color:#7f8ba1;
+  font-size:13px;
+}
+.login-screen.hide{
+  animation:loginOut .35s ease forwards;
+  pointer-events:none;
+}
+@keyframes loginOut{to{opacity:0;visibility:hidden;transform:scale(1.02)}}
+
+.logout-btn{
+  position:fixed;
+  right:16px;
+  top:14px;
+  z-index:30;
+  padding:9px 13px;
+  border-radius:999px;
+  color:#b8c3d6;
+  background:rgba(10,14,22,.8);
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(10px);
+}
+.logout-btn:hover{color:#fff;border-color:rgba(0,160,255,.4)}
+
+@media(max-width:480px){
+  .login-box{padding:42px 28px 38px;border-radius:32px}
+  .login-avatar{width:112px;height:112px}
+  .login-title{font-size:32px}
+  .login-field input{height:66px}
+  .login-submit{height:64px}
+}
+
+
+/* === Al-Qur'an === */
+.quran-search{
+  width:100%;
+  height:58px;
+  padding:0 17px;
+  border-radius:16px;
+  outline:none;
+  color:#f4f6fb;
+  background:#090c11;
+  border:1px solid rgba(255,255,255,.1);
+  font-size:16px;
+  margin-bottom:18px;
+}
+.quran-search:focus{
+  border-color:rgba(22,135,255,.75);
+  box-shadow:0 0 0 4px rgba(22,135,255,.08);
+}
+.surah-list{display:grid;gap:12px}
+.surah-item{
+  width:100%;
+  min-height:72px;
+  padding:13px 15px;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  text-align:left;
+  color:#f4f6fb;
+  background:linear-gradient(145deg,#121824,#0c1017);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:17px;
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+.surah-item:hover{
+  transform:translateY(-2px);
+  border-color:rgba(22,135,255,.4);
+  box-shadow:0 12px 30px rgba(22,135,255,.1);
+}
+.surah-number{
+  width:42px;height:42px;flex:0 0 42px;
+  display:grid;place-items:center;
+  border-radius:12px;
+  background:#071d39;
+  color:#55aaff;
+  font-weight:800;
+}
+.surah-info{display:flex;flex-direction:column;gap:3px;flex:1}
+.surah-info b{font-size:16px}
+.surah-info small{color:#8d94a3;font-size:12px}
+.surah-arabic{font-family:"Noto Naskh Arabic","Amiri",serif;font-size:22px}
+.quran-reader{display:none}
+.quran-reader.active{display:block}
+.quran-header{
+  display:flex;align-items:center;gap:12px;margin-bottom:24px
+}
+.quran-back{
+  width:45px;height:45px;border-radius:13px;
+  color:#fff;background:#121824;border:1px solid rgba(255,255,255,.09);
+}
+.quran-title{flex:1}
+.quran-title h1{font-size:24px;margin:0}
+.quran-title small{color:#8d94a3}
+.ayah{
+  padding:20px 5px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.ayah:last-child{border-bottom:0}
+.ayah-number{
+  display:inline-grid;place-items:center;
+  width:30px;height:30px;border-radius:50%;
+  background:#071d39;color:#55aaff;font-size:12px;font-weight:800;
+  margin-bottom:12px;
+}
+.ayah-arabic{
+  font-family:"Noto Naskh Arabic","Amiri","Times New Roman",serif;
+  font-size:28px;line-height:2;text-align:right;
+  direction:rtl;margin-bottom:12px;
+}
+.ayah-translation{
+  color:#aeb5c2;font-size:15px;line-height:1.65;
+}
+.quran-loading,.quran-empty{
+  text-align:center;color:#8d94a3;padding:30px 10px;
+}
+/* Quran long-surah rendering fix: avoid large GPU/compositing layers on mobile WebView */
+#quran{animation:none!important;will-change:auto!important;transform:none!important}
+#quran .quran-reader .card{animation:none!important;transition:none!important;will-change:auto!important;transform:none!important}
+#quran .ayah{content-visibility:auto;contain-intrinsic-size:0 180px;}
+.ayah-latin{color:#d8cfff;font-size:15px;line-height:1.7;margin:10px 0 12px;font-style:italic;}
+.quran-more{display:block;width:100%;margin:18px 0 4px;padding:14px;border:1px solid rgba(255,255,255,.09);border-radius:14px;background:#111722;color:#fff;font-weight:700}
+.quran-progress{text-align:center;color:#7f8796;font-size:12px;padding:8px}
+
+/* === Info Gempa === */
+.gempa-result{margin-top:18px;display:grid;gap:12px}
+.gempa-card{padding:18px;border-radius:18px;background:linear-gradient(145deg,#121824,#0c1017);border:1px solid rgba(255,255,255,.09)}
+.gempa-main{display:flex;align-items:center;gap:14px}
+.gempa-mag{font-size:32px;font-weight:900;color:#ffcf66}
+.gempa-info{display:grid;gap:5px}
+.gempa-info small{color:#8d94a3}
+.gempa-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.gempa-field{padding:12px;border-radius:13px;background:#090c11}
+.gempa-field small{display:block;color:#8d94a3;font-size:12px;margin-bottom:5px}
+.gempa-field b{font-size:14px}
+@media(max-width:480px){.gempa-grid{grid-template-columns:1fr}}
+.gempa-card{position:relative;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,.24);background:linear-gradient(145deg,rgba(18,24,36,.98),rgba(8,12,19,.98))}
+.gempa-card:before{content:"";position:absolute;inset:-80px auto auto -70px;width:180px;height:180px;border-radius:50%;background:rgba(255,207,102,.07);filter:blur(2px);pointer-events:none}
+.gempa-head{display:flex;align-items:center;justify-content:space-between;gap:14px;position:relative}
+.gempa-brand{display:flex;align-items:center;gap:11px}
+.gempa-brand-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:rgba(255,255,255,.07);font-size:21px}
+.gempa-brand b{display:block;font-size:16px}
+.gempa-brand small,.gempa-location small,.gempa-potensi small,.gempa-dirasa small{display:block;color:#8d94a3;font-size:10px;letter-spacing:.9px}
+.gempa-mag{padding:8px 12px;border-radius:13px;background:rgba(255,207,102,.09);border:1px solid rgba(255,207,102,.2);font-size:25px!important;color:#ffcf66}
+.gempa-location{margin-top:17px;padding:14px;border-radius:14px;background:rgba(255,255,255,.035);border-left:3px solid #ffcf66}
+.gempa-location b{display:block;margin-top:5px;line-height:1.45;font-size:14px}
+.gempa-fields{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:11px}
+.gempa-field{transition:transform .18s ease,border-color .18s ease;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06)}
+.gempa-field:hover{transform:translateY(-2px);border-color:rgba(255,207,102,.22)}
+.gempa-field b{display:block;margin-top:3px;line-height:1.35}
+.gempa-potensi,.gempa-dirasa{margin-top:10px;padding:12px 13px;border-radius:13px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06)}
+.gempa-potensi b,.gempa-dirasa b{display:block;margin-top:4px;font-size:13px;line-height:1.4}
+.gempa-dirasa{border-left:3px solid #7ee787}
+@media(max-width:480px){.gempa-fields{grid-template-columns:1fr 1fr}.gempa-mag{font-size:22px!important}}
+
+
+/* NIK result */
+.nik-result{margin-top:14px;color:#dfe7f5;background:#090c11;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px;min-height:24px}
+.nik-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.nik-field{padding:11px 12px;border-radius:12px;background:#111722}.nik-field small{display:block;color:#7f8ba1;font-size:11px;margin-bottom:5px}.nik-field b{display:block;color:#f2f5fb;font-size:14px;line-height:1.35}.nik-success{margin-bottom:12px;color:#7ff0b2;font-weight:700}.nik-error{color:#ff8b98}
+@media(max-width:480px){.nik-grid{grid-template-columns:1fr}}
+
+@media(max-width:480px){
+  .ayah-arabic{font-size:25px}
+  .quran-title h1{font-size:21px}
+}
+
+
+/* === SMOOTH MOTION MODE === */
+html{scroll-behavior:smooth}
+.page{animation:pageIn .42s cubic-bezier(.22,1,.36,1) both}
+.card{animation:cardIn .48s cubic-bezier(.22,1,.36,1) both}
+.tool-item,.surah-item,.action,.nav-item,.back-btn,.tv-chip{transition:transform .22s ease,opacity .22s ease,box-shadow .22s ease,background .22s ease,border-color .22s ease}
+.tool-item:hover,.surah-item:hover{transform:translateY(-2px)}
+.action:hover{transform:translateY(-1px)}
+.action:active,.back-btn:active,.tv-chip:active,.nav-item:active{transform:scale(.97)}
+@keyframes pageIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes cardIn{from{opacity:0;transform:translateY(12px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media (max-width:700px){
+  .card{box-shadow:0 8px 24px rgba(0,0,0,.16)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  .ayah{content-visibility:auto;contain:content;contain-intrinsic-size:0 430px}
+  .ayah-arabic{line-height:1.85!important}
+  .quranContent,#quranContent{contain:layout style paint}
+}
+#jadwaltv .tv-head{animation:tvHeadIn .45s cubic-bezier(.22,1,.36,1) both}
+#jadwaltv .tv-item{animation:tvItemIn .48s cubic-bezier(.22,1,.36,1) both}
+#jadwaltv .tv-item:nth-child(2){animation-delay:.05s!important}
+#jadwaltv .tv-item:nth-child(3){animation-delay:.10s!important}
+#jadwaltv .tv-item:nth-child(4){animation-delay:.15s!important}
+#jadwaltv .tv-item:nth-child(5){animation-delay:.20s!important}
+#jadwaltv .tv-item:nth-child(6){animation-delay:.25s!important}
+#jadwaltv .tv-item:nth-child(7){animation-delay:.30s!important}
+#jadwaltv .tv-item:nth-child(8){animation-delay:.35s!important}
+#jadwaltv .tv-item:nth-child(9){animation-delay:.40s!important}
+#jadwaltv .tv-item:nth-child(10){animation-delay:.45s!important}
+@keyframes tvHeadIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes tvItemIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+
+.quran-more{width:100%;margin:18px 0 8px;padding:13px 16px;border:1px solid rgba(255,255,255,.1);border-radius:13px;background:#111722;color:#f1f4fa;font-weight:700}
+.quran-more:disabled{opacity:.6}
+.quran-progress{text-align:center;color:#737d8e;font-size:12px;margin-bottom:12px}
+
+
+/* === CNN Indonesia === */
+
+.tv-result{margin-top:20px;display:grid;gap:9px}
+.tv-head{padding:16px 17px;border-radius:18px;background:linear-gradient(180deg,#121824,#0c1119);border:1px solid rgba(255,255,255,.08);box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.tv-head-row{display:flex;align-items:center;justify-content:space-between;gap:12px}.tv-head b{font-size:18px;letter-spacing:.2px}.tv-head small{display:block;color:#8d94a3;margin-top:5px}.tv-count{font-size:11px;color:#cfc7ff;background:rgba(141,117,255,.12);border:1px solid rgba(141,117,255,.2);padding:6px 9px;border-radius:999px;white-space:nowrap}
+.tv-item{padding:13px 14px;border-radius:16px;background:#0c1119;border:1px solid rgba(255,255,255,.065);display:grid;grid-template-columns:76px 1fr;gap:12px;align-items:center;animation:tvItemIn .42s cubic-bezier(.22,1,.36,1) both}
+.tv-item:nth-child(2){animation-delay:.03s}.tv-item:nth-child(3){animation-delay:.06s}.tv-item:nth-child(4){animation-delay:.09s}.tv-item:nth-child(5){animation-delay:.12s}.tv-item:nth-child(6){animation-delay:.15s}.tv-item:nth-child(7){animation-delay:.18s}.tv-item:nth-child(8){animation-delay:.21s}.tv-item:nth-child(9){animation-delay:.24s}.tv-item:nth-child(10){animation-delay:.27s}
+@keyframes tvItemIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.tv-time{font-weight:800;color:#6aaeff;font-size:14px;background:rgba(22,135,255,.08);border-radius:11px;padding:9px 8px;text-align:center}.tv-name{font-weight:700;color:#f3f5fa;font-size:14px;line-height:1.42}.tv-meta{color:#8d94a3;font-size:11px;line-height:1.4;margin-top:4px}.tv-empty,.tv-loading,.tv-error{text-align:center;color:#8d94a3;padding:28px 10px}.tv-loading::before{content:'⏳';display:block;font-size:22px;margin-bottom:7px}.tv-error{color:#ff8b98}.tv-chips{display:flex;gap:8px;overflow:auto;padding:2px 1px 4px;margin:2px 0 4px;scrollbar-width:none}.tv-chips::-webkit-scrollbar{display:none}.tv-chip{flex:0 0 auto;padding:8px 12px;border-radius:999px;background:#101722;border:1px solid rgba(255,255,255,.08);color:#bfc7d7;font-size:12px;font-weight:700}.tv-chip:active{transform:scale(.97)}
+@media(max-width:480px){.tv-item{grid-template-columns:68px 1fr}.tv-head-row{align-items:flex-start}}
+.cnn-list{display:grid;gap:12px}
+.cnn-card{display:block;padding:14px;border-radius:16px;background:#0d121a;border:1px solid rgba(255,255,255,.07);color:#f3f5fa;text-decoration:none}
+.cnn-card:active{transform:scale(.99)}
+.cnn-thumb{width:100%;height:150px;object-fit:cover;border-radius:12px;background:#151b25;display:block;margin-bottom:12px}
+.cnn-meta{display:flex;gap:8px;align-items:center;color:#7f8ba1;font-size:11px;margin-bottom:6px}
+.cnn-title{font-size:16px;line-height:1.4;font-weight:750;margin:0 0 7px}
+.cnn-desc{color:#9da7b8;font-size:13px;line-height:1.5;margin:0}
+.cnn-empty,.cnn-loading,.cnn-error{text-align:center;color:#8d94a3;padding:28px 10px}
+.cnn-error{color:#ff8b98}
+.cnn-refresh{width:100%;margin-top:14px}
+@media(max-width:480px){.cnn-thumb{height:135px}.cnn-title{font-size:15px}}
+
+/* Jadwal TV clean: no decorative blobs/orbs behind the content. */
+#jadwaltv::before,#jadwaltv::after,#jadwaltv .card::before,#jadwaltv .card::after{display:none!important;content:none!important}
+
+
+/* === LIGHTWEIGHT PREMIUM MOTION === */
+:root{--ease:cubic-bezier(.22,1,.36,1)}
+/* Disable the old continuously-moving background: transform/opacity animations are cheaper on phones. */
+.app{animation:none!important;background-size:auto!important}
+html{scroll-behavior:auto}
+
+@keyframes qsrFadeUp{from{opacity:0;transform:translate3d(0,12px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes qsrSoftIn{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:scale(1)}}
+@keyframes qsrGlow{0%,100%{opacity:.55}50%{opacity:1}}
+@keyframes qsrPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+@keyframes qsrShine{0%{transform:translateX(-120%)}55%,100%{transform:translateX(120%)}}
+
+/* Every page enters once when opened. */
+.page.active{animation:qsrFadeUp .38s var(--ease) both}
+.page.active .topbar{animation:qsrFadeUp .38s var(--ease) .03s both}
+.page.active .card{animation:qsrSoftIn .42s var(--ease) .07s both}
+.page.active .badge,.page.active .hero h1,.page.active .hero p,.page.active .primary{animation:qsrFadeUp .42s var(--ease) both}
+.page.active .hero h1{animation-delay:.04s}.page.active .hero p{animation-delay:.08s}.page.active .primary{animation-delay:.13s}
+
+/* Cards and controls: subtle lift only, no heavy filters. */
+.card,.feature,.tool-item,.surah-item,.cnn-card,.tv-item,.tv-head,.back-btn,.action,.primary,.tv-chip{will-change:transform}
+.card,.feature,.tool-item,.surah-item,.cnn-card,.tv-item,.back-btn,.action,.primary,.tv-chip,.input{transition:transform .22s var(--ease),box-shadow .22s ease,border-color .22s ease,background-color .22s ease,opacity .22s ease}
+.card:hover,.feature:hover,.tool-item:hover,.surah-item:hover,.cnn-card:hover,.tv-item:hover{transform:translateY(-2px)}
+.back-btn:hover,.action:hover,.primary:hover,.tv-chip:hover{transform:translateY(-2px)}
+.back-btn:active,.action:active,.primary:active,.tv-chip:active,.tool-item:active,.surah-item:active,.cnn-card:active{transform:scale(.985)}
+
+/* Lightweight button sheen. */
+.primary,.action{position:relative;overflow:hidden}
+.primary::before,.action::after{animation:none!important}
+.primary::after,.action::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.11) 45%,transparent 55%);transform:translateX(-120%)}
+.primary:hover::after,.action:hover::before{animation:qsrShine .75s var(--ease) 1}
+
+/* Home feature cards stagger. */
+.page.active .feature:nth-child(1){animation:qsrFadeUp .42s var(--ease) .08s both}
+.page.active .feature:nth-child(2){animation:qsrFadeUp .42s var(--ease) .14s both}
+.page.active .feature:nth-child(3){animation:qsrFadeUp .42s var(--ease) .20s both}
+
+/* Tools and Quran lists stagger in with CSS only. */
+.page.active .tool-item,.page.active .surah-item,.page.active .cnn-card{animation:qsrFadeUp .36s var(--ease) both}
+.page.active .tool-item:nth-child(1),.page.active .surah-item:nth-child(1),.page.active .cnn-card:nth-child(1){animation-delay:.08s}
+.page.active .tool-item:nth-child(2),.page.active .surah-item:nth-child(2),.page.active .cnn-card:nth-child(2){animation-delay:.12s}
+.page.active .tool-item:nth-child(3),.page.active .surah-item:nth-child(3),.page.active .cnn-card:nth-child(3){animation-delay:.16s}
+.page.active .tool-item:nth-child(4),.page.active .surah-item:nth-child(4),.page.active .cnn-card:nth-child(4){animation-delay:.20s}
+.page.active .tool-item:nth-child(5),.page.active .surah-item:nth-child(5),.page.active .cnn-card:nth-child(5){animation-delay:.24s}
+
+/* TV list: smooth, short, and stays cheap on mobile. */
+#jadwaltv .tv-head{animation:qsrFadeUp .34s var(--ease) .08s both}
+#jadwaltv .tv-item{animation:qsrFadeUp .34s var(--ease) both}
+#jadwaltv .tv-item:nth-child(2){animation-delay:.10s!important}
+#jadwaltv .tv-item:nth-child(3){animation-delay:.14s!important}
+#jadwaltv .tv-item:nth-child(4){animation-delay:.18s!important}
+#jadwaltv .tv-item:nth-child(5){animation-delay:.22s!important}
+#jadwaltv .tv-item:nth-child(6){animation-delay:.26s!important}
+#jadwaltv .tv-item:nth-child(7){animation-delay:.30s!important}
+#jadwaltv .tv-item:nth-child(8){animation-delay:.34s!important}
+#jadwaltv .tv-item:nth-child(9){animation-delay:.38s!important}
+#jadwaltv .tv-item:nth-child(10){animation-delay:.42s!important}
+
+/* Inputs get a small focus glow, without blur/backdrop filters. */
+.input:focus,.login-field input:focus{transform:translateY(-1px);box-shadow:0 0 0 3px rgba(22,135,255,.09),0 8px 22px rgba(0,0,0,.16)}
+
+/* Navigation: tiny icon lift + active pulse. */
+.nav button{transition:transform .2s var(--ease),color .2s ease,opacity .2s ease}
+.nav button:hover{transform:translateY(-2px)}
+.nav button:active{transform:scale(.94)}
+.nav button.active .nav-icon{animation:qsrPulse 2.8s ease-in-out infinite}
+
+/* Loading states: one subtle pulse, no spinning heavy elements. */
+.quran-loading,.quran-empty,.cnn-loading,.tv-loading{animation:qsrGlow 1.7s ease-in-out infinite}
+
+/* Login animation. */
+.login-screen{animation:qsrSoftIn .38s var(--ease) both}
+.login-box{animation:qsrFadeUp .45s var(--ease) .05s both}
+.login-submit{transition:transform .2s var(--ease),box-shadow .2s ease}
+.login-submit:hover{transform:translateY(-2px)}
+.login-submit:active{transform:scale(.985)}
+
+/* Keep long Quran pages performant: don't animate individual ayahs. */
+#quran .quran-reader .card,#quran .ayah{animation:none!important;transition:none!important;will-change:auto!important}
+
+@media(max-width:700px){
+  .card,.feature,.tool-item,.surah-item,.cnn-card,.tv-item{will-change:auto}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+
+/* === Premium smooth animation + unified login background === */
+html,body{background:#020817}
+body{overflow-x:hidden}
+
+/* Login uses the same navy/cyan palette as the app instead of a separate black area. */
+.login-screen{
+  background:
+    radial-gradient(circle at 50% 20%,rgba(0,180,255,.13),transparent 34%),
+    radial-gradient(circle at 15% 85%,rgba(55,90,255,.10),transparent 30%),
+    linear-gradient(180deg,#061126 0%,#030914 52%,#020710 100%);
+  isolation:isolate;
+}
+.login-screen::before{
+  content:"";
+  position:absolute;
+  inset:-20%;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 35% 35%,rgba(0,204,255,.09),transparent 22%),
+    radial-gradient(circle at 72% 65%,rgba(52,86,255,.08),transparent 25%);
+  animation:loginAmbient 12s ease-in-out infinite alternate;
+}
+@keyframes loginAmbient{
+  0%{transform:translate3d(-2%,0,0) scale(1);opacity:.7}
+  100%{transform:translate3d(2%,-1%,0) scale(1.04);opacity:1}
+}
+
+.login-box{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(145deg,rgba(5,18,43,.97),rgba(3,11,27,.97));
+  box-shadow:0 24px 70px rgba(0,90,190,.18),0 0 45px rgba(0,190,255,.08),inset 0 0 35px rgba(0,150,255,.025);
+  animation:loginBoxIn .75s cubic-bezier(.22,1,.36,1) both,loginBoxGlow 4s ease-in-out 1s infinite alternate;
+}
+.login-box::before{
+  content:"";
+  position:absolute;
+  width:180px;height:180px;
+  left:-90px;top:-100px;
+  border-radius:50%;
+  background:rgba(0,204,255,.08);
+  filter:blur(20px);
+  pointer-events:none;
+  animation:softOrbit 7s ease-in-out infinite alternate;
+}
+.login-box::after{
+  content:"";
+  position:absolute;
+  left:-20%;right:-20%;top:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(50,224,255,.65),transparent);
+  animation:scanLine 4s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes loginBoxGlow{
+  from{box-shadow:0 24px 70px rgba(0,90,190,.18),0 0 35px rgba(0,190,255,.06),inset 0 0 35px rgba(0,150,255,.025)}
+  to{box-shadow:0 24px 75px rgba(0,90,190,.24),0 0 55px rgba(0,190,255,.11),inset 0 0 40px rgba(0,150,255,.04)}
+}
+@keyframes softOrbit{from{transform:translate(0,0)}to{transform:translate(85px,55px)}}
+@keyframes scanLine{0%,100%{transform:translateX(-35%);opacity:0}20%{opacity:.8}55%{opacity:.25}80%{transform:translateX(35%);opacity:0}}
+
+.login-avatar{
+  position:relative;
+  animation:avatarFloat 3.6s ease-in-out infinite,avatarGlow 3.6s ease-in-out infinite;
+}
+.login-avatar::after{
+  content:"";
+  position:absolute;
+  inset:-8px;
+  border-radius:50%;
+  border:1px solid rgba(61,225,255,.28);
+  animation:avatarRing 2.8s ease-out infinite;
+}
+@keyframes avatarGlow{0%,100%{filter:brightness(1)}50%{filter:brightness(1.12)}}
+@keyframes avatarRing{0%{transform:scale(.9);opacity:.7}100%{transform:scale(1.22);opacity:0}}
+
+.login-title{animation:loginTitleIn .7s .12s cubic-bezier(.22,1,.36,1) both}
+.login-subtitle{animation:loginTitleIn .7s .2s cubic-bezier(.22,1,.36,1) both}
+.login-field{animation:loginFieldIn .65s cubic-bezier(.22,1,.36,1) both}
+.login-field:nth-of-type(1){animation-delay:.28s}
+.login-field:nth-of-type(2){animation-delay:.38s}
+.login-submit{animation:loginFieldIn .65s .5s cubic-bezier(.22,1,.36,1) both}
+@keyframes loginTitleIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes loginFieldIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+.login-field input{background:rgba(17,24,39,.9)}
+.login-submit{position:relative;overflow:hidden}
+.login-submit::after{
+  content:"";
+  position:absolute;
+  top:0;bottom:0;width:70px;
+  left:-90px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);
+  transform:skewX(-18deg);
+  animation:buttonShine 3.8s ease-in-out 1.4s infinite;
+  pointer-events:none;
+}
+@keyframes buttonShine{0%,55%{left:-90px}75%,100%{left:115%}}
+
+/* Smooth page/card/list motion throughout the web app. */
+.page.active{animation:pageReveal .5s cubic-bezier(.22,1,.36,1) both}
+@keyframes pageReveal{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.card,.feature,.tool-item,.surah-item,.cnn-card,.tv-item{
+  transition:transform .28s cubic-bezier(.22,1,.36,1),border-color .28s ease,box-shadow .28s ease,background-color .28s ease;
+}
+.card:hover,.feature:hover,.tool-item:hover,.surah-item:hover,.cnn-card:hover,.tv-item:hover{transform:translateY(-3px)}
+.primary,.action,.quran-more,.back-btn{transition:transform .22s ease,filter .22s ease,box-shadow .22s ease}
+.primary:active,.action:active,.quran-more:active,.back-btn:active{transform:scale(.975)}
+
+@media(max-width:700px){
+  .page.active{animation-duration:.42s}
+  .card:hover,.feature:hover,.tool-item:hover,.surah-item:hover,.cnn-card:hover,.tv-item:hover{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .login-screen::before,.login-box,.login-box::before,.login-box::after,.login-avatar,.login-avatar::after,.login-title,.login-subtitle,.login-field,.login-submit,.login-submit::after{animation:none!important}
+}
+
+
+/* === Supabase User Admin === */
+.admin-only{display:none!important}
+.admin-only.admin-visible{display:flex!important}
+#adminNavBtn{display:flex!important}
+.admin-grid{display:grid;gap:12px}
+.admin-code-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.admin-users{display:grid;gap:10px;margin-top:16px}
+.admin-user{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px;border:1px solid rgba(255,255,255,.08);border-radius:15px;background:#0b111b}
+.admin-user-main{min-width:0}.admin-user-name{font-weight:800}.admin-user-meta{color:#8d94a3;font-size:12px;margin-top:4px}
+.admin-badge{padding:6px 9px;border-radius:999px;font-size:11px;font-weight:800;background:rgba(22,135,255,.12);color:#72b8ff;border:1px solid rgba(22,135,255,.22)}
+.admin-badge.admin{background:rgba(141,117,255,.12);color:#b8aaff;border-color:rgba(141,117,255,.25)}
+.admin-danger{background:#241017!important;color:#ff91a1!important;border:1px solid rgba(255,80,110,.2)!important;width:auto!important;height:42px!important;margin:0!important;padding:0 13px!important;font-size:13px!important}
+.admin-note{font-size:12px;color:#7f8ba1;line-height:1.5;margin-top:12px}
+@media(max-width:480px){.admin-code-row{grid-template-columns:1fr}.admin-user{align-items:flex-start}.admin-danger{flex:0 0 auto}}
+
+
+/* === Top-right logout === */
+.top-logout{position:fixed;top:14px;right:14px;z-index:99999;display:none;align-items:center;gap:7px;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(10,15,25,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;font-weight:800;font-size:12px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.22);transition:.2s ease}
+.top-logout:hover{transform:translateY(-2px);background:rgba(25,32,48,.9);border-color:rgba(255,255,255,.2)}
+.top-logout:active{transform:scale(.96)}
+.top-logout.show{display:flex}
+.info-kicker{font-size:9px;font-weight:900;letter-spacing:2px;color:#55a8ff}.info-live{padding:9px 13px;border:1px solid rgba(46,215,158,.2);border-radius:99px;color:#70e9bc;font-size:10px;font-weight:900}.info-live i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#2ed79e;box-shadow:0 0 12px #2ed79e;margin-right:6px}.info-hero{padding:30px;border-radius:28px;background:linear-gradient(135deg,#0b1829,#0b1018);border:1px solid rgba(85,168,255,.16)}.info-hero h1{font-size:38px;margin:14px 0 10px}.info-hero h1 em{font-style:normal;color:#62adff}.info-hero p{color:#8b97aa;font-size:13px}.info-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0 25px}.info-stats>div{padding:16px;border:1px solid rgba(255,255,255,.07);border-radius:17px;background:rgba(255,255,255,.025)}.info-stats small{display:block;color:#69758a;font-size:9px;font-weight:900;letter-spacing:1px;margin-bottom:7px}.info-stats b{font-size:18px}.info-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-left:7px}.checking{background:#f0bd4f}.online{background:#2ed79e;box-shadow:0 0 12px #2ed79e}.offline{background:#ff6075;box-shadow:0 0 12px #ff6075}.info-card{padding:25px}.info-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:18px}.info-head h2{margin:5px 0 0}.info-head>span{font-size:9px;color:#69758a}.rules-modern{display:grid;gap:9px}.rules-modern>div{display:flex;align-items:center;gap:12px;padding:14px;border:1px solid rgba(255,255,255,.06);border-radius:17px;background:rgba(255,255,255,.025)}.rules-modern>div>strong{width:34px;height:34px;display:grid;place-items:center;border-radius:11px;background:#0a2340;color:#62adff;font-size:10px;flex:none}.rules-modern p{flex:1;margin:0;font-size:13px;font-weight:800}.rules-modern small{display:block;color:#69758a;font-size:9px;margin-top:4px;font-weight:400}.rules-modern em{font-style:normal;color:#ff6175;font-size:18px}.sanction{display:flex;align-items:center;gap:13px;margin-top:18px;padding:16px;border-radius:18px;background:rgba(255,70,90,.07);border:1px solid rgba(255,70,90,.18)}.sanction p{margin:0;font-size:13px}.sanction small{display:block;color:#ff7180;font-size:9px;font-weight:900;letter-spacing:1px;margin-bottom:5px}.sanction b{color:#ff7180}.kisah-search{display:grid;grid-template-columns:1fr auto;gap:10px}.nabi-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}.nabi-chips button{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:inherit;border-radius:10px;padding:8px 11px}.kisah-loading,.kisah-msg{margin-top:16px;padding:18px;border:1px solid rgba(255,255,255,.08);border-radius:16px;text-align:center}.kisah-msg.error{color:#ff8492}.kisah-story{margin-top:18px;border:1px solid rgba(255,255,255,.09);border-radius:22px;overflow:hidden;background:rgba(255,255,255,.025)}.kisah-title{display:flex;gap:14px;align-items:center;padding:20px}.kisah-title>span{width:48px;height:48px;display:grid;place-items:center;border-radius:14px;background:#0d2744;color:#6ab0ff;font-size:24px}.kisah-title small{font-size:9px;letter-spacing:1.5px;color:#62adff;font-weight:900}.kisah-title h2{margin:4px 0 0;font-size:25px}.kisah-body{padding:23px 25px;font-size:15px;line-height:1.9}.kisah-body p{margin:0 0 17px}@media(max-width:520px){.info-stats{grid-template-columns:1fr}.info-hero{padding:24px}.kisah-search{grid-template-columns:1fr}}
+
+
+/* === INFO + JADWAL SHOLAT PREMIUM REFRESH === */
+.info-topbar{margin-bottom:22px!important;align-items:center!important}
+.info-topbar h2{font-size:30px!important;letter-spacing:-.7px}
+.info-topbar p{margin-top:5px;color:#7f8ba0!important}
+.info-live{display:inline-flex;align-items:center;gap:6px;padding:9px 12px!important;background:rgba(46,215,158,.06);box-shadow:inset 0 0 18px rgba(46,215,158,.035)}
+
+/* === ACCOUNT STATUS — MINIMAL === */
+.account-status-card{position:relative;margin:10px 0 18px;padding:17px 16px;border-radius:17px;background:#0d1118;border:1px solid rgba(255,255,255,.075);box-shadow:0 10px 28px rgba(0,0,0,.16);overflow:hidden}
+.account-status-card::after{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,#1687ff 35%,#19c99a 65%,transparent);opacity:.8}
+.account-status-head{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:13px}
+.account-status-title{display:flex;align-items:center;gap:9px}
+.account-status-icon{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:rgba(22,135,255,.09);border:1px solid rgba(22,135,255,.18);color:#5aaeff;font-size:13px}
+.account-status-title small{display:block;color:#687589;font-size:8px;letter-spacing:1.5px;font-weight:900}
+.account-status-title b{display:block;margin-top:2px;font-size:14px;color:#edf2f8;font-weight:800}
+.account-status-badge{display:inline-flex;align-items:center;gap:5px;padding:5px 8px;border-radius:8px;background:rgba(46,215,158,.055);border:1px solid rgba(46,215,158,.14);color:#62dcae;font-size:8px;font-weight:900;letter-spacing:.7px}
+.account-status-badge::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor;box-shadow:0 0 7px currentColor}
+.account-status-grid{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.account-status-item{min-width:0;padding:10px 11px;border-radius:11px;background:rgba(255,255,255,.018);border:1px solid rgba(255,255,255,.045)}
+.account-status-item small{display:block;color:#667387;font-size:7px;letter-spacing:1.1px;font-weight:900;margin-bottom:4px}
+.account-status-item strong{display:block;color:#e6ebf2;font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.account-status-item.expiry{background:rgba(22,135,255,.025);border-color:rgba(22,135,255,.09)}
+.account-status-item.expiry strong{color:#69b5ff}
+.account-status-note{position:relative;margin-top:8px;color:#5f6d80;font-size:8px;line-height:1.4}
+@media(max-width:520px){.account-status-card{padding:15px 13px;border-radius:15px}.account-status-grid{gap:6px}.account-status-item{padding:9px 10px}.account-status-item strong{font-size:10px}}
+.info-hero-pro{position:relative;display:flex;align-items:center;gap:18px;min-height:178px;padding:28px!important;overflow:hidden;background:linear-gradient(135deg,#0c1c31 0%,#0a121e 58%,#0a1018 100%)!important;border:1px solid rgba(91,170,255,.20)!important;box-shadow:0 18px 55px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.035)}
+.info-hero-glow{position:absolute;width:220px;height:220px;right:-80px;top:-95px;border-radius:50%;background:rgba(31,133,255,.13);filter:blur(28px);pointer-events:none}
+.info-hero-icon{position:relative;flex:0 0 62px;width:62px;height:62px;display:grid;place-items:center;border-radius:19px;background:linear-gradient(145deg,#123d69,#0c2440);border:1px solid rgba(93,176,255,.25);color:#71baff;font-size:30px;box-shadow:0 10px 30px rgba(0,113,255,.16)}
+.info-hero-copy{position:relative;z-index:1;min-width:0}
+.info-hero-pro h1{font-size:34px!important;line-height:1.08;margin:8px 0 8px!important;letter-spacing:-1.1px}
+.info-hero-pro p{font-size:13px;line-height:1.55;max-width:560px;color:#8e9caf!important}
+.info-hero-chip{margin-left:auto;align-self:flex-start;white-space:nowrap;padding:8px 11px;border-radius:999px;border:1px solid rgba(46,215,158,.18);background:rgba(46,215,158,.06);color:#72e6ba;font-size:9px;font-weight:900;letter-spacing:.5px}
+.info-stats-pro{grid-template-columns:1fr 1fr!important;margin:12px 0 18px!important}.info-api-card{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;margin:12px 0 20px;padding:22px 20px 16px;border-radius:24px;overflow:hidden;background:linear-gradient(145deg,#171a24,#0d1119);border:1px solid rgba(255,255,255,.09);box-shadow:0 14px 38px rgba(0,0,0,.22);transition:.25s ease}
+.info-api-card::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 10% 20%,rgba(255,70,95,.14),transparent 42%);opacity:.9}
+.info-api-main,.info-api-ping,.info-api-connection{position:relative;z-index:1}
+.info-api-main{display:flex;align-items:center;gap:15px;min-width:0}
+.info-api-icon{width:50px;height:50px;display:grid;place-items:center;flex:none;border-radius:15px;background:rgba(255,65,88,.12);border:1px solid rgba(255,65,88,.2);color:#ff4f69;font-size:25px;font-weight:1000;box-shadow:0 0 25px rgba(255,65,88,.08)}
+.info-api-copy{min-width:0}.info-api-copy small,.info-api-ping small{display:block;font-size:9px;letter-spacing:1.7px;font-weight:900;color:#737d91;margin-bottom:5px}
+.info-api-copy b{display:block;font-size:22px;line-height:1.05;color:#ff526c;letter-spacing:-.4px}
+.info-api-copy span{display:block;margin-top:7px;color:#8a94a6;font-size:10px;line-height:1.35}
+.info-api-ping{align-self:center;min-width:92px;height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:4px solid rgba(255,255,255,.06);border-top-color:rgba(255,75,98,.25);border-radius:50%;background:rgba(255,255,255,.015);box-shadow:inset 0 0 22px rgba(255,255,255,.02)}
+.info-api-ping small{margin:0 0 2px;font-size:7px}.info-api-ping strong{font-size:22px;color:#ff526c;line-height:1}.info-api-ping em{font-style:normal;font-size:9px;color:#8b94a6;margin-left:2px}
+.info-api-connection{grid-column:1/-1;display:flex;align-items:center;gap:9px;padding:11px 13px;border-radius:14px;background:rgba(255,55,80,.055);border:1px solid rgba(255,55,80,.12);color:#9b8390;font-size:10px}
+.info-api-connection .info-dot{width:8px;height:8px;margin:0;flex:none}
+.info-api-card.info-api-online{background:linear-gradient(145deg,#10201e,#0c1415);border-color:rgba(46,215,158,.18)}
+.info-api-card.info-api-online::before{background:radial-gradient(circle at 10% 20%,rgba(46,215,158,.14),transparent 42%)}
+.info-api-online .info-api-icon{background:rgba(46,215,158,.11);border-color:rgba(46,215,158,.2);color:#2ed79e}
+.info-api-online .info-api-copy b,.info-api-online .info-api-ping strong{color:#2ed79e}
+.info-api-online .info-api-ping{border-top-color:rgba(46,215,158,.3)}
+.info-api-online .info-api-connection{background:rgba(46,215,158,.055);border-color:rgba(46,215,158,.12);color:#79bca5}
+.info-api-offline .info-api-icon{animation:apiPulse 1.8s ease-in-out infinite}
+@keyframes apiPulse{0%,100%{box-shadow:0 0 0 rgba(255,65,88,0),0 0 25px rgba(255,65,88,.08)}50%{box-shadow:0 0 20px rgba(255,65,88,.18),0 0 32px rgba(255,65,88,.12)}}
+@media(max-width:520px){.info-api-card{grid-template-columns:minmax(0,1fr) 88px;gap:13px;padding:20px 16px 14px;border-radius:22px}.info-api-icon{width:52px;height:52px}.info-api-copy b{font-size:23px}.info-api-copy span{font-size:10px}.info-api-ping{min-width:84px;height:84px}.info-api-ping strong{font-size:20px}.info-api-connection{font-size:10px;padding:12px}.info-api-card{margin-top:14px;margin-bottom:20px}}
+.info-stat-main{display:flex!important;align-items:center;gap:12px;padding:15px 16px!important;background:linear-gradient(145deg,#111a26,#0c121b)!important;border:1px solid rgba(255,255,255,.075)!important;box-shadow:0 10px 25px rgba(0,0,0,.14)}
+.info-stat-icon{width:38px;height:38px;display:grid;place-items:center;flex:none;border-radius:12px;background:#0a2340;color:#63afff;font-size:20px}
+.info-stat-main small{font-size:8px!important;letter-spacing:1.2px!important}
+.info-stat-main b{font-size:17px!important}
+.info-stat-main .unit{display:inline!important;margin:0;font-size:11px!important;letter-spacing:0!important;color:#78859a!important;font-weight:700!important}
+.info-stat-main .info-dot{margin-left:auto}
+.info-card-pro{padding:23px!important;background:linear-gradient(145deg,#101722,#0b1018)!important}
+.info-card-pro .info-head{margin-bottom:8px!important}
+.info-card-pro .info-head h2{font-size:23px;margin-top:4px!important}
+.rules-count{padding:7px 9px;border:1px solid rgba(255,255,255,.07);border-radius:8px;background:rgba(255,255,255,.025);font-weight:900}
+.info-intro{margin:0 0 15px;color:#707d91;font-size:12px}
+.info-card-pro .rules-modern{gap:8px}
+.info-card-pro .rules-modern>div{padding:13px 12px!important;border-radius:15px!important;background:rgba(255,255,255,.022)!important}
+.info-card-pro .rules-modern>div>strong{width:36px;height:36px;border-radius:11px;background:linear-gradient(145deg,#0b2b4c,#091d34)!important;color:#66b3ff!important}
+.info-card-pro .rules-modern p{font-size:12px!important}
+.info-card-pro .rules-modern small{font-size:9px!important;line-height:1.4}
+.info-card-pro .rules-modern em{width:28px;height:28px;display:grid;place-items:center;border-radius:9px;background:rgba(255,79,102,.06);font-size:15px}
+.sanction-pro{margin-top:14px!important;padding:13px 14px!important;border-radius:15px!important}
+.sanction-pro p{font-size:12px!important}
+
+.prayer-card{margin-top:16px;padding:22px;border-radius:23px;background:linear-gradient(145deg,#101824,#0a1018);border:1px solid rgba(255,255,255,.09);box-shadow:0 18px 50px rgba(0,0,0,.20);position:relative;overflow:hidden}
+.prayer-card::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 85% 0%,rgba(24,136,255,.12),transparent 38%)}
+.prayer-head{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:17px}
+.prayer-title-wrap{display:flex;align-items:center;gap:12px;min-width:0}
+.prayer-icon{width:48px;height:48px;display:grid;place-items:center;flex:none;border-radius:15px;background:linear-gradient(145deg,#102f50,#0b1d32);border:1px solid rgba(90,175,255,.18);color:#72b9ff;font-size:23px;box-shadow:0 8px 24px rgba(0,100,255,.12)}
+.prayer-kicker{display:block;color:#58aaff;font-size:8px;font-weight:900;letter-spacing:1.5px;margin-bottom:3px}
+.prayer-title-wrap h2{font-size:22px;line-height:1.1;letter-spacing:-.5px}
+.prayer-title-wrap p{font-size:11px;color:#78859a;margin-top:4px}
+.prayer-next{display:flex;align-items:center;gap:7px;white-space:nowrap;padding:9px 11px;border-radius:12px;background:rgba(46,215,158,.055);border:1px solid rgba(46,215,158,.16);color:#7be5bc;font-size:10px}
+.prayer-next span{width:7px;height:7px;border-radius:50%;background:#2ed79e;box-shadow:0 0 10px #2ed79e}
+.prayer-next strong{font-size:13px;color:#effff8}
+.prayer-table-wrap{position:relative;z-index:1;border:1px solid rgba(255,255,255,.075);border-radius:16px;overflow:hidden;background:rgba(4,8,13,.25)}
+.prayer-table{width:100%;border-collapse:collapse}
+.prayer-table th{padding:10px 13px;text-align:left;background:rgba(255,255,255,.025);color:#68758a;font-size:8px;font-weight:900;letter-spacing:1.1px;text-transform:uppercase}
+.prayer-table th:nth-child(2),.prayer-table td:nth-child(2){text-align:center}
+.prayer-table th:last-child,.prayer-table td:last-child{text-align:right}
+.prayer-table td{padding:12px 13px;border-top:1px solid rgba(255,255,255,.055);color:#eaf0f8;font-size:13px}
+.prayer-name{display:flex;align-items:center;gap:9px;font-weight:800}
+.prayer-name i{font-style:normal;width:28px;height:28px;display:grid;place-items:center;border-radius:9px;background:#0c2743;color:#69b4ff;font-size:14px}
+.prayer-table td:nth-child(2){font-size:15px;font-weight:900;letter-spacing:.2px}
+.prayer-badge{display:inline-flex;padding:5px 8px;border-radius:999px;font-size:8px;font-weight:900;letter-spacing:.4px}
+.prayer-badge.passed{color:#778398;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.055)}
+.prayer-badge.next{color:#75e5b8;background:rgba(46,215,158,.07);border:1px solid rgba(46,215,158,.16)}
+.prayer-active td{background:rgba(25,201,154,.025)}
+.prayer-active td:first-child{box-shadow:inset 2px 0 0 #2ed79e}
+.prayer-active .prayer-name i{background:#0d3a35;color:#78e7bd}
+.prayer-foot{position:relative;z-index:1;margin-top:12px;color:#657187;font-size:9px;text-align:center}
+.prayer-foot span{color:#2ed79e;margin-right:4px}
+@media(max-width:520px){
+  .info-hero-pro{display:grid;grid-template-columns:52px 1fr;gap:12px;padding:22px!important;min-height:0}
+  .info-hero-icon{width:52px;height:52px;font-size:25px;border-radius:16px}
+  .info-hero-chip{grid-column:1/-1;margin:0;justify-self:start}
+  .info-hero-pro h1{font-size:29px!important}
+  .info-stats-pro{grid-template-columns:1fr!important}
+  .prayer-card{padding:17px}
+  .prayer-head{align-items:flex-start}
+  .prayer-next{padding:8px 9px;flex-wrap:wrap;justify-content:center;max-width:96px}
+  .prayer-next b{display:none}
+  .prayer-table th,.prayer-table td{padding-left:9px;padding-right:9px}
+  .prayer-badge{font-size:7px;padding:5px 6px}
+  .prayer-name{gap:7px}
+  .prayer-name i{width:26px;height:26px}
+}
+
+
+/* === INFO XL / HIGH-CLARITY MOBILE === */
+.info-page-xl{}
+#info .info-topbar{margin-bottom:24px!important}
+#info .info-topbar h2{font-size:34px!important;line-height:1.15!important}
+#info .info-topbar p{font-size:15px!important;line-height:1.5!important}
+#info .info-hero-pro{min-height:220px!important;padding:32px!important;gap:22px!important;border-radius:30px!important}
+#info .info-hero-icon{width:78px!important;height:78px!important;flex-basis:78px!important;border-radius:22px!important;font-size:38px!important}
+#info .info-hero-pro h1{font-size:42px!important;line-height:1.05!important;margin:10px 0 12px!important;letter-spacing:-1.5px!important}
+#info .info-hero-pro p{font-size:16px!important;line-height:1.6!important;max-width:650px!important}
+#info .info-hero-chip{font-size:11px!important;padding:10px 14px!important}
+#info .info-stats-pro{gap:14px!important;margin:16px 0 22px!important}
+#info .info-stat-main{min-height:82px!important;padding:18px 20px!important;gap:15px!important;border-radius:20px!important}
+#info .info-stat-icon{width:50px!important;height:50px!important;border-radius:15px!important;font-size:25px!important}
+#info .info-stat-main small{font-size:10px!important;letter-spacing:1.4px!important;margin-bottom:7px!important}
+#info .info-stat-main b{font-size:24px!important;line-height:1.15!important}
+#info .info-stat-main .unit{font-size:13px!important}
+#info .info-stat-main .info-dot{width:11px!important;height:11px!important}
+#info .info-card-pro{padding:30px!important;border-radius:28px!important}
+#info .info-card-pro .info-head{margin-bottom:10px!important}
+#info .info-card-pro .info-head h2{font-size:30px!important;line-height:1.15!important}
+#info .info-kicker{font-size:10px!important;letter-spacing:2px!important}
+#info .rules-count{font-size:11px!important;padding:9px 12px!important;border-radius:10px!important}
+#info .info-intro{font-size:15px!important;line-height:1.5!important;margin-bottom:19px!important}
+#info .info-card-pro .rules-modern{gap:11px!important}
+#info .info-card-pro .rules-modern>div{padding:18px 16px!important;min-height:70px!important;border-radius:18px!important;gap:15px!important}
+#info .info-card-pro .rules-modern>div>strong{width:48px!important;height:48px!important;border-radius:14px!important;font-size:13px!important}
+#info .info-card-pro .rules-modern p{font-size:16px!important;line-height:1.25!important}
+#info .info-card-pro .rules-modern small{font-size:11px!important;line-height:1.5!important;margin-top:6px!important}
+#info .info-card-pro .rules-modern em{width:38px!important;height:38px!important;border-radius:12px!important;font-size:21px!important;flex:none}
+#info .sanction-pro{margin-top:18px!important;padding:17px 18px!important;border-radius:18px!important;gap:14px!important}
+#info .sanction-pro span{font-size:22px!important}
+#info .sanction-pro p{font-size:15px!important;line-height:1.35!important}
+#info .sanction-pro small{font-size:10px!important;margin-bottom:5px!important}
+
+@media(max-width:520px){
+  #info .info-topbar h2{font-size:28px!important}
+  #info .info-topbar p{font-size:14px!important}
+  #info .info-hero-pro{grid-template-columns:64px 1fr!important;gap:16px!important;padding:24px!important;min-height:0!important;border-radius:25px!important}
+  #info .info-hero-icon{width:64px!important;height:64px!important;flex-basis:64px!important;font-size:31px!important;border-radius:19px!important}
+  #info .info-hero-pro h1{font-size:35px!important;line-height:1.08!important;margin:5px 0 10px!important;letter-spacing:-1.2px!important}
+  #info .info-hero-pro p{font-size:14px!important;line-height:1.55!important}
+  #info .info-hero-chip{font-size:10px!important;padding:9px 12px!important}
+  #info .info-stats-pro{gap:12px!important;margin:14px 0 20px!important}
+  #info .info-stat-main{min-height:86px!important;padding:18px!important;border-radius:19px!important}
+  #info .info-stat-icon{width:52px!important;height:52px!important;font-size:26px!important}
+  #info .info-stat-main small{font-size:10px!important}
+  #info .info-stat-main b{font-size:25px!important}
+  #info .info-card-pro{padding:24px!important;border-radius:25px!important}
+  #info .info-card-pro .info-head h2{font-size:27px!important}
+  #info .info-intro{font-size:14px!important}
+  #info .info-card-pro .rules-modern>div{padding:17px 14px!important;min-height:76px!important;gap:13px!important}
+  #info .info-card-pro .rules-modern>div>strong{width:46px!important;height:46px!important;flex-basis:46px!important;font-size:12px!important}
+  #info .info-card-pro .rules-modern p{font-size:15px!important}
+  #info .info-card-pro .rules-modern small{font-size:10.5px!important}
+  #info .info-card-pro .rules-modern em{width:36px!important;height:36px!important;font-size:20px!important}
+  #info .sanction-pro{padding:16px!important}
+  #info .sanction-pro p{font-size:14px!important}
+}
+
+
+
+/* === INFO MINIMALIST UI UPGRADE === */
+#info .topbar{
+  margin-bottom:22px;
+}
+#info .info-topbar h2{
+  font-size:24px;
+  letter-spacing:-.5px;
+}
+#info .info-hero-pro{
+  position:relative;
+  padding:24px;
+  border-radius:24px;
+  background:linear-gradient(145deg,#0d1726,#090d14);
+  overflow:hidden;
+  box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+#info .info-hero-glow{
+  position:absolute;
+  width:180px;height:180px;
+  right:-60px;top:-60px;
+  background:#1687ff;
+  opacity:.12;
+  filter:blur(45px);
+}
+#info .info-hero-icon{
+  width:48px;height:48px;
+  display:grid;
+  place-items:center;
+  border-radius:15px;
+  background:#10243c;
+  color:#62adff;
+  font-size:24px;
+  margin-bottom:18px;
+}
+#info .info-hero h1{
+  font-size:30px;
+  margin:8px 0;
+}
+#info .info-hero p{
+  line-height:1.6;
+}
+#info .info-hero-chip{
+  display:inline-flex;
+  margin-top:18px;
+  padding:8px 13px;
+  border-radius:999px;
+  background:rgba(46,215,158,.08);
+  border:1px solid rgba(46,215,158,.18);
+  color:#70e9bc;
+  font-size:12px;
+}
+#info .info-api-card{
+  margin-top:16px;
+  padding:18px;
+  border-radius:20px;
+  background:#0d121b;
+  border:1px solid rgba(255,255,255,.07);
+  box-shadow:none;
+}
+#info .info-api-main{
+  margin-bottom:15px;
+}
+#info .info-api-icon{
+  width:38px;height:38px;
+  border-radius:12px;
+}
+#info .info-api-ping strong{
+  font-size:24px;
+}
+#info .info-card-pro{
+  margin-top:16px;
+  padding:20px;
+  border-radius:22px;
+  background:#0d121b;
+  box-shadow:none;
+}
+#info .rules-modern>div{
+  padding:12px;
+  border-radius:14px;
+  background:rgba(255,255,255,.018);
+}
+#info .rules-modern p{
+  font-size:12px;
+}
+#info .sanction-pro{
+  border-radius:16px;
+  padding:14px;
+}
+
+
+/* === INFO MINIMAL MOTION PACK === */
+#info .info-hero-pro,
+#info .info-api-card,
+#info .info-card-pro{
+  animation: infoFadeUp .65s cubic-bezier(.22,1,.36,1) both;
+  transform:translateZ(0);
+}
+#info .info-hero-pro{animation-delay:.05s}
+#info .info-api-card{animation-delay:.15s}
+#info .info-card-pro{animation-delay:.25s}
+
+@keyframes infoFadeUp{
+ from{opacity:0;transform:translateY(18px) scale(.98)}
+ to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+#info .info-hero-glow{
+ animation:infoGlow 6s ease-in-out infinite;
+}
+@keyframes infoGlow{
+ 0%,100%{transform:scale(1);opacity:.10}
+ 50%{transform:scale(1.25);opacity:.18}
+}
+
+#info .info-hero-icon{
+ animation:infoFloat 3.5s ease-in-out infinite;
+}
+@keyframes infoFloat{
+ 0%,100%{transform:translateY(0)}
+ 50%{transform:translateY(-6px)}
+}
+
+#info .info-hero-chip{
+ animation:chipPulse 2.8s ease-in-out infinite;
+}
+@keyframes chipPulse{
+ 0%,100%{box-shadow:0 0 0 rgba(46,215,158,0)}
+ 50%{box-shadow:0 0 18px rgba(46,215,158,.18)}
+}
+
+#info .info-api-card:hover,
+#info .info-card-pro:hover{
+ transform:translateY(-3px);
+ border-color:rgba(22,135,255,.25);
+ box-shadow:0 18px 45px rgba(22,135,255,.08);
+}
+
+#info .info-api-card,
+#info .info-card-pro{
+ transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;
+}
+
+#info .info-live i{
+ animation:livePulse 2s ease-in-out infinite;
+}
+@keyframes livePulse{
+ 0%,100%{box-shadow:0 0 8px #2ed79e}
+ 50%{box-shadow:0 0 20px #2ed79e}
+}
+
+#info .rules-modern>div{
+ animation:ruleIn .45s ease both;
+}
+#info .rules-modern>div:nth-child(2){animation-delay:.08s}
+#info .rules-modern>div:nth-child(3){animation-delay:.16s}
+#info .rules-modern>div:nth-child(4){animation-delay:.24s}
+@keyframes ruleIn{
+ from{opacity:0;transform:translateX(-10px)}
+ to{opacity:1;transform:translateX(0)}
+}
+
+
+/* === Gemini AI Tool === */
+.ai-box{margin-top:22px;border:1px solid rgba(20,133,255,.28);border-radius:24px;background:linear-gradient(145deg,rgba(10,25,45,.96),rgba(11,16,27,.98));overflow:hidden}
+.ai-head{padding:20px;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:14px}
+.ai-avatar{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(145deg,#087cff,#0751b8);font-size:24px;box-shadow:0 8px 22px rgba(8,124,255,.22)}
+.ai-head b{font-size:16px}.ai-head small{display:block;color:#7f8ca1;font-size:10px;margin-top:4px}
+.ai-chat{height:420px;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px}
+.ai-msg{max-width:88%;padding:12px 14px;border-radius:16px;font-size:13px;line-height:1.65;white-space:pre-wrap;word-break:break-word}
+.ai-msg.bot{align-self:flex-start;background:#151d2a;border:1px solid rgba(255,255,255,.07);color:#e8edf6;border-bottom-left-radius:5px}
+.ai-msg.user{align-self:flex-end;background:linear-gradient(145deg,#087cff,#0751b8);color:#fff;border-bottom-right-radius:5px}
+.ai-compose{padding:14px;border-top:1px solid rgba(255,255,255,.07);display:grid;grid-template-columns:1fr auto;gap:9px}
+.ai-input{width:100%;min-height:48px;max-height:120px;resize:none;padding:13px 14px;border-radius:14px;background:#0b111b;color:#f4f6fb;border:1px solid rgba(255,255,255,.09);outline:none}
+.ai-input:focus{border-color:rgba(20,133,255,.55)}
+.ai-send{min-width:52px;border-radius:14px;background:linear-gradient(145deg,#087cff,#0751b8);color:#fff;font-size:20px;font-weight:900}
+.ai-send:disabled{opacity:.5}.ai-status{text-align:center;color:#6f7b8e;font-size:10px;padding:0 15px 12px}
+@media(max-width:520px){.ai-chat{height:52vh}.ai-msg{max-width:92%}}
+
+/* ===== INTRO POLISH: compact reference proportions ===== */
+#introScreen{padding:14px;place-items:center;background:#070a10;}
+#introScreen .intro-bg{background:radial-gradient(circle at 50% 18%,rgba(28,126,255,.13),transparent 31%),radial-gradient(circle at 80% 80%,rgba(129,72,255,.10),transparent 28%),linear-gradient(180deg,#080b12 0%,#06080d 100%);}
+#introScreen .intro-bg:before{opacity:.18;background-size:44px 44px;}
+#introScreen .orb{filter:blur(46px);opacity:.20;}
+#introScreen .orb.one{width:150px;height:150px;left:-65px;top:16%;}
+#introScreen .orb.two{width:170px;height:170px;right:-75px;bottom:18%;}
+#introScreen .orb.three{width:100px;height:100px;left:52%;top:4%;}
+#introScreen .intro-wrap{width:min(382px,100%);padding:0;}
+#introScreen .intro-top{margin:0 0 15px;padding:0 3px;}
+#introScreen .intro-mini-logo{width:58px;height:58px;border-radius:17px;border-color:rgba(255,255,255,.28);background:rgba(7,11,18,.78);box-shadow:0 8px 25px rgba(0,0,0,.3),0 0 18px rgba(0,139,255,.16);}
+#introScreen .intro-version{padding:8px 13px;font-size:11px;background:rgba(255,255,255,.07);color:#aeb7c6;border:1px solid rgba(255,255,255,.12);box-shadow:none;backdrop-filter:blur(12px);}
+#introScreen .intro-card{height:218px;border:1px solid rgba(255,255,255,.18);border-radius:28px;background:linear-gradient(145deg,rgba(18,28,45,.92),rgba(13,17,29,.88));box-shadow:0 18px 45px rgba(0,0,0,.34),0 0 28px rgba(31,121,255,.07);backdrop-filter:blur(18px);}
+#introScreen .intro-card:before{inset:-15%;background:radial-gradient(circle at 50% 20%,rgba(48,156,255,.12),transparent 28%),radial-gradient(circle at 82% 70%,rgba(146,85,255,.10),transparent 27%),radial-gradient(circle at 15% 80%,rgba(0,213,255,.07),transparent 25%);animation:amGlow 9s ease-in-out infinite alternate;}
+#introScreen .intro-card:after{background:linear-gradient(180deg,rgba(255,255,255,.025),transparent 45%,rgba(0,0,0,.38));}
+#introScreen .intro-logo-large{top:24px;width:112px;height:112px;border-radius:27px;filter:drop-shadow(0 0 22px rgba(0,160,255,.28));}
+@keyframes amPulse{50%{transform:translateX(-50%) scale(1.025);filter:drop-shadow(0 0 28px rgba(90,140,255,.34))}}
+#introScreen .intro-title{margin-bottom:19px;font-size:31px;letter-spacing:2px;text-shadow:0 3px 18px rgba(0,0,0,.55);}
+#introScreen .intro-btn{height:52px;margin-top:11px;border-radius:16px;font-size:15px;letter-spacing:.35px;}
+#introScreen .intro-login{background:rgba(255,255,255,.94);color:#111827;border:1px solid rgba(255,255,255,.85);box-shadow:0 10px 28px rgba(255,255,255,.08);}
+#introScreen .intro-buy{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.15);color:#edf2f8;box-shadow:none;backdrop-filter:blur(12px);}
+#introScreen .intro-features{grid-template-columns:repeat(3,1fr);gap:9px;margin-top:17px;}
+#introScreen .intro-feature{min-height:94px;border:1px solid rgba(255,255,255,.10);border-radius:18px;background:rgba(18,24,35,.68);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:7px;padding:10px 7px;text-align:center;backdrop-filter:blur(14px);box-shadow:0 10px 24px rgba(0,0,0,.16);}
+#introScreen .intro-icon{width:40px;height:40px;flex:0 0 40px;border-radius:13px;background:rgba(255,255,255,.07);color:#a9cfff;font-size:18px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.05),0 0 16px rgba(43,132,255,.06);}
+#introScreen .intro-feature b{font-size:10px;letter-spacing:.7px;}
+#introScreen .intro-feature span{font-size:8px;line-height:1.25;color:#7f8b9d;margin-top:0;}
+#introScreen .intro-social{gap:15px;margin-top:17px;}
+#introScreen .intro-social a{width:45px;height:45px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);box-shadow:none;backdrop-filter:blur(12px);}
+#introScreen .intro-social svg{width:22px;height:22px;}
+#introScreen .intro-credit{margin:11px 0 2px;font-size:9px;color:#6f7b8d;}
+@media(max-width:520px){#introScreen .intro-card{height:218px}#introScreen .intro-logo-large{width:112px;height:112px}#introScreen .intro-mini-logo{width:58px;height:58px}#introScreen .intro-btn{height:52px;font-size:15px}#introScreen .intro-feature{min-height:94px}}
+
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+/* REAL INFO MOTION FIX */
+#info .card,
+#info .info-card,
+#info .topbar,
+#info .feature {
+  animation: infoIn .7s cubic-bezier(.22,1,.36,1) both;
+}
+
+#info .topbar {animation-delay:.05s}
+#info .card:nth-child(2){animation-delay:.15s}
+#info .card:nth-child(3){animation-delay:.25s}
+
+#info .icon, #info .info-icon {
+  animation: infoFloat 3s ease-in-out infinite;
+}
+
+#info .card {
+  position:relative;
+  overflow:hidden;
+}
+
+#info .card::before {
+  content:"";
+  position:absolute;
+  inset:-50%;
+  background:radial-gradient(circle,rgba(22,135,255,.16),transparent 45%);
+  animation: infoGlow 5s ease-in-out infinite;
+  pointer-events:none;
+}
+
+#info .card > * {
+  position:relative;
+  z-index:1;
+}
+
+@keyframes infoIn {
+  from {opacity:0; transform:translateY(25px) scale(.98)}
+  to {opacity:1; transform:translateY(0) scale(1)}
+}
+
+@keyframes infoFloat {
+  0%,100% {transform:translateY(0)}
+  50% {transform:translateY(-8px)}
+}
+
+@keyframes infoGlow {
+  0%,100% {transform:translate(0,0);opacity:.35}
+  50% {transform:translate(20px,-15px);opacity:.7}
+}
+
+#info .status i {
+ animation: infoBlink 1.8s infinite;
+}
+
+@keyframes infoBlink {
+  0%,100% {opacity:1;box-shadow:0 0 8px #19c99a}
+  50% {opacity:.45;box-shadow:0 0 22px #19c99a}
+}
+
+/* ===== AM PREMIUMS INTRO - SAFE LAYER ===== */
+#introScreen{position:fixed;inset:0;z-index:10001;display:grid;place-items:center;overflow:auto;padding:16px;color:#fff;background:#080b12;}
+#introScreen .intro-bg{position:absolute;inset:0;overflow:hidden;background:radial-gradient(circle at 20% 20%,rgba(0,132,255,.18),transparent 28%),radial-gradient(circle at 82% 30%,rgba(170,55,255,.16),transparent 30%),linear-gradient(135deg,#0a0e18,#12182a 55%,#080b12);}
+#introScreen .intro-bg:before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);background-size:52px 52px;opacity:.7;}
+#introScreen .orb{position:absolute;border-radius:50%;filter:blur(30px);opacity:.45;animation:amOrb 7s ease-in-out infinite alternate;}
+#introScreen .orb.one{width:180px;height:180px;left:-50px;top:18%;background:#087cff}.orb.two{width:220px;height:220px;right:-80px;bottom:15%;background:#a82dff;animation-delay:-3s}.orb.three{width:120px;height:120px;left:55%;top:5%;background:#00d9ff;animation-delay:-5s}
+@keyframes amOrb{to{transform:translate3d(25px,-20px,0) scale(1.12)}}
+#introScreen .intro-wrap{position:relative;z-index:2;width:min(650px,100%);padding:4px;}
+#introScreen .intro-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px;}
+#introScreen .intro-mini-logo{width:76px;height:76px;border-radius:22px;object-fit:contain;background:#03050a;border:1px solid rgba(255,255,255,.75);box-shadow:0 0 25px rgba(0,153,255,.24);animation:amFloat 3.2s ease-in-out infinite;}
+@keyframes amFloat{50%{transform:translateY(-5px)}}
+#introScreen .intro-version{padding:12px 19px;border-radius:999px;background:rgba(245,248,252,.94);color:#737b88;font-size:14px;font-weight:800;box-shadow:0 0 28px rgba(255,255,255,.15);}
+#introScreen .intro-card{height:370px;border:1.5px solid rgba(255,255,255,.72);border-radius:34px;overflow:hidden;position:relative;display:flex;align-items:flex-end;justify-content:center;background:linear-gradient(135deg,#11152b,#32195a 50%,#073b4b);box-shadow:0 20px 60px rgba(0,0,0,.3),0 0 45px rgba(79,81,255,.12);}
+#introScreen .intro-card:before{content:"";position:absolute;inset:-30%;background:radial-gradient(circle at 20% 25%,rgba(0,255,229,.25),transparent 20%),radial-gradient(circle at 80% 25%,rgba(255,0,214,.28),transparent 25%),radial-gradient(circle at 50% 85%,rgba(0,110,255,.3),transparent 28%);animation:amGlow 6s ease-in-out infinite alternate;}
+@keyframes amGlow{to{transform:scale(1.12) rotate(3deg);filter:hue-rotate(18deg)}}
+#introScreen .intro-card:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 60%,rgba(0,0,0,.55)),repeating-linear-gradient(90deg,transparent 0 40px,rgba(255,255,255,.035) 41px 42px),repeating-linear-gradient(0deg,transparent 0 40px,rgba(255,255,255,.035) 41px 42px);}
+#introScreen .intro-logo-large{position:absolute;z-index:2;top:35px;left:50%;transform:translateX(-50%);width:150px;height:150px;border-radius:30px;object-fit:contain;filter:drop-shadow(0 0 25px rgba(0,179,255,.45));animation:amPulse 2.8s ease-in-out infinite;}
+@keyframes amPulse{50%{transform:translateX(-50%) scale(1.035);filter:drop-shadow(0 0 35px rgba(166,70,255,.5))}}
+#introScreen .intro-title{position:relative;z-index:3;margin-bottom:32px;font-size:clamp(30px,7vw,53px);font-weight:900;letter-spacing:3px;text-shadow:0 3px 18px #000;background:linear-gradient(90deg,#fff,#8edcff,#d68cff,#fff);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:amText 4s linear infinite;}
+@keyframes amText{to{background-position:220% center}}
+#introScreen .intro-btn{width:100%;height:68px;margin-top:18px;border-radius:23px;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:19px;font-weight:900;letter-spacing:.6px;transition:transform .2s,box-shadow .2s;}
+#introScreen .intro-btn:active{transform:scale(.985)}
+#introScreen .intro-login{background:linear-gradient(105deg,#f9fbff,#dce4ef);color:#fff;border:1px solid rgba(255,255,255,.9);box-shadow:0 0 30px rgba(255,255,255,.17);cursor:pointer;}
+#introScreen .intro-buy{background:rgba(61,69,86,.55);border:1.5px solid rgba(255,255,255,.65);color:#fff;box-shadow:0 0 25px rgba(0,120,255,.09);}
+#introScreen .intro-features{display:grid;gap:12px;margin-top:30px;}
+#introScreen .intro-feature{min-height:92px;border:1px solid rgba(255,255,255,.22);border-radius:21px;background:rgba(39,46,61,.62);display:flex;align-items:center;gap:17px;padding:14px 20px;backdrop-filter:blur(10px);}
+#introScreen .intro-icon{width:56px;height:56px;flex:0 0 56px;border-radius:50%;display:grid;place-items:center;background:#f3f6fa;color:#717a87;font-size:24px;box-shadow:0 0 22px rgba(255,255,255,.13)}
+#introScreen .intro-feature b{font-size:17px;letter-spacing:1px;display:block}#introScreen .intro-feature span{display:block;color:#c7cdd6;font-size:12px;margin-top:5px}
+#introScreen .intro-social{display:flex;justify-content:center;align-items:center;gap:30px;margin-top:30px;}
+#introScreen .intro-social a{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;background:rgba(243,246,250,.92);border:1px solid rgba(255,255,255,.82);box-shadow:0 0 25px rgba(255,255,255,.12);transition:transform .2s,box-shadow .2s;text-decoration:none;}
+#introScreen .intro-social a:active{transform:scale(.94)}
+#introScreen .intro-social a:hover{transform:translateY(-3px);box-shadow:0 0 30px rgba(255,255,255,.2)}
+#introScreen .intro-social svg{width:38px;height:38px;display:block;}
+#introScreen .intro-social .tt{color:#111827}.intro-social .ig{color:#111827}.intro-social .tg{color:#229ED9}
+#introScreen .intro-credit{text-align:center;margin:18px 0 8px;color:#c7cdd6;font-size:15px;font-weight:700;letter-spacing:.2px;text-shadow:0 2px 10px rgba(0,0,0,.4);}
+#introScreen.intro-hide{opacity:0;visibility:hidden;pointer-events:none;transition:.28s ease;}
+/* Keep login hidden until ENTER LOGIN is explicitly pressed. */
+body.login-locked #loginScreen{display:none;}
+body.login-locked #loginScreen.login-open{display:grid;}
+.login-screen.am-login{background:radial-gradient(circle at 50% 38%,rgba(91,116,169,.18),transparent 35%),linear-gradient(180deg,#151c2a,#080c14);background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px),radial-gradient(circle at 50% 38%,rgba(91,116,169,.18),transparent 35%),linear-gradient(180deg,#151c2a,#080c14);background-size:52px 52px,52px 52px,100% 100%,100% 100%;}
+.login-screen.am-login .login-box{border:1.5px solid rgba(255,255,255,.72);background:rgba(17,28,47,.94);box-shadow:0 0 45px rgba(255,255,255,.1),0 25px 80px rgba(0,0,0,.4);}
+.login-screen.am-login .login-avatar{background:#03050a url('https://files.catbox.moe/q1dpzi.png') center/contain no-repeat;border:2px solid #fff;}
+.login-screen.am-login .login-title{color:#f6f8fc;text-shadow:none;letter-spacing:1px}.login-screen.am-login .login-subtitle{color:#aeb5c1}
+.login-screen.am-login .login-field input{background:#202a3a;border-color:rgba(255,255,255,.07);}.login-screen.am-login .login-field .field-icon,.login-screen.am-login .login-toggle{color:#dbe1e9}
+.login-screen.am-login .login-submit{background:linear-gradient(105deg,#f8fafc,#dce3eb);color:#fff;box-shadow:0 12px 35px rgba(255,255,255,.14)}
+@media(max-width:520px){#introScreen .intro-card{height:300px}#introScreen .intro-logo-large{width:125px;height:125px}#introScreen .intro-mini-logo{width:68px;height:68px}#introScreen .intro-btn{height:64px;font-size:17px}#introScreen .intro-feature{min-height:84px}}
+</style>
+
+<style id="tempmail-premium-style">
+  #tempmail .tempmail-card{max-width:760px;margin:0 auto;background:linear-gradient(145deg,rgba(17,23,43,.9),rgba(8,13,27,.86));border:1px solid rgba(130,150,255,.16);border-radius:28px;padding:22px;box-shadow:0 22px 65px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.05);backdrop-filter:blur(20px);position:relative;overflow:hidden}
+  #tempmail .tempmail-card:before{content:"";position:absolute;inset:-40% 45% 55% -20%;background:radial-gradient(circle,rgba(92,108,255,.18),transparent 68%);pointer-events:none}
+  #tempmail .tempmail-hero{display:flex;align-items:center;gap:14px;margin-bottom:17px;position:relative}.tempmail-icon{width:56px;height:56px;border-radius:18px;display:grid;place-items:center;font-size:25px;background:linear-gradient(145deg,rgba(100,110,255,.27),rgba(48,190,255,.1));border:1px solid rgba(130,150,255,.22);box-shadow:0 10px 32px rgba(70,90,220,.2),inset 0 1px 0 rgba(255,255,255,.08)}
+  #tempmail .tempmail-hero b{display:block;font-size:20px}.tempmail-hero small{display:block;color:#8e9ab8;margin-top:3px}
+  #tempmail .tempmail-email{display:flex;gap:10px;align-items:center;padding:14px 15px;border-radius:17px;background:rgba(255,255,255,.035);border:1px solid rgba(140,155,200,.14);margin:14px 0}.tempmail-email span{flex:1;min-width:0;font-weight:800;word-break:break-all;color:#e9edff}
+  #tempmail .tempmail-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tempmail-btn{border:0;border-radius:15px;padding:13px 14px;color:#fff;font-weight:800;cursor:pointer;background:linear-gradient(135deg,#626cff,#4f8dff);box-shadow:0 10px 25px rgba(70,95,220,.2);transition:.2s ease;position:relative;overflow:hidden}.tempmail-btn.secondary{background:rgba(255,255,255,.055);border:1px solid rgba(140,155,200,.14);box-shadow:none}.tempmail-btn:hover{transform:translateY(-2px);filter:brightness(1.08)}.tempmail-btn:disabled{opacity:.55;cursor:not-allowed;transform:none}.tm-spin{display:inline-block;animation:tmspin .7s linear infinite}@keyframes tmspin{to{transform:rotate(360deg)}}
+  #tempmail .tempmail-status{min-height:20px;color:#8f9bb7;font-size:12px;margin:12px 2px}.inbox-head{display:flex;justify-content:space-between;align-items:center;margin:20px 0 10px}.inbox-head h3{margin:0;font-size:16px}.inbox-head small{color:#77839f}
+  #tempmail .inbox-list{display:grid;gap:9px}.tempmail-mail{width:100%;text-align:left;display:grid;grid-template-columns:auto 1fr auto;gap:11px;align-items:start;padding:14px;border:1px solid rgba(140,155,200,.12);background:rgba(255,255,255,.028);border-radius:16px;color:inherit;cursor:pointer;transition:.2s}.tempmail-mail:hover{border-color:rgba(115,135,255,.3);background:rgba(105,120,255,.055);transform:translateY(-1px)}.tempmail-mail.unread{border-color:rgba(105,125,255,.24)}.tm-mail-icon{color:#7484ff;font-size:11px;padding-top:4px}.tm-mail-main b{display:block;font-size:13px}.tm-mail-main small{display:block;color:#7f8ba7;margin-top:4px}.tm-mail-main p{margin:7px 0 0;color:#aeb8cf;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px}.tm-mail-date{font-size:10px;color:#6f7a91;white-space:nowrap}.tempmail-empty{text-align:center;padding:28px 14px;border:1px dashed rgba(140,155,200,.13);border-radius:17px;color:#7f8ba7}.tempmail-empty div{font-size:28px;color:#6978ff;margin-bottom:7px}.tempmail-empty b{display:block;color:#cbd3e7}.tempmail-empty small{display:block;margin-top:5px}
+  #tempmail .tempmail-attrib{margin-top:14px;text-align:center;color:#68748d;font-size:10px}.tempmail-attrib a{color:#8291ff;text-decoration:none}
+  #tempMailModal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(2,5,12,.72);backdrop-filter:blur(8px)}#tempMailModal.show{display:flex}.tm-modal-card{width:min(620px,100%);max-height:82vh;overflow:auto;background:linear-gradient(145deg,#151a29,#0b101b);border:1px solid rgba(130,150,255,.18);border-radius:24px;padding:20px;box-shadow:0 25px 80px rgba(0,0,0,.45)}.tm-modal-top{display:flex;justify-content:space-between;gap:12px;align-items:start}.tm-modal-top h3{margin:0;font-size:18px}.tm-close{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:#fff;border-radius:10px;width:34px;height:34px;cursor:pointer}.tm-modal-from{font-size:11px;color:#8290a9;margin:8px 0 16px}.tm-modal-body{white-space:pre-wrap;word-break:break-word;line-height:1.65;color:#d4dbeb;font-size:13px;padding:15px;border-radius:15px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
+  .tm-link-box{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px;padding:13px 14px;border-radius:16px;background:linear-gradient(135deg,rgba(100,110,255,.12),rgba(48,190,255,.06));border:1px solid rgba(120,145,255,.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}.tm-link-box[hidden]{display:none}.tm-link-box b{display:block;font-size:12px;color:#e8edff}.tm-link-box small{display:block;margin-top:4px;color:#8996b2;font-size:10px}.tm-copy-link{border:0;border-radius:11px;padding:10px 12px;background:linear-gradient(135deg,#6974ff,#4d91ff);color:#fff;font-weight:800;font-size:11px;cursor:pointer;white-space:nowrap;box-shadow:0 8px 20px rgba(70,95,220,.22)}.tm-copy-link:active{transform:scale(.97)}
+  @media(max-width:520px){#tempmail .tempmail-card{padding:17px;border-radius:22px}.tempmail-actions{grid-template-columns:1fr 1fr}.tempmail-btn{font-size:12px;padding:12px 9px}.tempmail-mail{grid-template-columns:auto 1fr}.tm-mail-date{display:none}}
+</style>
+</head>
+<body class="login-locked">
+
+<button id="topLogout" class="top-logout" type="button" onclick="logout()" title="Log out">↪ LOG OUT</button>
+
+<div id="introScreen">
+  <div class="intro-bg"><span class="orb one"></span><span class="orb two"></span><span class="orb three"></span></div>
+  <div class="intro-wrap">
+    <div class="intro-top">
+      <img class="intro-mini-logo" src="https://files.catbox.moe/q1dpzi.png" alt="AM PREMIUMS">
+      <div class="intro-version"> V1.0.0 </div>
+    </div>
+    <div class="intro-card">
+      <img class="intro-logo-large" src="https://files.catbox.moe/q1dpzi.png" alt="AM PREMIUMS">
+      <div class="intro-title">AM PREMIUMS</div>
+    </div>
+    <button class="intro-btn intro-login" type="button" onclick="openAMLogin()">⇥ &nbsp; ENTER LOGIN</button>
+    <a class="intro-btn intro-buy" href="https://t.me/ezztraleloo" target="_blank" rel="noopener noreferrer">🛒 &nbsp; BUY ACCESS</a>
+    <div class="intro-features">
+      <div class="intro-feature"><div class="intro-icon">ϟ</div><div><b>ULTRA FAST</b><span>Lightning speed performance</span></div></div>
+      <div class="intro-feature"><div class="intro-icon">♢</div><div><b>SECURE</b><span>End-to-end encryption</span></div></div>
+      <div class="intro-feature"><div class="intro-icon">↯</div><div><b>POWERFUL</b><span>Advanced tools &amp; features</span></div></div>
+    </div>
+    <div class="intro-social">
+      <a href="https://www.tiktok.com/@ezztraleloo?_r=1&amp;_t=ZS-99dZZYbZd0y" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <svg class="tt" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-3.77V2h-3.45v13.67a2.9 2.9 0 1 1-2.9-2.9c.3 0 .59.05.86.13V9.38a6.34 6.34 0 1 0 5.49 6.29V8.71a8.23 8.23 0 0 0 4.81 1.53V6.79c-.35 0-.7-.04-1.04-.1z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/starsfirstt7?stkn=cGMwcWY2OHhzd3h6" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg class="ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://t.me/ezztraleloo" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+        <svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.4 3.6 2.9 10.7c-1.26.49-1.25 1.17-.23 1.47l4.75 1.48 1.83 5.69c.22.61.11.85.74.85.49 0 .7-.22.96-.48l2.31-2.24 4.8 3.55c.88.49 1.52.23 1.74-.82l3.14-14.81c.32-1.29-.49-1.87-1.54-1.3zM8.15 13.34l10.94-6.9c.55-.33 1.05-.15.64.21l-8.84 7.98-.34 3.63-1.4-4.35-1-.31z"/></svg>
+      </a>
+    </div>
+    <div class="intro-credit">© 2026 AM PREMIUMS - Created By E̠̠z̠̠z̠̠x̠ </div>
+  </div>
+</div>
+
+<div id="loginScreen" class="login-screen am-login">
+  <div class="login-box">
+    <div class="login-avatar" aria-label="AM PREMIUMS"></div>
+    <div class="login-title">WELCOME</div>
+    <div class="login-subtitle">Premium Digital Access</div>
+
+    <div class="login-field">
+      <span class="field-icon">♙</span>
+      <input id="loginUsername" type="text" autocomplete="username" placeholder="Username ">
+    </div>
+
+    <div class="login-field">
+      <span class="field-icon">▣</span>
+      <input id="loginPassword" type="password" autocomplete="current-password" placeholder="Password">
+      <button type="button" class="login-toggle" onclick="toggleLoginPassword()" aria-label="Tampilkan password">◉</button>
+    </div>
+
+    <button type="button" id="loginSubmit" class="login-submit">↪ &nbsp; LOGIN</button>
+<div id="loginError" class="login-error"></div>
+  </div>
+</div>
+
+<div class="app">
+  <!-- HOME -->
+  <section id="home" class="page active">
+    <div class="center hero">
+      <div class="badge"><span class="dot"></span>Premium Activation</div>
+      <h1>Alight Motion Premium</h1>
+      <p>Activate your premium experience quickly and easily.<br>Fast, simple, and secure.</p>
+      <button class="primary" onclick="showPage('activate')">Activate Premium&nbsp; →</button>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <div class="icon">⚡</div>
+        <h3>Fast</h3>
+        <p>Instant activation process</p>
+      </div>
+      <div class="feature">
+        <div class="icon">✓</div>
+        <h3>Simple</h3>
+        <p>Just 3 easy steps to complete</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🔒</div>
+        <h3>Secure</h3>
+        <p>Safe and protected verification</p>
+      </div>
+    </div>
+  </section>
+
+
+<style id="activation-premium-enhance">
+#activate .activation-card-premium{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.11);background:linear-gradient(145deg,rgba(20,25,40,.96),rgba(12,16,28,.92));box-shadow:0 18px 55px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.06);backdrop-filter:blur(18px);}
+#activate .activation-card-premium:before{content:"";position:absolute;width:220px;height:220px;right:-100px;top:-120px;background:radial-gradient(circle,rgba(112,95,255,.20),transparent 68%);pointer-events:none;}
+#activate .activation-card-premium:after{content:"";position:absolute;left:-80px;bottom:-120px;width:210px;height:210px;background:radial-gradient(circle,rgba(0,220,255,.10),transparent 68%);pointer-events:none;}
+#activate .activation-head{display:flex;align-items:center;gap:14px;margin-bottom:18px;position:relative;z-index:1;}
+#activate .activation-icon{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;font-size:21px;background:linear-gradient(145deg,rgba(120,100,255,.22),rgba(30,210,220,.12));border:1px solid rgba(255,255,255,.12);box-shadow:0 8px 25px rgba(80,90,255,.14),inset 0 1px 0 rgba(255,255,255,.12);}
+#activate .activation-section{position:relative;z-index:1;padding:16px;border:1px solid rgba(255,255,255,.07);border-radius:18px;background:rgba(255,255,255,.025);margin-top:14px;}
+#activate .activation-section h3{margin:0 0 6px;}
+#activate .activation-section .desc{margin-bottom:13px;}
+#activate .activation-card-premium .input{transition:.2s ease;box-shadow:inset 0 1px 0 rgba(255,255,255,.035);}
+#activate .activation-card-premium .input:focus{border-color:rgba(125,115,255,.55);box-shadow:0 0 0 3px rgba(100,90,255,.09),0 8px 25px rgba(60,70,160,.10);}
+#activate .activation-card-premium .action{position:relative;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease;}
+#activate .activation-card-premium .action:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(70,80,190,.18);}
+#activate .activation-card-premium .action:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.12),transparent 65%);transform:translateX(-120%);transition:.55s;}
+#activate .activation-card-premium .action:hover:after{transform:translateX(120%);}
+</style>
+
+  <!-- ACTIVATION: OLD LAYOUT, NEW BUTTONS -->
+  <section id="activate" class="page">
+    <div class="topbar">
+      <div>
+        <h2>Activation</h2>
+        <p>Kelola aktivasi dan verifikasi Premium dalam satu workspace.</p>
+      </div>
+      <div class="status"><i></i> System online</div>
+    </div>
+
+    <div class="card activation-card-premium">
+      <div class="activation-head"><div><span class="pill">ACTIVATION</span><h1 style="margin:6px 0 0">Activate Account</h1></div></div>
+      <p class="desc">Masukkan email untuk mengirim link verifikasi Premium.</p>
+
+      <div class="activation-section">
+        <label for="email">Email</label>
+        <input id="email" class="input" type="email" placeholder="name@example.com">
+        <button class="action" onclick="requestActivation()">Request Activation</button>
+        <div id="requestMsg" class="message"></div>
+      </div>
+
+      <div class="activation-section">
+        <h3>Verifikasi Link</h3>
+        <p class="desc">Gunakan email yang sama dengan saat Request Activation, lalu tempel URL lengkap dari email.</p>
+        <input id="verify" class="input" type="url" placeholder="https://alightcreative.com/verify?...">
+        <button class="action verify" onclick="verifyLink()">Verifikasi Sekarang</button>
+        <div id="verifyMsg" class="message"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AL-QUR'AN -->
+  <section id="geminiai" class="page">
+    <button class="back-btn tools-topback" type="button" onclick="showPage('tools')">← Kembali ke Tools</button>
+    <div class="topbar"><div><h2>AI Gemini</h2><p>Asisten AI langsung dari Tools</p></div></div>
+    <div class="ai-box">
+      <div class="ai-head">
+        <div class="ai-avatar">✦</div>
+        <div style="flex:1"><b>Gemini AI</b><small>Powered by Google Gemini</small></div><button id="geminiApiKeyBtn" class="admin-only" type="button" onclick="setGeminiApiKey()" style="padding:9px 12px;border-radius:11px;background:#111722;border:1px solid rgba(255,255,255,.1);color:#cfd6e4;font-weight:700">⚙ API Key</button>
+      </div>
+      <div id="aiChat" class="ai-chat">
+        <div class="ai-msg bot">Halo! 👋 Aku Gemini AI. Ada yang ingin kamu tanyakan?</div>
+      </div>
+      <div id="aiStatus" class="ai-status"></div>
+      <div class="ai-compose">
+        <textarea id="aiInput" class="ai-input" placeholder="Tulis pesan untuk Gemini..." rows="1"></textarea>
+        <button id="aiSend" class="ai-send" type="button" onclick="sendGeminiAI()">➤</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="tempmail" class="page">
+    <button class="back-btn tools-topback" type="button" onclick="showPage('tools')">← Kembali ke Tools</button>
+    <div class="topbar"><div><h2>Temp Mail</h2><p>Email sementara cepat untuk menerima pesan.</p></div></div>
+    <div class="card tempmail-card">
+      <div class="tempmail-hero"><div class="tempmail-icon">✉</div><div><b>Temporary Inbox</b><small>Powered by TempMailPortal • gratis & tanpa API key.</small></div></div>
+      <span class="pill">TEMPORARY EMAIL</span>
+      <div class="tempmail-email"><span id="tempEmailAddress">Belum ada email</span><button id="tempCopyBtn" class="tempmail-btn secondary" type="button" onclick="copyTempEmail()" disabled>Copy</button></div>
+      <div class="tempmail-actions">
+        <button id="tempCreateBtn" class="tempmail-btn" type="button" onclick="createTempEmail()">＋ Create Email</button>
+        <button id="tempInboxBtn" class="tempmail-btn secondary" type="button" onclick="checkTempInbox()">↻ Refresh Inbox</button>
+      </div>
+      <div id="tempMailStatus" class="tempmail-status"></div>
+      <div class="inbox-head"><h3>Inbox</h3><small id="tempInboxCount">0 pesan</small></div>
+      <div id="tempInboxList" class="inbox-list"><div class="tempmail-empty"><div>⌁</div><b>Belum ada email</b><small>Create Email untuk membuat alamat sementara.</small></div></div>
+      <div class="tempmail-attrib">Temporary email service by <a href="https://tempmailportal.com/" target="_blank" rel="noopener">TempMailPortal</a></div>
+    </div>
+    <div id="tempMailModal" onclick="if(event.target===this)closeTempMessage()"><div class="tm-modal-card"><div class="tm-modal-top"><h3 id="tempModalSubject">Pesan</h3><button class="tm-close" type="button" onclick="closeTempMessage()">×</button></div><div id="tempModalFrom" class="tm-modal-from"></div><div id="tempModalLinkBox" class="tm-link-box" hidden><div><b>🔗 Link terdeteksi</b><small id="tempModalLinkText">Link verifikasi ditemukan di email.</small></div><button id="tempCopyLinkBtn" class="tm-copy-link" type="button" onclick="copyTempMessageLink()">Copy Link</button></div><div id="tempModalCodeBox" class="tm-link-box" hidden><div><b>🔢 Kode terdeteksi</b><small id="tempModalCodeText">Kode verifikasi ditemukan di email.</small></div><div id="tempModalCodes" class="tm-codes-list"></div></div><div id="tempModalBody" class="tm-modal-body"></div></div></div>
+  </section>
+
+  <section id="quran" class="page">
+    <div id="quranListView">
+      <button class="back-btn" type="button" onclick="showPage('tools')">← Kembali ke Tools</button>
+      <div class="topbar">
+        <div>
+          <h2>Al Qur'an</h2>
+          <p>Pilih surah untuk membaca ayat dan terjemahannya.</p>
+        </div>
+      </div>
+      <div class="card">
+        <span class="pill">AL-QUR'AN</span>
+        <h1>Pilih Surah</h1>
+        <input class="quran-search" type="search" placeholder="Cari nama surah..." oninput="filterSurah(this.value)">
+        <div id="surahList" class="surah-list"></div>
+      </div>
+    </div>
+
+    <div id="quranReader" class="quran-reader">
+      <div class="card">
+        <div class="quran-header">
+          <button class="quran-back" type="button" onclick="closeQuranReader()" aria-label="Kembali ke daftar surah" title="Kembali">←</button>
+          <div class="quran-title">
+            <h1 id="quranTitle">Surah</h1>
+            <small id="quranSubtitle"></small>
+          </div>
+        </div>
+        <div id="quranContent"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO -->
+  <section id="info" class="page">
+    <div class="topbar info-topbar">
+      <div>
+        <span class="info-kicker">SYSTEM CENTER</span>
+        <h2>Info & Keamanan</h2>
+        <p>Informasi sistem, status layanan, dan aturan penggunaan.</p>
+      </div>
+      <div class="info-live"><i></i> LIVE</div>
+    </div>
+
+    <div class="info-hero info-hero-pro">
+      <div class="info-hero-glow"></div>
+      <div class="info-hero-icon">ⓘ</div>
+      <div class="info-hero-copy">
+        <span class="info-kicker">REAL-TIME MONITOR</span>
+        <h1>System <em>Information</em></h1>
+        <p>Pantau koneksi API secara langsung dan lihat status layanan dengan lebih jelas.</p>
+      </div>
+      <div class="info-hero-chip">● Secure Service</div>
+    </div>
+
+    <div class="account-status-card">
+      <div class="account-status-head">
+        <div class="account-status-title">
+          <div class="account-status-icon">◉</div>
+          <div><small>ACCOUNT STATUS</small><b>Status Akun</b></div>
+        </div>
+        <span id="accountStatusBadge" class="account-status-badge">ACTIVE</span>
+      </div>
+      <div class="account-status-grid">
+        <div class="account-status-item"><small>USERNAME</small><strong id="accountInfoUsername">-</strong></div>
+        <div class="account-status-item"><small>ROLE</small><strong id="accountInfoRole">-</strong></div>
+        <div class="account-status-item"><small>DURASI</small><strong id="accountInfoDuration">-</strong></div>
+        <div class="account-status-item"><small>SISA WAKTU</small><strong id="accountInfoRemaining">-</strong></div>
+        <div class="account-status-item expiry" style="grid-column:1/-1"><small>EXPIRED</small><strong id="accountInfoExpiry">-</strong></div>
+      </div>
+      <div id="accountStatusNote" class="account-status-note">Data akun diperbarui secara real-time.</div>
+    </div>
+
+    <div id="infoApiCard" class="info-api-card info-api-checking">
+      <div class="info-api-main">
+        <div class="info-api-icon">!</div>
+        <div class="info-api-copy">
+          <small>API SERVER</small>
+          <b id="infoApiStatus">Checking...</b>
+          <span id="infoApiStatusSub">Memeriksa koneksi ke server</span>
+        </div>
+      </div>
+      <div class="info-api-ping">
+        <small>PING API</small>
+        <strong><span id="infoApiPing">--</span><em>ms</em></strong>
+      </div>
+      <div class="info-api-connection">
+        <i id="infoApiDot" class="info-dot checking"></i>
+        <span id="infoApiConnectionText">Menghubungkan ke server...</span>
+      </div>
+    </div>
+
+    <div class="card info-card info-card-pro">
+      <div class="info-head">
+        <div><span class="info-kicker">COMMUNITY POLICY</span><h2>Aturan Penggunaan</h2></div>
+        <span class="rules-count">PERATURAN</span>
+      </div>
+      <p class="info-intro">Gunakan akun secara aman dan sesuai ketentuan berikut.</p>
+      <div class="rules-modern">
+        <div><strong>01</strong><p>Larangan Barter Akun<small>Dilarang melakukan pertukaran akun dengan pihak lain.</small></p><em>×</em></div>
+        <div><strong>02</strong><p>Larangan Membagikan Akun<small>Akun tidak boleh dibagikan kepada pihak lain.</small></p><em>×</em></div>
+        <div><strong>03</strong><p>Larangan Menjual Akun<small>Dilarang memperjualbelikan akun dalam bentuk apa pun.</small></p><em>×</em></div>
+        <div><strong>04</strong><p>Larangan Membagikan Akun Gratis<small>Jangan memberikan akun kepada orang lain.</small></p><em>×</em></div>
+      </div>
+      <div class="sanction sanction-pro"><span>⚠️</span><p><small>SANKSI TEGAS</small> Akun Akan <b>DIHAPUS</b> Secara permanen</p></div>
+    </div>
+  </section>
+
+  <section id="tools" class="page">
+    <button class="back-btn tools-topback" type="button" onclick="showPage('home')">← Kembali</button>
+    <div class="topbar"><div><h2>Tools</h2><p>Kumpulan tools dan fitur-fitur</p></div></div>
+    <div class="card">
+      <span class="pill">TOOLS</span>
+      <h1>Tools Center</h1>
+      <p class="desc">Tools Bisa Kamu Gunakan Secara Gratis.</p>
+
+      <div class="tool-grid">
+        <button class="tool-item" onclick="openQuran()">
+          <span class="tool-icon">📖</span>
+          <span><b>Al Qur'an</b><small>Baca Al-Qur'an</small></span>
+        </button>
+        <button class="tool-item" onclick="openNikCheck()">
+          <span class="tool-icon">🪪</span>
+          <span><b>NIK Check</b><small>Cek NIK</small></span>
+        </button>
+        <button class="tool-item" onclick="openCNN()">
+          <span class="tool-icon">📰</span>
+          <span><b>CNN Indonesia</b><small>Berita terbaru</small></span>
+        </button>
+        <button class="tool-item" onclick="openKisahNabi()"><span class="tool-icon">🕌</span><span><b>Kisah Nabi</b><small>Baca kisah para nabi</small></span></button>
+        <button class="tool-item" onclick="openGempa()">
+          <span class="tool-icon">🌋</span>
+          <span><b>Info Gempa</b><small>Info gempa terbaru BMKG</small></span>
+        </button>
+        <button class="tool-item" onclick="openJadwalTV()">
+          <span class="tool-icon">▣</span>
+          <span><b>Jadwal TV</b><small>Cek jadwal acara TV</small></span>
+        </button>
+        <button class="tool-item" onclick="openGeminiAI()">
+          <span class="tool-icon">✦</span>
+          <span><b>AI Gemini</b><small>Chat dengan AI</small></span>
+        </button>
+        <button class="tool-item" onclick="openTempMail()">
+          <span class="tool-icon">✉</span>
+          <span><b>Temp Mail</b><small>Email sementara</small></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- JADWAL SHOLAT REAL-TIME -->
+    <section class="prayer-card" aria-label="Jadwal sholat">
+      <div class="prayer-head">
+        <div class="prayer-title-wrap">
+          <div class="prayer-icon">☪</div>
+          <div>
+            <span class="prayer-kicker">DAILY PRAYER</span>
+            <h2>Jadwal Sholat</h2>
+            <p id="prayerLocation">Memuat lokasi...</p>
+          </div>
+        </div>
+        <div class="prayer-next"><span></span><b id="nextPrayerLabel">Memuat...</b><strong id="nextPrayerTime">--:--</strong></div>
+      </div>
+
+      <div class="prayer-table-wrap">
+        <table class="prayer-table">
+          <thead>
+            <tr><th>Sholat</th><th>Waktu</th><th>Status</th></tr>
+          </thead>
+          <tbody id="prayerTableBody">
+            <tr><td><span class="prayer-name"><i>☾</i>Subuh</span></td><td>--:--</td><td><span class="prayer-badge">Memuat</span></td></tr>
+            <tr><td><span class="prayer-name"><i>☀</i>Dzuhur</span></td><td>--:--</td><td><span class="prayer-badge">Memuat</span></td></tr>
+            <tr><td><span class="prayer-name"><i>◉</i>Ashar</span></td><td>--:--</td><td><span class="prayer-badge">Memuat</span></td></tr>
+            <tr><td><span class="prayer-name"><i>◒</i>Maghrib</span></td><td>--:--</td><td><span class="prayer-badge">Memuat</span></td></tr>
+            <tr><td><span class="prayer-name"><i>☽</i>Isya</span></td><td>--:--</td><td><span class="prayer-badge">Memuat</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="prayer-foot"><span>●</span> Jadwal otomatis dari perhitungan Kemenag RI (Method 20) • diperbarui setiap hari</div>
+    </section>
+  </section>
+
+  <section id="kisahnabi" class="page">
+    <button class="back-btn" type="button" onclick="showPage('tools')">← Kembali ke Tools</button>
+    <div class="topbar"><div><h2>Kisah Nabi</h2><p>Baca kisah nabi dengan tampilan nyaman.</p></div></div>
+    <div class="card kisah-card"><span class="pill">ISLAMIC STORY</span><h1>Kisah Nabi</h1><p class="desc">Masukkan nama nabi untuk menampilkan kisahnya.</p>
+      <div class="kisah-search"><input id="nabiInput" class="input" placeholder="Contoh: Muhammad" autocomplete="off"><button id="nabiBtn" class="action" type="button" onclick="loadKisahNabi()">📖 Lihat Kisah</button></div>
+      <div class="nabi-chips"><button type="button" onclick="setNabi('Adam')">Adam</button><button type="button" onclick="setNabi('Nuh')">Nuh</button><button type="button" onclick="setNabi('Ibrahim')">Ibrahim</button><button type="button" onclick="setNabi('Musa')">Musa</button><button type="button" onclick="setNabi('Muhammad')">Muhammad</button></div>
+      <div id="nabiResult"></div>
+    </div>
+  </section>
+
+  <section id="nik" class="page">
+    <button class="back-btn" type="button" onclick="showPage('tools')">← Kembali ke Tools</button>
+    <div class="topbar"><div><h2>NIK Check</h2><p>Cek NIK melalui API.</p></div></div>
+    <div class="card"><span class="pill">NIK CHECK</span><h1>Cek NIK</h1><p class="desc">Masukkan NIK 16 digit.</p>
+      <input id="nikInput" class="input" type="text" inputmode="numeric" maxlength="16" placeholder="Contoh: 334572927483992">
+      <button id="nikCheckBtn" class="action" type="button" onclick="checkNik()">Cek NIK</button>
+      <div id="nikResult" class="nik-result"></div>
+    </div>
+  </section>
+
+
+  <section id="gempa" class="page">
+    <button class="back-btn" type="button" onclick="showPage('tools')">← Kembali ke Tools</button>
+    <div class="topbar"><div><h2>Info Gempa</h2><p>Informasi gempa terbaru dari BMKG.</p></div></div>
+    <div class="card">
+      <span class="pill">BMKG</span>
+      <h1>Gempa Terbaru</h1>
+      <div id="gempaContent"><div class="gempa-card">Tekan muat ulang untuk mengambil data.</div></div>
+      <button class="action" type="button" onclick="loadGempa()">↻ Muat ulang</button>
+    </div>
+  </section>
+
+  <section id="jadwaltv" class="page">
+    <button class="back-btn" type="button" onclick="showPage('tools')">← Kembali ke Tools</button>
+    <div class="topbar"><div><h2>Jadwal TV</h2><p>Lihat jadwal acara berdasarkan nama stasiun TV.</p></div></div>
+    <div class="card">
+      <span class="pill">JADWAL TV</span>
+      <h1>Cek Jadwal TV</h1>
+      <p class="desc">Masukkan nama TV, misalnya <b>RCTI</b>.</p>
+      <input id="tvInput" class="input" type="text" autocomplete="off" placeholder="Contoh: RCTI">
+      <div class="tv-chips">
+        <button class="tv-chip" type="button" onclick="setTV('RCTI')">RCTI</button>
+        <button class="tv-chip" type="button" onclick="setTV('SCTV')">SCTV</button>
+        <button class="tv-chip" type="button" onclick="setTV('Indosiar')">Indosiar</button>
+        <button class="tv-chip" type="button" onclick="setTV('ANTV')">ANTV</button>
+        <button class="tv-chip" type="button" onclick="setTV('Trans TV')">Trans TV</button>
+      </div>
+      <button id="tvCheckBtn" class="action" type="button" onclick="loadJadwalTV()">Lihat Jadwal</button>
+      <div id="tvResult" class="tv-result"></div>
+    </div>
+  </section>
+
+  <section id="cnn" class="page">
+    <button class="back-btn" type="button" onclick="showPage('tools')">← Kembali ke Tools</button>
+    <div class="topbar"><div><h2>CNN Indonesia</h2><p>Berita terbaru dalam tampilan minimalis.</p></div></div>
+    <div class="card">
+      <span class="pill">CNN INDONESIA</span>
+      <h1>Berita</h1>
+      <div id="cnnList" class="cnn-list"><div class="cnn-loading">Memuat berita...</div></div>
+      <button id="cnnRefresh" class="action cnn-refresh" type="button" onclick="loadCNN()">↻ Muat ulang</button>
+    </div>
+  </section>
+
+  <!-- ADMIN -->
+  <section id="admin" class="page">
+    <div class="topbar"><div><h2>Admin Panel</h2><p>Kelola akun yang tersimpan di database online.</p></div><div class="status"><i></i> ADMIN</div></div>
+    <div class="card">
+      <span class="pill">USER DATABASE</span>
+      <h1>Tambah User</h1>
+      <div class="admin-grid">
+        <input id="adminUsername" class="input" type="text" autocomplete="off" placeholder="Username, contoh: ezzx">
+        <input id="adminUserPassword" class="input" type="password" autocomplete="new-password" placeholder="Password user, contoh: 123">
+        <div class="admin-code-row">
+          <select id="adminRole" class="input"><option value="member">Member</option><option value="admin">Admin</option></select>
+          <select id="adminDuration" class="input">
+            <option value="1">Durasi 1 Hari</option>
+            <option value="3">Durasi 3 Hari</option>
+            <option value="7">Durasi 7 Hari</option>
+            <option value="14">Durasi 14 Hari</option>
+            <option value="30">Durasi 30 Hari</option>
+            <option value="90">Durasi 90 Hari</option>
+            <option value="365">Durasi 1 Tahun</option>
+            <option value="0">Permanen</option>
+          </select>
+        </div>
+        <input id="adminPasswordConfirm" class="input" type="password" autocomplete="current-password" placeholder="Password admin">
+        <button class="action" type="button" onclick="adminCreateUser()">+ Buat User</button>
+        <div id="adminMsg" class="message"></div>
+      </div>
+      <div class="divider"></div>
+      <h3>Daftar User</h3>
+      <button class="action verify" type="button" onclick="adminLoadUsers()">↻ Muat User</button>
+      <div id="adminUsers" class="admin-users"><div class="admin-note">Tekan “Muat User” lalu masukkan password admin jika diminta.</div></div>
+      <div class="admin-note">Akun utama: <b>admin</b> / <b>admin123</b>. Password user disimpan sebagai hash di database.</div>
+    </div>
+  </section>
+
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <button class="active" data-page="home" onclick="showPage('home')"><span class="nav-icon">⌂</span>HOME</button>
+    <button data-page="activate" onclick="showPage('activate')"><span class="nav-icon">⚿</span>ACTIVATE</button>
+    <button data-page="info" onclick="showPage('info')"><span class="nav-icon">ⓘ</span>INFO</button>
+    <button data-page="tools" onclick="showPage('tools')"><span class="nav-icon">⚒</span>TOOLS</button>
+    <button class="admin-only" id="adminNavBtn" data-page="admin" onclick="openAdmin()"><span class="nav-icon">♛</span>ADMIN</button>
+  </div>
+</nav>
+
+<script>
+function openAdmin(){
+  if(!isCurrentAdmin()){
+    alert('KHUSUS ADMIN / OWNER\n\nAkun MEMBER TIDAK MEMILIKI AKSES PADA FITUR INI');
+    return;
+  }
+  showPage('admin');
+}
+
+function showPage(id){
+  if(id==='admin' && !isCurrentAdmin()){ return showPage('home'); }
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const page=document.getElementById(id);
+  if(!page)return;
+  page.classList.add('active');
+  /* Restart page entrance animation. Animation styles live in animations.css. */
+  page.classList.remove('qsr-enter');
+  void page.offsetWidth;
+  page.classList.add('qsr-enter');
+  const navPage = (id === 'quran' || id === 'nik' || id === 'cnn' || id === 'jadwaltv' || id === 'kisahnabi' || id === 'gempa' || id === 'geminiai' || id === 'tempmail') ? 'tools' : id;
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===navPage));
+  window.scrollTo(0,0);
+  if(id==='info') checkInfoApi();
+}
+
+
+
+function normalizeVerifyLink(raw){
+  let link = String(raw || '').trim();
+  link = link.replace(/^['"`]+|['"`]+$/g, '').trim();
+
+  for(let i = 0; i < 2; i++){
+    try{
+      const decoded = decodeURIComponent(link);
+      if(decoded !== link) link = decoded;
+      else break;
+    }catch{
+      break;
+    }
+  }
+
+  link = link.replace(/[\r\n\t ]+/g, '');
+
+  try{
+    const parsed = new URL(link);
+    if(!/^https?:$/.test(parsed.protocol)){
+      throw new Error('Link harus menggunakan http:// atau https://');
+    }
+    return parsed.toString();
+  }catch{
+    throw new Error('Link verifikasi tidak valid. Tempel URL lengkap dari email.');
+  }
+}
+
+function apiVerificationSucceeded(data){
+  if(typeof data === 'string'){
+    return /(success|sukses|berhasil|verified|premium|activated|active)/i.test(data);
+  }
+
+  if(!data || typeof data !== 'object') return false;
+
+  if(data.success === true || data.verified === true || data.activated === true){
+    return true;
+  }
+
+  const status = String(data.status ?? data.result ?? data.code ?? '').toLowerCase();
+  if(['success','ok','verified','activated','active','premium','200'].includes(status)){
+    return true;
+  }
+
+  return Boolean(data.data?.success || data.data?.verified || data.data?.activated);
+}
+
+
+
+
+/* === QSR API helper (activation ONLY) === */
+const ACTIVATION_API_BASE = 'https://api.qsr.web.id';
+
+async function callActivationAPI(path, params = {}){
+  const cleanPath = String(path || '').startsWith('/') ? path : '/' + path;
+  const query = new URLSearchParams({ apikey: 'qsr' });
+  Object.entries(params || {}).forEach(([key, value]) => {
+    if(value !== undefined && value !== null && String(value) !== '') query.set(key, String(value));
+  });
+  const url = ACTIVATION_API_BASE + cleanPath + '?' + query.toString();
+
+  // Yj/Yun API documentation: activation endpoints are GET.
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: { Accept: 'application/json, text/plain, */*' },
+    cache: 'no-store'
+  });
+
+  const text = await response.text();
+  if(!response.ok){
+    let detail = text;
+    try { const parsed = JSON.parse(text); detail = parsed?.message || parsed?.error || parsed?.detail || text; } catch(e) {}
+    throw new Error('HTTP ' + response.status + (detail ? ' - ' + String(detail).slice(0,180) : ''));
+  }
+  if(!text) return {};
+  try { return JSON.parse(text); }
+  catch { return text; }
+}
+
+let activationSendCooldownTimer = null;
+
+function getActivationWaitSeconds(error){
+  const text = String(error?.message || '');
+  const m = text.match(/(\d+)\s*(?:detik|seconds?|sec)\b/i);
+  return m ? Math.max(1, parseInt(m[1], 10)) : 0;
+}
+
+function waitActivationCooldown(seconds, msg, btn, label='Tunggu'){
+  seconds = Math.max(1, Number(seconds) || 1);
+  if(activationSendCooldownTimer) clearInterval(activationSendCooldownTimer);
+  return new Promise(resolve => {
+    const end = Date.now() + seconds * 1000;
+    const tick = () => {
+      const left = Math.max(0, Math.ceil((end - Date.now()) / 1000));
+      if(left > 0){
+        if(msg) msg.textContent = label + ' ' + left + ' detik sebelum mencoba lagi...';
+        if(btn){ btn.disabled = true; btn.textContent = 'Tunggu ' + left + 's'; }
+      }else{
+        clearInterval(activationSendCooldownTimer);
+        activationSendCooldownTimer = null;
+        resolve();
+      }
+    };
+    tick();
+    activationSendCooldownTimer = setInterval(tick, 250);
+  });
+}
+
+async function requestActivation(){
+  const email=document.getElementById('email').value.trim();
+  const msg=document.getElementById('requestMsg');
+  const btn=document.querySelector('.action:not(.verify)');
+
+  if(!email || !email.includes('@')){
+    msg.textContent='Masukkan email yang valid.';
+    return;
+  }
+
+  btn.disabled=true;
+  btn.textContent='Mengirim...';
+  msg.textContent='Menghubungkan ke API...';
+
+  // Jangan spam endpoint. Jika API memberi 429 + waktu tunggu, tunggu otomatis
+  // sesuai waktu yang diberikan server lalu coba sekali lagi.
+  let retriedAfter429 = false;
+  try {
+    while(true){
+      try{
+        const data = await callActivationAPI('/alight/send', { email });
+        console.log('alight/send response:', data);
+        msg.textContent = 'Link Verifikasi sudah masuk ke email kamu';
+        break;
+      }catch(error){
+        const wait = getActivationWaitSeconds(error);
+        const is429 = /HTTP\s*429\b/i.test(String(error?.message || ''));
+        if(is429 && wait > 0 && !retriedAfter429){
+          retriedAfter429 = true;
+          await waitActivationCooldown(wait, msg, btn, 'Batas API tercapai.');
+          btn.disabled=true;
+          btn.textContent='Mengirim ulang...';
+          msg.textContent='Mencoba mengirim ulang...';
+          continue;
+        }
+        throw error;
+      }
+    }
+  } catch(error) {
+    console.error(error);
+    msg.textContent = 'Gagal: ' + (error?.message || 'Request gagal.');
+  } finally {
+    btn.disabled=false;
+    btn.textContent='Request Activation';
+  }
+}
+
+
+document.getElementById('verify')?.addEventListener('keydown', (event) => {
+  if(event.key === 'Enter'){
+    event.preventDefault();
+    verifyLink();
+  }
+});
+
+async function verifyLink(){
+  const emailInput = document.getElementById('email');
+  const linkInput = document.getElementById('verify');
+  const msg = document.getElementById('verifyMsg');
+  const btn = document.querySelector('.action.verify');
+
+  if(!emailInput || !linkInput || !msg || !btn) return;
+
+  const email = emailInput.value.trim();
+
+  if(!email || !email.includes('@')){
+    msg.textContent = 'Email wajib diisi dengan benar.';
+    emailInput.focus();
+    return;
+  }
+
+  let link;
+  try{
+    link = normalizeVerifyLink(linkInput.value);
+  }catch(error){
+    msg.textContent = error.message;
+    linkInput.focus();
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Memverifikasi...';
+  msg.textContent = 'Memeriksa email dan link verifikasi...';
+
+  try {
+    // Endpoint verifikasi membutuhkan EMAIL + LINK.
+    const data = await callActivationAPI('/alight/verify', {
+      email: email,
+      link: link
+    });
+
+    console.log('/alight/verify response:', data);
+
+    if(apiVerificationSucceeded(data)){
+      msg.textContent = 'Verifikasi berhasil, akun kamu sudah premium 🎉.';
+    }else{
+      const detail =
+        typeof data === 'string'
+          ? data
+          : (data?.message || data?.error || data?.detail || 'Server belum mengonfirmasi verifikasi.');
+
+      msg.textContent = 'Verifikasi belum berhasil: ' + detail;
+    }
+  } catch(error) {
+    console.error('/alight/verify error:', error);
+    msg.textContent = 'Gagal verifikasi: ' + (error?.message || 'Request gagal.');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Verifikasi Sekarang';
+  }
+}
+
+
+
+
+const QURAN_API = 'https://api.alquran.cloud/v1';
+
+const SURAH_NAMES = [
+  ["Al-Fatihah","الفاتحة"],["Al-Baqarah","البقرة"],["Ali 'Imran","آل عمران"],["An-Nisa","النساء"],
+  ["Al-Ma'idah","المائدة"],["Al-An'am","الأنعام"],["Al-A'raf","الأعراف"],["Al-Anfal","الأنفال"],
+  ["At-Taubah","التوبة"],["Yunus","يونس"],["Hud","هود"],["Yusuf","يوسف"],["Ar-Ra'd","الرعد"],
+  ["Ibrahim","إبراهيم"],["Al-Hijr","الحجر"],["An-Nahl","النحل"],["Al-Isra","الإسراء"],
+  ["Al-Kahf","الكهف"],["Maryam","مريم"],["Ta-Ha","طه"],["Al-Anbiya","الأنبياء"],["Al-Hajj","الحج"],
+  ["Al-Mu'minun","المؤمنون"],["An-Nur","النور"],["Al-Furqan","الفرقان"],["Ash-Shu'ara","الشعراء"],
+  ["An-Naml","النمل"],["Al-Qasas","القصص"],["Al-Ankabut","العنكبوت"],["Ar-Rum","الروم"],
+  ["Luqman","لقمان"],["As-Sajdah","السجدة"],["Al-Ahzab","الأحزاب"],["Saba","سبأ"],["Fatir","فاطر"],
+  ["Ya-Sin","يس"],["As-Saffat","الصافات"],["Sad","ص"],["Az-Zumar","الزمر"],["Ghafir","غافر"],
+  ["Fussilat","فصلت"],["Ash-Shura","الشورى"],["Az-Zukhruf","الزخرف"],["Ad-Dukhan","الدخان"],
+  ["Al-Jathiyah","الجاثية"],["Al-Ahqaf","الأحقاف"],["Muhammad","محمد"],["Al-Fath","الفتح"],
+  ["Al-Hujurat","الحجرات"],["Qaf","ق"],["Adh-Dhariyat","الذاريات"],["At-Tur","الطور"],
+  ["An-Najm","النجم"],["Al-Qamar","القمر"],["Ar-Rahman","الرحمن"],["Al-Waqi'ah","الواقعة"],
+  ["Al-Hadid","الحديد"],["Al-Mujadilah","المجادلة"],["Al-Hashr","الحشر"],["Al-Mumtahanah","الممتحنة"],
+  ["As-Saff","الصف"],["Al-Jumu'ah","الجمعة"],["Al-Munafiqun","المنافقون"],["At-Taghabun","التغابن"],
+  ["At-Talaq","الطلاق"],["At-Tahrim","التحريم"],["Al-Mulk","الملك"],["Al-Qalam","القلم"],
+  ["Al-Haqqah","الحاقة"],["Al-Ma'arij","المعارج"],["Nuh","نوح"],["Al-Jinn","الجن"],["Al-Muzzammil","المزمل"],
+  ["Al-Muddaththir","المدثر"],["Al-Qiyamah","القيامة"],["Al-Insan","الإنسان"],["Al-Mursalat","المرسلات"],
+  ["An-Naba","النبأ"],["An-Nazi'at","النازعات"],["Abasa","عبس"],["At-Takwir","التكوير"],
+  ["Al-Infitar","الانفطار"],["Al-Mutaffifin","المطففين"],["Al-Inshiqaq","الانشقاق"],["Al-Buruj","البروج"],
+  ["At-Tariq","الطارق"],["Al-A'la","الأعلى"],["Al-Ghashiyah","الغاشية"],["Al-Fajr","الفجر"],
+  ["Al-Balad","البلد"],["Ash-Shams","الشمس"],["Al-Lail","الليل"],["Ad-Duha","الضحى"],["Ash-Sharh","الشرح"],
+  ["At-Tin","التين"],["Al-Alaq","العلق"],["Al-Qadr","القدر"],["Al-Bayyinah","البينة"],["Az-Zalzalah","الزلزلة"],
+  ["Al-Adiyat","العاديات"],["Al-Qari'ah","القارعة"],["At-Takathur","التكاثر"],["Al-Asr","العصر"],
+  ["Al-Humazah","الهمزة"],["Al-Fil","الفيل"],["Quraysh","قريش"],["Al-Ma'un","الماعون"],["Al-Kawthar","الكوثر"],
+  ["Al-Kafirun","الكافرون"],["An-Nasr","النصر"],["Al-Masad","المسد"],["Al-Ikhlas","الإخلاص"],
+  ["Al-Falaq","الفلق"],["An-Nas","الناس"]
+];
+
+const KISAH_NABI_API='https://api-yunn.vercel.app/islam/kisahnabi?apikey=qsr';
+function openKisahNabi(){showPage('kisahnabi');document.getElementById('nabiInput')?.focus()}
+function setNabi(n){const i=document.getElementById('nabiInput');if(i)i.value=n}
+function escK(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function storyText(v){if(typeof v==='string')return v;if(Array.isArray(v))return v.map(storyText).filter(Boolean).join('\n\n');if(v&&typeof v==='object')return Object.values(v).map(storyText).filter(Boolean).join('\n\n');return ''}
+async function loadKisahNabi(){const i=document.getElementById('nabiInput'),r=document.getElementById('nabiResult'),b=document.getElementById('nabiBtn'),n=(i?.value||'').trim();if(!n){r.innerHTML='<div class="kisah-msg">⚠️ Masukkan nama nabi terlebih dahulu.</div>';return}b.disabled=true;b.textContent='⏳ Memuat...';r.innerHTML='<div class="kisah-loading">📜 Mengambil kisah Nabi '+escK(n)+'...</div>';try{const x=await fetch(KISAH_NABI_API+'&nabi='+encodeURIComponent(n),{cache:'no-store'}),raw=await x.text();let d;try{d=JSON.parse(raw)}catch{d=raw}if(!x.ok)throw Error(typeof d==='string'?d:(d?.message||d?.error||'HTTP '+x.status));const root=d?.data??d?.result??d,story=storyText(root?.kisah??root?.story??root?.cerita??root?.content??root);if(!story)throw Error(root?.message||'Kisah nabi tidak ditemukan.');const title=root?.nabi||root?.nama||root?.name||n;r.innerHTML='<article class="kisah-story"><div class="kisah-title"><span>☪</span><div><small>KISAH NABI</small><h2>'+escK(title)+'</h2></div></div><div class="kisah-body">'+story.split(/\n{2,}/).map(p=>'<p>'+escK(p).replace(/\n/g,'<br>')+'</p>').join('')+'</div></article>'}catch(e){r.innerHTML='<div class="kisah-msg error">❌ '+escK(e.message||'Gagal mengambil kisah.')+'</div>'}finally{b.disabled=false;b.textContent='📖 Lihat Kisah'}}
+const INFO_API='https://api-yunn.vercel.app/islam/kisahnabi?apikey=qsr';
+const ACCOUNT_INFO_SESSION_KEY='goldword_account_info';
+let accountStatusTimer=null;
+function accountInfo(){
+  try{return JSON.parse(sessionStorage.getItem(ACCOUNT_INFO_SESSION_KEY)||'null')||{};}catch(e){return {}; }
+}
+function formatAccountDate(v){
+  const d=new Date(v);
+  if(Number.isNaN(d.getTime())) return '-';
+  return d.toLocaleString('id-ID',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'});
+}
+function formatRemaining(ms){
+  if(ms<=0)return 'Expired';
+  let sec=Math.floor(ms/1000);
+  const d=Math.floor(sec/86400);sec%=86400;
+  const h=Math.floor(sec/3600);sec%=3600;
+  const m=Math.floor(sec/60);sec%=60;
+  return `${d}h ${String(h).padStart(2,'0')}j ${String(m).padStart(2,'0')}m ${String(sec).padStart(2,'0')}d`;
+}
+function renderAccountStatus(){
+  const info=accountInfo();
+  const username=info.username||sessionStorage.getItem(LOGIN_SESSION_KEY)||'User';
+  const role=String(info.role||sessionStorage.getItem(ROLE_SESSION_KEY)||'member').toUpperCase();
+  const expiryValue=info.expires_at??info.expired_at??info.expiry_at??info.expiry??null;
+  const expiry=expiryValue?new Date(expiryValue):null;
+  const validExpiry=expiry && !Number.isNaN(expiry.getTime());
+  const durationRaw=Number(info.duration_days??info.duration??info.days??0);
+  const createdValue=info.created_at??info.createdAt??null;
+  let durationText=durationRaw>0?(durationRaw>=365&&durationRaw%365===0?(durationRaw/365)+' Tahun':durationRaw+' Hari'):'-';
+  if(durationRaw<=0 && validExpiry && createdValue){
+    const created=new Date(createdValue);
+    if(!Number.isNaN(created.getTime())){const days=Math.max(0,Math.round((expiry-created)/86400000));if(days>0)durationText=days+' Hari';}
+  }
+  const badge=document.getElementById('accountStatusBadge');
+  const remaining=document.getElementById('accountInfoRemaining');
+  const expiryEl=document.getElementById('accountInfoExpiry');
+  const note=document.getElementById('accountStatusNote');
+  const userEl=document.getElementById('accountInfoUsername');
+  const roleEl=document.getElementById('accountInfoRole');
+  const durationEl=document.getElementById('accountInfoDuration');
+  if(userEl)userEl.textContent=username;
+  if(roleEl)roleEl.textContent=role;
+  if(durationEl)durationEl.textContent=role==='ADMIN'&& !validExpiry?'Permanen':durationText;
+  if(expiryEl)expiryEl.textContent=validExpiry?formatAccountDate(expiry):'Permanen';
+  if(validExpiry){
+    const ms=expiry.getTime()-Date.now();
+    const active=ms>0;
+    if(remaining)remaining.textContent=formatRemaining(ms);
+    if(badge){badge.textContent=active?'ACTIVE':'EXPIRED';badge.style.color=active?'#5ee5b5':'#ff8797';badge.style.borderColor=active?'rgba(46,215,158,.16)':'rgba(255,79,102,.16)';badge.style.background=active?'rgba(46,215,158,.08)':'rgba(255,79,102,.08)';}
+    if(note)note.textContent=active?'Sisa waktu dihitung real-time berdasarkan waktu server yang tersimpan pada akun.':'Masa aktif akun telah berakhir.';
+  }else{
+    if(remaining)remaining.textContent=role==='ADMIN'?'∞ Permanen':'-';
+    if(badge){badge.textContent='ACTIVE';badge.style.color='#5ee5b5';}
+    if(note)note.textContent=role==='ADMIN'?'Akun admin tidak memiliki batas masa aktif.':'Detail masa aktif akan tampil jika server login mengirim data expired.';
+  }
+}
+function startAccountStatusRealtime(){
+  if(accountStatusTimer)clearInterval(accountStatusTimer);
+  renderAccountStatus();
+  accountStatusTimer=setInterval(renderAccountStatus,1000);
+}
+async function checkInfoApi(){const st=document.getElementById('infoApiStatus'),pg=document.getElementById('infoApiPing'),dot=document.getElementById('infoApiDot'),card=document.getElementById('infoApiCard'),sub=document.getElementById('infoApiStatusSub'),conn=document.getElementById('infoApiConnectionText');if(!st)return;st.textContent='CHECKING';if(sub)sub.textContent='Memeriksa koneksi ke server';if(conn)conn.textContent='Menghubungkan ke server...';if(card)card.className='info-api-card info-api-checking';dot.className='info-dot checking';const t=performance.now();try{const r=await fetch(INFO_API,{cache:'no-store'});const ping=Math.round(performance.now()-t);pg.textContent=ping;const online=r.ok;st.textContent=online?'ONLINE':'OFFLINE';if(sub)sub.textContent=online?'Layanan API berjalan normal':'Koneksi ke server terputus';if(conn)conn.textContent=online?'Koneksi server aktif • Ping terdeteksi '+ping+' ms':'Tidak dapat terhubung ke server API';dot.className='info-dot '+(online?'online':'offline');if(card)card.className='info-api-card '+(online?'info-api-online':'info-api-offline')}catch(e){pg.textContent=Math.round(performance.now()-t);st.textContent='OFFLINE';if(sub)sub.textContent='Koneksi ke server terputus';if(conn)conn.textContent='Server API tidak dapat dijangkau';dot.className='info-dot offline';if(card)card.className='info-api-card info-api-offline'}}
+function openQuran(){
+  showPage('quran');
+  renderSurahList();
+}
+
+function renderSurahList(filter=''){
+  const list = document.getElementById('surahList');
+  if(!list) return;
+  const q = filter.toLowerCase().trim();
+  list.innerHTML = '';
+  SURAH_NAMES.forEach((item,index)=>{
+    const number = index + 1;
+    if(q && !(`${number} ${item[0]} ${item[1]}`).toLowerCase().includes(q)) return;
+    const btn = document.createElement('button');
+    btn.className = 'surah-item';
+    btn.onclick = () => loadSurah(number, item[0], item[1]);
+    btn.innerHTML = `
+      <span class="surah-number">${number}</span>
+      <span class="surah-info"><b>${item[0]}</b><small>Surah ${number}</small></span>
+      <span class="surah-arabic" dir="rtl">${item[1]}</span>
+    `;
+    list.appendChild(btn);
+  });
+  if(!list.children.length) list.innerHTML = '<div class="quran-empty">Surah tidak ditemukan.</div>';
+}
+
+let quranAyahs = [];
+let quranNextIndex = 0;
+const QURAN_CHUNK_SIZE = 10;
+
+async function loadSurah(number, name, arabicName){
+  const listView=document.getElementById('quranListView');
+  const reader=document.getElementById('quranReader');
+  const content=document.getElementById('quranContent');
+  const title=document.getElementById('quranTitle');
+  const subtitle=document.getElementById('quranSubtitle');
+  listView.style.display='none'; reader.classList.add('active');
+  title.textContent=name; subtitle.textContent=`Surah ${number} • ${arabicName}`;
+  content.innerHTML='<div class="quran-loading">Memuat ayat, latin, dan terjemahan...</div>';
+  quranAyahs=[]; quranNextIndex=0;
+  try{
+    const res=await fetch(`${QURAN_API}/surah/${number}/editions/quran-uthmani,en.transliteration,id.indonesian`);
+    if(!res.ok) throw new Error('Gagal mengambil data Al-Qur’an.');
+    const json=await res.json();
+    const editions=json.data||[];
+    const arabic=editions[0]?.ayahs||[], latin=editions[1]?.ayahs||[], translation=editions[2]?.ayahs||[];
+    if(!arabic.length) throw new Error('Ayat tidak tersedia.');
+    quranAyahs=arabic.map((ayah,i)=>({
+      number:ayah.numberInSurah,text:ayah.text,
+      latin:latin[i]?.text||'',translation:translation[i]?.text||''
+    }));
+    content.innerHTML='';
+    renderNextQuranChunk();
+    window.scrollTo(0,0);
+  }catch(error){
+    content.innerHTML=`<div class="quran-empty">Gagal memuat Al-Qur’an.<br>${error.message}</div>`;
+  }
+}
+
+function renderNextQuranChunk(){
+  const content=document.getElementById('quranContent');
+  if(!content || !quranAyahs.length) return;
+  const oldMore=content.querySelector('.quran-more');
+  if(oldMore) oldMore.remove();
+  const end=Math.min(quranNextIndex+QURAN_CHUNK_SIZE,quranAyahs.length);
+  const frag=document.createDocumentFragment();
+  for(let i=quranNextIndex;i<end;i++){
+    const a=quranAyahs[i];
+    const article=document.createElement('article'); article.className='ayah';
+    article.innerHTML=`<span class="ayah-number">${a.number}</span>
+      <div class="ayah-arabic" dir="rtl">${a.text}</div>
+      ${a.latin?`<div class="ayah-latin">${a.latin}</div>`:''}
+      ${a.translation?`<div class="ayah-translation">${a.translation}</div>`:''}`;
+    frag.appendChild(article);
+  }
+  content.appendChild(frag); quranNextIndex=end;
+  if(quranNextIndex<quranAyahs.length){
+    const more=document.createElement('button'); more.className='quran-more'; more.type='button';
+    more.textContent=`Muat ayat berikutnya (${quranNextIndex}/${quranAyahs.length})`;
+    more.onclick=()=>{
+      more.disabled=true;
+      renderNextQuranChunk();
+    };
+    content.appendChild(more);
+    const progress=document.createElement('div'); progress.className='quran-progress';
+    progress.textContent=`Menampilkan ${quranNextIndex} dari ${quranAyahs.length} ayat`;
+    content.appendChild(progress);
+  }
+}
+
+function closeQuranReader(){
+  document.getElementById('quranReader')?.classList.remove('active');
+  document.getElementById('quranListView').style.display = 'block';
+  window.scrollTo(0,0);
+}
+
+function filterSurah(value){
+  renderSurahList(value);
+}
+
+
+
+function openJadwalTV(){
+  showPage('jadwaltv');
+  const input=document.getElementById('tvInput');
+  const box=document.getElementById('tvResult');
+  if(box) box.innerHTML='';
+  if(input) setTimeout(()=>input.focus(),80);
+}
+function setTV(name){
+  const input=document.getElementById('tvInput');
+  if(input){input.value=name;input.focus();}
+  loadJadwalTV();
+}
+function tvEsc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
+function tvVal(o,keys){for(const k of keys){if(o && o[k]!=null && String(o[k]).trim()) return o[k];}return '';}
+function tvTitle(o){
+  if(typeof o==='string') return o;
+  return tvVal(o,['title','judul','program','acara','name','show','program_name','event','description'])||'';
+}
+function tvTime(o){
+  if(typeof o==='string') return '';
+  return tvVal(o,['time','jam','waktu','start','start_time','mulai','startTime','schedule_time','time_start','from'])||'';
+}
+function tvChannel(o){return typeof o==='object' ? tvVal(o,['channel','channel_name','tv','stasiun','station','station_name']) : '';}
+function tvLooksLikeTime(k){return /^(\d{1,2}[:.]\d{2})(\s*[-–]\s*\d{1,2}[:.]\d{2})?$/.test(String(k).trim());}
+function tvNormalizeArray(arr){
+  if(!Array.isArray(arr)) return [];
+  return arr.map((x,i)=>{
+    if(typeof x==='string') return {time:'',title:x,_i:i};
+    if(!x || typeof x!=='object') return null;
+    return {...x,_i:i};
+  }).filter(Boolean);
+}
+function tvObjectSchedule(obj){
+  if(!obj || typeof obj!=='object' || Array.isArray(obj)) return [];
+  const out=[];
+  for(const [k,v] of Object.entries(obj)){
+    if(tvLooksLikeTime(k) && (typeof v==='string' || typeof v==='number')) out.push({time:k,title:String(v)});
+    else if(tvLooksLikeTime(k) && v && typeof v==='object') out.push({...v,time:tvTime(v)||k,title:tvTitle(v)});
+  }
+  return out;
+}
+function tvExtractSchedule(node){
+  if(!node) return [];
+  if(Array.isArray(node)){
+    let out=[];
+    for(const x of node){
+      const nested=tvExtractSchedule(x);
+      if(nested.length) out.push(...nested);
+      else if(tvTitle(x)||tvTime(x)) out.push(typeof x==='object'?{...x}:{title:String(x)});
+    }
+    return out;
+  }
+  if(typeof node==='string') return [{title:node}];
+  if(typeof node!=='object') return [];
+  for(const k of ['jadwal','schedule','schedules','programs','program','acara','events','items','list','shows']){
+    if(node[k]!=null){
+      const out=tvExtractSchedule(node[k]);
+      if(out.length) return out;
+    }
+  }
+  const byTime=tvObjectSchedule(node); if(byTime.length)return byTime;
+  if(tvTitle(node)||tvTime(node)) return [{...node}];
+  return [];
+}
+function tvFindChannel(data,wanted){
+  const q=String(wanted||'').trim().toLowerCase();
+  const seen=new Set();
+  const score=(name)=>{const n=String(name||'').toLowerCase().trim();if(!n)return -1;if(n===q)return 100;if(n.includes(q)||q.includes(n))return 80;return 0;};
+  function walk(x){
+    if(!x || typeof x!=='object' || seen.has(x)) return null;
+    seen.add(x);
+    if(Array.isArray(x)){
+      for(const item of x){
+        if(item && typeof item==='object'){
+          const c=tvChannel(item);
+          if(score(c)>0){
+            const items=tvExtractSchedule(item);
+            if(items.length)return {items,channel:c};
+          }
+        }
+      }
+      for(const item of x){const r=walk(item);if(r?.items?.length)return r;}
+      return null;
+    }
+    for(const [k,v] of Object.entries(x)){
+      if(score(k)>0){
+        const items=tvExtractSchedule(v);
+        if(items.length)return {items,channel:k};
+      }
+      if(v && typeof v==='object'){
+        const c=tvChannel(v);
+        if(score(c)>0){
+          const items=tvExtractSchedule(v);
+          if(items.length)return {items,channel:c};
+        }
+      }
+    }
+    for(const v of Object.values(x)){const r=walk(v);if(r?.items?.length)return r;}
+    return null;
+  }
+  return walk(data)||{items:[],channel:''};
+}
+function tvItems(data){return tvExtractSchedule(data);}
+function tvParse(raw){if(typeof raw==='string'){try{return JSON.parse(raw);}catch{return {__text:raw};}}return raw;}
+function tvSort(items){
+  return [...items].sort((a,b)=>{
+    const toMin=x=>{const m=String(tvTime(x)).match(/(\d{1,2})[:.](\d{2})/);return m?Number(m[1])*60+Number(m[2]):9999;};
+    return toMin(a)-toMin(b);
+  });
+}
+function tvRender(items,tv,channel=''){
+  const box=document.getElementById('tvResult'); if(!box)return;
+  items=tvSort(items).filter(x=>tvTitle(x)||tvTime(x)).filter((x,i,a)=>{
+    const key=(tvTime(x)+'|'+tvTitle(x)).toLowerCase();
+    return a.findIndex(y=>(tvTime(y)+'|'+tvTitle(y)).toLowerCase()===key)===i;
+  });
+  if(!items.length){box.innerHTML='<div class="tv-empty">Belum ada daftar acara untuk <b>'+tvEsc(tv)+'</b>.</div>';return;}
+  const head=String(channel||tv).toUpperCase();
+  box.innerHTML='<div class="tv-head"><div class="tv-head-row"><div><b>'+tvEsc(head)+'</b><small>Jadwal acara yang tersedia</small></div><span class="tv-count">'+items.length+' acara</span></div></div>'+items.map(item=>{
+    const time=tvTime(item)||'--:--', title=tvTitle(item)||'Acara TV', meta=tvVal(item,['description','desc','keterangan','episode','subtitle','genre','kategori']);
+    return '<div class="tv-item"><div class="tv-time">'+tvEsc(time)+'</div><div><div class="tv-name">'+tvEsc(title)+'</div>'+(meta?'<div class="tv-meta">'+tvEsc(meta)+'</div>':'')+'</div></div>';
+  }).join('');
+}
+async function loadJadwalTV(){
+  const input=document.getElementById('tvInput'), box=document.getElementById('tvResult'), btn=document.getElementById('tvCheckBtn');
+  const tv=(input?.value||'').trim(); if(!box)return;
+  if(!tv){box.innerHTML='<div class="tv-error">Masukkan nama TV terlebih dahulu, contoh: RCTI.</div>';input?.focus();return;}
+  if(btn){btn.disabled=true;btn.textContent='Memuat...';}
+  box.innerHTML='<div class="tv-loading">Memuat jadwal '+tvEsc(tv)+'...</div>';
+  try{
+    const base='https://api-yunn.vercel.app/info/jadwaltv?apikey=qsr';
+    const urls=[base+'&tv='+encodeURIComponent(tv),base,base+'&channel='+encodeURIComponent(tv),base+'&stasiun='+encodeURIComponent(tv)];
+    let lastErr='Jadwal tidak ditemukan.';
+    for(const url of urls){
+      try{
+        const response=await fetch(url,{method:'GET',headers:{Accept:'application/json, text/plain, */*'},cache:'no-store'});
+        const raw=await response.text(); if(!response.ok){lastErr='HTTP '+response.status;continue;}
+        const data=tvParse(raw); if(data?.status===false){lastErr=data?.message||data?.error||'API menolak permintaan.';continue;}
+        let found=tvFindChannel(data,tv), items=found.items, channel=found.channel;
+        if(!items.length) items=tvItems(data);
+        if(items.length){
+          const filtered=items.filter(x=>{const c=tvChannel(x);return !c || c.toLowerCase()===tv.toLowerCase() || c.toLowerCase().includes(tv.toLowerCase()) || tv.toLowerCase().includes(c.toLowerCase());});
+          if(filtered.length)items=filtered;
+        }
+        if(items.length){tvRender(items,tv,channel||tv);return;}
+        lastErr='Data jadwal kosong untuk '+tv+'.';
+      }catch(err){lastErr=err?.message||'Request gagal.';}
+    }
+    throw new Error(lastErr);
+  }catch(e){console.error('Jadwal TV API error:',e);box.innerHTML='<div class="tv-error">Gagal memuat jadwal.<br><small>'+tvEsc(e?.message||'Request gagal.')+'</small></div>';
+  }finally{if(btn){btn.disabled=false;btn.textContent='Lihat Jadwal';}}
+}
+document.getElementById('tvInput')?.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();loadJadwalTV();}});
+
+function openCNN(){
+  showPage('cnn');
+  loadCNN();
+}
+function cnnEsc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
+function cnnItems(data){
+  let x=data?.result ?? data?.data ?? data?.articles ?? data;
+  if(Array.isArray(x)) return x;
+  if(x && Array.isArray(x.articles)) return x.articles;
+  if(x && typeof x==='object'){
+    for(const k of Object.keys(x)) if(Array.isArray(x[k])) return x[k];
+  }
+  return [];
+}
+function cnnVal(o, keys){for(const k of keys){if(o?.[k]!=null && String(o[k]).trim()) return o[k];}return '';}
+async function loadCNN(){
+  const list=document.getElementById('cnnList'), btn=document.getElementById('cnnRefresh');
+  if(!list)return;
+  if(btn){btn.disabled=true;btn.textContent='Memuat...';}
+  list.innerHTML='<div class="cnn-loading">Memuat berita CNN Indonesia...</div>';
+  try{
+    const response=await fetch('https://api-yunn.vercel.app/berita/cnn?apikey=qsr',{method:'GET',headers:{Accept:'application/json, text/plain, */*'}});
+    const type=response.headers.get('content-type')||'';
+    const data=type.includes('application/json')?await response.json():await response.text();
+    if(!response.ok) throw new Error(typeof data==='string'?data:(data?.error||data?.message||`HTTP ${response.status}`));
+    if(data?.status===false) throw new Error(data?.error||'API berita menolak permintaan.');
+    let items=cnnItems(typeof data==='string'?JSON.parse(data):data);
+    if(!items.length) throw new Error('Berita tidak tersedia dari API.');
+    items=items.slice(0,15);
+    list.innerHTML=items.map((item,i)=>{
+      const title=cnnVal(item,['title','judul','name']) || `Berita ${i+1}`;
+      const desc=cnnVal(item,['description','desc','summary','content','isi']);
+      const image=cnnVal(item,['image','thumbnail','thumb','image_url','urlToImage','gambar']);
+      const link=cnnVal(item,['url','link','href']);
+      const date=cnnVal(item,['publishedAt','published_at','date','tanggal','time']);
+      const category=cnnVal(item,['category','kategori','channel']) || 'CNN Indonesia';
+      const inner=`${image?`<img class="cnn-thumb" src="${cnnEsc(image)}" alt="" loading="lazy" onerror="this.style.display='none'">`:''}<div class="cnn-meta"><span>${cnnEsc(category)}</span>${date?`<span>• ${cnnEsc(date)}</span>`:''}</div><h3 class="cnn-title">${cnnEsc(title)}</h3>${desc?`<p class="cnn-desc">${cnnEsc(String(desc).replace(/<[^>]*>/g,'').slice(0,180))}${String(desc).length>180?'…':''}</p>`:''}`;
+      return link?`<a class="cnn-card" href="${cnnEsc(link)}" target="_blank" rel="noopener noreferrer">${inner}</a>`:`<article class="cnn-card">${inner}</article>`;
+    }).join('');
+  }catch(e){
+    console.error('CNN API error:',e);
+    list.innerHTML=`<div class="cnn-error">Gagal memuat berita.<br>${cnnEsc(e?.message||'Request gagal.')}</div>`;
+  }finally{
+    if(btn){btn.disabled=false;btn.textContent='↻ Muat ulang';}
+  }
+}
+
+function openNikCheck(){
+  showPage('nik');
+  document.getElementById('nikInput')?.focus();
+}
+function escNik(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
+function renderNikResult(data){
+  const r=data?.result, box=document.getElementById('nikResult');
+  if(!box) return;
+  if(!r || typeof r!=='object'){box.innerHTML='<div class="nik-error">Data NIK tidak ditemukan.</div>';return;}
+  const fields=[['Jenis Kelamin',r.kelamin],['Tanggal Lahir',r.lahir_lengkap||r.lahir],['Provinsi',r.provinsi?.nama],['Kabupaten/Kota',r.kotakab?.nama],['Kecamatan',r.kecamatan?.nama],['Kode Wilayah',r.kode_wilayah],['Nomor Urut',r.nomor_urut],['Usia',r.tambahan?.usia],['Kategori Usia',r.tambahan?.kategori_usia]].filter(x=>x[1]!=null&&String(x[1]).trim());
+  box.innerHTML='<div class="nik-success">✓ Data NIK ditemukan</div><div class="nik-grid">'+fields.map(x=>`<div class="nik-field"><small>${escNik(x[0])}</small><b>${escNik(x[1])}</b></div>`).join('')+'</div>';
+}
+async function checkNik(){
+  const input=document.getElementById('nikInput'), result=document.getElementById('nikResult'), btn=document.getElementById('nikCheckBtn');
+  if(!input||!result||!btn)return;
+  const nik=input.value.replace(/\D/g,'').slice(0,16); input.value=nik;
+  if(nik.length!==16){result.innerHTML='<div class="nik-error">NIK harus terdiri dari 16 angka.</div>';return;}
+  btn.disabled=true; btn.textContent='Memeriksa...'; result.textContent='Memeriksa data NIK...';
+  try{
+    const response=await fetch(`https://api-yunn.vercel.app/tools/nik?apikey=qsr&nik=${encodeURIComponent(nik)}`,{method:'GET',headers:{Accept:'application/json, text/plain, */*'}});
+    const type=response.headers.get('content-type')||'';
+    const data=type.includes('application/json')?await response.json():await response.text();
+    if(!response.ok) throw new Error(typeof data==='string'?data:(data?.message||data?.error||`HTTP ${response.status}`));
+    if(data?.status===false) throw new Error(data?.error||'API menolak permintaan.');
+    if(typeof data==='string'){try{renderNikResult(JSON.parse(data));}catch{result.innerHTML='<div class="nik-error">'+escNik(data)+'</div>';}}else renderNikResult(data);
+  }catch(e){result.innerHTML='<div class="nik-error">Gagal memproses NIK: '+escNik(e?.message||'Request gagal.')+'</div>';}
+  finally{btn.disabled=false;btn.textContent='Cek NIK';}
+}
+
+
+/* === Login + Supabase user database === */
+const SUPABASE_URL = 'https://iorfusrjdyxsejmsfgnf.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_ZEKQB1mHEP3a3LlmuJjicw_ED6DPrtb';
+const LOGIN_SESSION_KEY = 'goldword_login';
+const ROLE_SESSION_KEY = 'goldword_role';
+let supabaseAuthClient = null;
+
+// Google OAuth memakai Supabase Auth.
+// Catatan: halaman harus di-host melalui HTTP/HTTPS (bukan dibuka langsung sebagai file://),
+// dan URL callback/domain harus sudah didaftarkan di Supabase + Google Cloud.
+try{
+  if(!window.supabase?.createClient){
+    console.warn('Supabase JS belum termuat.');
+  }else{
+    supabaseAuthClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY,
+      {
+        auth:{
+          persistSession:true,
+          autoRefreshToken:true,
+          detectSessionInUrl:true,
+          flowType:'pkce'
+        }
+      }
+    );
+  }
+}catch(e){ console.warn('Supabase Auth client gagal dibuat:', e); }
+
+async function supabaseRPC(fn, body={}){
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/${fn}`, {
+    method:'POST',
+    headers:{
+      apikey: SUPABASE_PUBLISHABLE_KEY,
+      Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+      'Content-Type':'application/json',
+      Accept:'application/json'
+    },
+    body:JSON.stringify(body),
+    cache:'no-store'
+  });
+  const text=await res.text();
+  let data={};
+  try{data=text?JSON.parse(text):{};}catch{data=text;}
+  if(!res.ok){
+    const msg=typeof data==='string'?data:(data?.message||data?.hint||data?.details||data?.error||`HTTP ${res.status}`);
+    throw new Error(msg);
+  }
+  return data;
+}
+
+function setAdminNav(isAdmin){
+  const adminBtn=document.getElementById('adminNavBtn');
+  if(adminBtn) adminBtn.classList.add('admin-visible');
+  const geminiKeyBtn=document.getElementById('geminiApiKeyBtn');
+  if(geminiKeyBtn) geminiKeyBtn.classList.toggle('admin-visible', !!isAdmin);
+}
+function isCurrentAdmin(){ return sessionStorage.getItem(ROLE_SESSION_KEY)==='admin'; }
+function finishLogin(username, role='member', userInfo=null){
+  sessionStorage.setItem(LOGIN_SESSION_KEY, username || 'User');
+  sessionStorage.setItem(ROLE_SESSION_KEY, role || 'member');
+  if(userInfo && typeof userInfo==='object'){
+    try{ sessionStorage.setItem('goldword_account_info', JSON.stringify(userInfo)); }catch(e){}
+  }
+  setAdminNav(role==='admin');
+  renderAccountStatus();
+  document.body.classList.remove('login-locked');
+  const intro=document.getElementById('introScreen');
+  if(intro){intro.classList.add('intro-hide');setTimeout(()=>{intro.style.display='none';},300);}
+  const screen=document.getElementById('loginScreen');
+  if(screen){screen.classList.add('hide');screen.classList.remove('login-open');setTimeout(()=>{screen.style.display='none';},380);}
+  const logoutBtn=document.getElementById('topLogout');
+  if(logoutBtn) logoutBtn.classList.add('show');
+}
+
+async function doLogin(){
+  const usernameEl=document.getElementById('loginUsername');
+  const passwordEl=document.getElementById('loginPassword');
+  const error=document.getElementById('loginError');
+  const submit=document.getElementById('loginSubmit');
+  if(!usernameEl||!passwordEl||!error)return false;
+  const username=usernameEl.value.trim();
+  const password=passwordEl.value;
+  error.textContent='';
+  if(!username){error.textContent='Username wajib diisi.';usernameEl.focus();return false;}
+  if(!password){error.textContent='Password wajib diisi.';passwordEl.focus();return false;}
+  if(submit){submit.disabled=true;submit.textContent='Checking...';}
+  try{
+    const result=await supabaseRPC('login_user',{p_username:username,p_password:password});
+    const user=Array.isArray(result)?result[0]:result;
+    if(!user?.username) throw new Error('Username atau password salah.');
+    finishLogin(user.username,user.role||'member',user);
+    return true;
+  }catch(e){
+    console.error('Login error:',e);
+    error.textContent='Login gagal: '+(e?.message||'Username atau password salah.');
+    return false;
+  }finally{
+    if(submit){submit.disabled=false;submit.textContent='Sign In';}
+  }
+}
+
+function toggleLoginPassword(){
+  const input=document.getElementById('loginPassword');
+  const btn=document.querySelector('.login-toggle');
+  if(!input)return;
+  input.type=input.type==='password'?'text':'password';
+  if(btn)btn.textContent=input.type==='password'?'◉':'◎';
+}
+
+async function adminCreateUser(){
+  if(!isCurrentAdmin()){showPage('home');return;}
+  const username=document.getElementById('adminUsername')?.value.trim();
+  const password=document.getElementById('adminUserPassword')?.value||'';
+  const role=document.getElementById('adminRole')?.value||'member';
+  const durationDays=Number(document.getElementById('adminDuration')?.value||'0');
+  const adminPassword=document.getElementById('adminPasswordConfirm')?.value||'';
+  const msg=document.getElementById('adminMsg');
+  if(!username||!password||!adminPassword){if(msg)msg.textContent='Username, password user, dan password admin wajib diisi.';return;}
+  if(username.toLowerCase()==='admin'){if(msg)msg.textContent='Username admin utama tidak boleh dibuat ulang.';return;}
+  msg.textContent='Menyimpan user...';
+  try{
+    await supabaseRPC('admin_create_user',{p_admin_username:sessionStorage.getItem(LOGIN_SESSION_KEY),p_admin_password:adminPassword,p_username:username,p_password:password,p_role:role});
+    await supabaseRPC('admin_set_user_expiry',{p_admin_username:sessionStorage.getItem(LOGIN_SESSION_KEY),p_admin_password:adminPassword,p_target_username:username,p_duration_days:durationDays});
+    msg.textContent='User '+username+' berhasil dibuat. Durasi: '+(durationDays>0?durationDays+' hari':'Permanen')+'.';
+    document.getElementById('adminUsername').value='';
+    document.getElementById('adminUserPassword').value='';
+    await adminLoadUsers(adminPassword);
+  }catch(e){msg.textContent='Gagal: '+(e?.message||'Tidak dapat membuat user.');}
+}
+
+async function adminLoadUsers(knownPassword=''){
+  if(!isCurrentAdmin()){showPage('home');return;}
+  let adminPassword=knownPassword;
+  if(!adminPassword) adminPassword=prompt('Masukkan password admin:');
+  if(!adminPassword)return;
+  const box=document.getElementById('adminUsers');
+  if(box)box.innerHTML='<div class="admin-note">Memuat user...</div>';
+  try{
+    const users=await supabaseRPC('admin_list_users_with_expiry',{p_admin_username:sessionStorage.getItem(LOGIN_SESSION_KEY),p_admin_password:adminPassword});
+    const list=Array.isArray(users)?users:[];
+    if(!list.length){box.innerHTML='<div class="admin-note">Belum ada user.</div>';return;}
+    box.innerHTML=list.map(u=>{
+      const role=String(u.role||'member');
+      const canDelete=String(u.username)!=='admin';
+      const expiry=u.expires_at?new Date(u.expires_at):null;
+      const expiryText=expiry&&!Number.isNaN(expiry.getTime())?'Berakhir: '+expiry.toLocaleString('id-ID',{dateStyle:'medium',timeStyle:'short'}):(u.role==='admin'?'Permanen':'Durasi belum disetel');
+      return `<div class="admin-user"><div class="admin-user-main"><div class="admin-user-name">${escAdmin(u.username)}</div><div class="admin-user-meta">${u.active?'Aktif':'Nonaktif'} • <span class="admin-badge ${role==='admin'?'admin':''}">${role.toUpperCase()}</span> • ${escAdmin(expiryText)}</div></div>${canDelete?`<button class="action admin-danger" type="button" onclick="adminDeleteUser('${escAdminAttr(u.username)}')">Hapus</button>`:''}</div>`;
+    }).join('');
+  }catch(e){box.innerHTML='<div class="admin-note" style="color:#ff8b98">Gagal: '+escAdmin(e?.message||'Request gagal.')+'</div>';}
+}
+function escAdmin(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
+function escAdminAttr(v){return String(v??'').replace(/\\/g,'\\\\').replace(/'/g,"\\'");}
+async function adminDeleteUser(username){
+  if(!isCurrentAdmin())return;
+  const adminPassword=prompt('Masukkan password admin untuk menghapus '+username+':');
+  if(!adminPassword)return;
+  try{
+    await supabaseRPC('admin_delete_user',{p_admin_username:sessionStorage.getItem(LOGIN_SESSION_KEY),p_admin_password:adminPassword,p_target_username:username});
+    await adminLoadUsers(adminPassword);
+  }catch(e){alert('Gagal menghapus user: '+(e?.message||'Request gagal.'));}
+}
+
+/* === JADWAL SHOLAT REAL-TIME === */
+const PRAYER_FALLBACK = {lat:-7.426, lon:111.022, name:'Sragen, Jawa Tengah'};
+const PRAYER_ITEMS = [
+  ['Fajr','Subuh','☾'],
+  ['Dhuhr','Dzuhur','☀'],
+  ['Asr','Ashar','◉'],
+  ['Maghrib','Maghrib','◒'],
+  ['Isha','Isya','☽']
+];
+let prayerTimesToday = [];
+let prayerLocationName = '';
+
+function prayerTodayDate(){
+  const d=new Date();
+  const dd=String(d.getDate()).padStart(2,'0');
+  const mm=String(d.getMonth()+1).padStart(2,'0');
+  return `${dd}-${mm}-${d.getFullYear()}`;
+}
+function prayerTimeToMinutes(value){
+  const m=String(value||'').match(/(\d{1,2}):(\d{2})/);
+  return m ? Number(m[1])*60+Number(m[2]) : NaN;
+}
+function cleanPrayerTime(value){
+  const m=String(value||'').match(/(\d{1,2}):(\d{2})/);
+  return m ? `${m[1].padStart(2,'0')}:${m[2]}` : '--:--';
+}
+function getPrayerCoords(){
+  return new Promise(resolve=>{
+    if(!navigator.geolocation){resolve(PRAYER_FALLBACK);return;}
+    navigator.geolocation.getCurrentPosition(
+      pos=>resolve({lat:pos.coords.latitude,lon:pos.coords.longitude,name:'Lokasi perangkat'}),
+      ()=>resolve(PRAYER_FALLBACK),
+      {enableHighAccuracy:false,timeout:5000,maximumAge:3600000}
+    );
+  });
+}
+async function loadRealtimePrayerTimes(){
+  const locEl=document.getElementById('prayerLocation');
+  try{
+    const loc=await getPrayerCoords();
+    prayerLocationName=loc.name;
+    if(locEl)locEl.textContent=`Jadwal sholat • ${loc.name}`;
+    const url=`https://api.aladhan.com/v1/timings/${prayerTodayDate()}?latitude=${encodeURIComponent(loc.lat)}&longitude=${encodeURIComponent(loc.lon)}&method=20`;
+    const res=await fetch(url,{cache:'no-store'});
+    if(!res.ok)throw new Error('Gagal mengambil jadwal sholat');
+    const json=await res.json();
+    const t=json?.data?.timings;
+    if(!t)throw new Error('Data jadwal tidak tersedia');
+    prayerTimesToday=PRAYER_ITEMS.map(([key,name,icon])=>({key,name,icon,time:cleanPrayerTime(t[key]),minutes:prayerTimeToMinutes(t[key])}));
+    renderPrayerTimes();
+  }catch(e){
+    console.error('Prayer time error:',e);
+    if(locEl)locEl.textContent='Jadwal sholat • Sragen, Jawa Tengah';
+    prayerTimesToday=[];
+    const body=document.getElementById('prayerTableBody');
+    if(body)body.innerHTML='<tr><td colspan="3" style="text-align:center;color:#ff9aa5">Jadwal gagal dimuat. Coba refresh.</td></tr>';
+  }
+}
+function renderPrayerTimes(){
+  const body=document.getElementById('prayerTableBody');
+  if(!body||!prayerTimesToday.length)return;
+  const now=new Date();
+  const nowMin=now.getHours()*60+now.getMinutes()+now.getSeconds()/60;
+  let nextIndex=prayerTimesToday.findIndex(p=>p.minutes>nowMin);
+  if(nextIndex<0)nextIndex=0;
+  body.innerHTML=prayerTimesToday.map((p,i)=>{
+    const passed=(i!==nextIndex && ((nextIndex>0 && i<nextIndex) || nextIndex===0));
+    const isNext=i===nextIndex;
+    const cls=isNext?' class="prayer-active"':'';
+    const badgeClass=isNext?'next':'passed';
+    const badge=isNext?'Berikutnya':(passed?'Selesai':'Berikutnya');
+    return `<tr${cls}><td><span class="prayer-name"><i>${p.icon}</i>${p.name}</span></td><td>${p.time}</td><td><span class="prayer-badge ${badgeClass}">${badge}</span></td></tr>`;
+  }).join('');
+  const next=prayerTimesToday[nextIndex];
+  const label=document.getElementById('nextPrayerLabel');
+  const time=document.getElementById('nextPrayerTime');
+  if(label)label.textContent=`Menuju ${next.name}`;
+  if(time)time.textContent=next.time;
+}
+(function startRealtimePrayerClock(){
+  setInterval(()=>{ if(prayerTimesToday.length)renderPrayerTimes(); },1000);
+  setInterval(()=>{ loadRealtimePrayerTimes(); },30*60*1000);
+  loadRealtimePrayerTimes();
+})();
+
+function logout(){
+  sessionStorage.removeItem(LOGIN_SESSION_KEY);
+  sessionStorage.removeItem(ROLE_SESSION_KEY);
+  sessionStorage.removeItem('goldword_account_info');
+  setAdminNav(false);
+  const topLogout=document.getElementById('topLogout');
+  if(topLogout) topLogout.classList.remove('show');
+  const screen=document.getElementById('loginScreen');
+  if(screen){screen.classList.remove('hide','login-open');screen.style.display='none';}
+  const intro=document.getElementById('introScreen');
+  if(intro){intro.classList.remove('intro-hide');intro.style.display='grid';}
+  document.body.classList.add('login-locked');
+  const user=document.getElementById('loginUsername');
+  const pass=document.getElementById('loginPassword');
+  const error=document.getElementById('loginError');
+  if(user) user.value='';
+  if(pass) pass.value='';
+  if(error) error.textContent='';
+  user?.focus();
+}
+
+function openAMLogin(){
+  const intro=document.getElementById('introScreen');
+  const login=document.getElementById('loginScreen');
+  if(intro)intro.classList.add('intro-hide');
+  if(login){login.classList.add('login-open');login.style.display='grid';}
+  setTimeout(()=>document.getElementById('loginUsername')?.focus(),180);
+}
+
+(async function initLogin(){
+  const saved=sessionStorage.getItem(LOGIN_SESSION_KEY);
+  const role=sessionStorage.getItem(ROLE_SESSION_KEY)||'member';
+  if(saved){let account=null;try{account=JSON.parse(sessionStorage.getItem('goldword_account_info')||'null')}catch(e){} finishLogin(saved,role,account);return;}
+  const user=document.getElementById('loginUsername');
+  const pass=document.getElementById('loginPassword');
+  const submit=document.getElementById('loginSubmit');
+  submit?.addEventListener('click',e=>{e.preventDefault();doLogin();});
+  user?.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();pass?.focus();}});
+  pass?.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();doLogin();}});
+})();
+startAccountStatusRealtime();
+
+
+/* Temp Mail detected link/code helpers */
+
+
+/* === TEMP MAIL / TEMPMailPortal === */
+const TEMPPMAIL_API = 'https://api.tempmailportal.com';
+let tempMailAddress = '';
+let tempMailToken = '';
+let tempMailAutoRefresh = null;
+
+function openTempMail(){ showPage('tempmail'); }
+function tempMailSafe(v){return String(v??'').replace(/[&<>"']/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[s]));}
+function setTempStatus(t){const e=document.getElementById('tempMailStatus');if(e)e.textContent=t||'';}
+function setTempBusy(id,busy,label){const b=document.getElementById(id);if(!b)return;b.disabled=busy;if(busy){b.dataset.oldText=b.innerHTML;b.innerHTML='<span class="tm-spin">↻</span> '+label;}else if(b.dataset.oldText){b.innerHTML=b.dataset.oldText;}}
+function tempMailRandom(len=10){const chars='abcdefghijklmnopqrstuvwxyz0123456789';let out='';for(let i=0;i<len;i++)out+=chars[Math.floor(Math.random()*chars.length)];return out;}
+function tempMailRenderEmpty(title='Inbox kosong',sub='Belum ada pesan masuk. Tekan Refresh Inbox untuk mengecek lagi.'){const l=document.getElementById('tempInboxList');if(l)l.innerHTML=`<div class="tempmail-empty"><div>⌁</div><b>${tempMailSafe(title)}</b><small>${tempMailSafe(sub)}</small></div>`;}
+function tempMailFormatDate(v){if(!v)return '';try{return new Date(v).toLocaleString('id-ID',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});}catch{return String(v)}}
+async function tempPortalFetch(url,opts={}){
+  const r=await fetch(url,{...opts,headers:{Accept:'application/json',...(opts.headers||{})},cache:'no-store'});
+  let j=null;try{j=await r.json();}catch{}
+  if(!r.ok) throw new Error(j?.error||j?.detail||j?.message||`HTTP ${r.status}`);
+  return j;
+}
+async function createTempEmail(){
+  clearInterval(tempMailAutoRefresh);tempMailAutoRefresh=null;
+  setTempBusy('tempCreateBtn',true,'Membuat...');setTempStatus('Membuat inbox aman...');
+  try{
+    const j=await tempPortalFetch(TEMPPMAIL_API+'/api/inbox',{method:'POST'});
+    if(!j?.address||!j?.token)throw new Error('Respons server tidak lengkap.');
+    tempMailAddress=j.address;tempMailToken=j.token;
+    const emailEl=document.getElementById('tempEmailAddress');if(emailEl)emailEl.textContent=tempMailAddress;
+    const copyBtn=document.getElementById('tempCopyBtn');if(copyBtn)copyBtn.disabled=false;
+    document.getElementById('tempInboxCount').textContent='0 pesan';
+    tempMailRenderEmpty('Inbox siap','Alamat aktif. Menunggu pesan masuk...');
+    setTempStatus('Email aktif ✓ • Tekan Refresh atau tunggu otomatis.');
+    await checkTempInbox(true);
+    tempMailAutoRefresh=setInterval(()=>{if(tempMailToken)checkTempInbox(true)},10000);
+  }catch(e){
+    tempMailAddress='';tempMailToken='';
+    const emailEl=document.getElementById('tempEmailAddress');if(emailEl)emailEl.textContent='Gagal membuat email';
+    setTempStatus('Gagal membuat email: '+(e?.message||'Request gagal.'));
+    console.error('TempMailPortal create:',e);
+  }finally{setTempBusy('tempCreateBtn',false);}
+}
+async function checkTempInbox(silent=false){
+  if(!tempMailToken){if(!silent)setTempStatus('Buat email terlebih dahulu.');return;}
+  if(!silent)setTempBusy('tempInboxBtn',true,'Refresh...');
+  try{
+    const mails=await tempPortalFetch(TEMPPMAIL_API+'/api/messages',{headers:{Authorization:'Bearer '+tempMailToken}});
+    const list=Array.isArray(mails)?mails:[];
+    const count=document.getElementById('tempInboxCount');if(count)count.textContent=`${list.length} pesan`;
+    const box=document.getElementById('tempInboxList');
+    if(!list.length){tempMailRenderEmpty('Belum ada pesan','Inbox kosong. Coba Refresh lagi setelah pesan dikirim.');}
+    else if(box){
+      box.innerHTML=list.map(m=>{
+        const from=m?.fromName?`${m.fromName} <${m.from||''}>`:m?.from||'Pengirim tidak diketahui';
+        const subject=m?.subject||'Tanpa subjek';
+        const intro=m?.intro||'Klik pesan untuk melihat detail.';
+        return `<button class="tempmail-mail" type="button" onclick="openTempMessage('${tempMailSafe(m?.id||'')}')"><span class="tm-mail-icon">●</span><span class="tm-mail-main"><b>${tempMailSafe(subject)}</b><small>${tempMailSafe(from)}</small><p>${tempMailSafe(intro)}</p></span><span class="tm-mail-date">${tempMailSafe(tempMailFormatDate(m?.date))}</span></button>`;
+      }).join('');
+    }
+    if(!silent)setTempStatus(`Inbox diperbarui ✓ • ${list.length} pesan ditemukan.`);
+  }catch(e){if(!silent)setTempStatus('Gagal refresh inbox: '+(e?.message||'Request gagal.'));console.error('TempMailPortal inbox:',e);}
+  finally{if(!silent)setTempBusy('tempInboxBtn',false);}
+}
+let tempMailMessageLink = '';
+let tempMailMessageCodes = [];
+function tempMailMessageSource(m){
+  const html=String(m?.html||m?.bodyHtml||m?.htmlBody||'');
+  let text=String(m?.text||m?.intro||'');
+  if(html){
+    try{
+      const doc=new DOMParser().parseFromString(html,'text/html');
+      text += '\n' + (doc.body?.textContent||'');
+    }catch{}
+  }
+  return text;
+}
+function extractTempMessageLink(m){
+  const html=String(m?.html||m?.bodyHtml||m?.htmlBody||'');
+  if(html){
+    try{
+      const doc=new DOMParser().parseFromString(html,'text/html');
+      const a=[...doc.querySelectorAll('a[href]')];
+      const preferred=a.find(x=>/sign in|login|verify|verification|alight/i.test((x.textContent||'')+' '+x.getAttribute('href')));
+      if(preferred?.href && /^https?:\/\//i.test(preferred.href)) return preferred.href;
+      const any=a.find(x=>/^https?:\/\//i.test(x.getAttribute('href')||''));
+      if(any) return any.href;
+    }catch{}
+  }
+  const text=String(m?.text||m?.intro||'');
+  const match=text.match(/https?:\/\/[^\s<>'"\)]+/i);
+  return match?match[0].replace(/[.,;]+$/,''):'';
+}
+function extractTempMessageCodes(m){
+  const text=tempMailMessageSource(m);
+  const found=[];
+  const add=(v)=>{v=String(v||'').trim();if(v && !found.includes(v))found.push(v)};
+  // Strong signal: a code/OTP/verification label followed by 4-8 digits or short alphanumeric token.
+  const contextual=/(?:verification|verify|confirmation|security|otp|one[- ]?time|access|login|sign[ -]?in|activation)\s*(?:code|kode|pin)?\s*(?:is|:|=|-)?\s*([A-Z0-9]{4,8})\b/gi;
+  let m1; while((m1=contextual.exec(text))!==null)add(m1[1]);
+  const labelled=/(?:code|kode|otp|pin)\s*(?:is|:|=|-)?\s*([A-Z0-9]{4,8})\b/gi;
+  let m2; while((m2=labelled.exec(text))!==null)add(m2[1]);
+  // Numeric OTPs are common; ignore likely years and ordinary long numbers.
+  const numeric=text.match(/\b\d{4,8}\b/g)||[];
+  numeric.forEach(v=>{if(!/^19\d{2}$|^20\d{2}$/.test(v)) add(v);});
+  // Common 6-character/8-character verification token presented on its own line.
+  const lines=text.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+  lines.forEach(line=>{const hit=line.match(/^([A-Z0-9]{4,8})$/i);if(hit)add(hit[1]);});
+  return found.slice(0,8);
+}
+async function openTempMessage(id){
+  if(!id||!tempMailToken)return;
+  try{
+    const m=await tempPortalFetch(TEMPPMAIL_API+'/api/messages/'+encodeURIComponent(id),{headers:{Authorization:'Bearer '+tempMailToken}});
+    const from=m?.fromName?`${m.fromName} <${m.from||''}>`:m?.from||'Pengirim tidak diketahui';
+    const text=m?.text||m?.intro||'Tidak ada isi teks.';
+    const subject=m?.subject||'Tanpa subjek';
+    tempMailMessageLink=extractTempMessageLink(m);
+    tempMailMessageCodes=extractTempMessageCodes(m);
+    const modal=document.getElementById('tempMailModal');
+    const linkBox=document.getElementById('tempModalLinkBox');
+    const codeBox=document.getElementById('tempModalCodeBox');
+    if(modal){
+      document.getElementById('tempModalSubject').textContent=subject;
+      document.getElementById('tempModalFrom').textContent=from;
+      document.getElementById('tempModalBody').textContent=text;
+      if(linkBox){linkBox.hidden=!tempMailMessageLink;}
+      const lt=document.getElementById('tempModalLinkText');if(lt)lt.textContent=tempMailMessageLink?'Link siap disalin.':'Link tidak ditemukan di isi email.';
+      if(codeBox){codeBox.hidden=!tempMailMessageCodes.length;}
+      const codeText=document.getElementById('tempModalCodeText');if(codeText)codeText.textContent=tempMailMessageCodes.length?`${tempMailMessageCodes.length} kode terdeteksi • tekan kode untuk menyalin.`:'Kode tidak ditemukan di isi email.';
+      const codesEl=document.getElementById('tempModalCodes');
+      if(codesEl){codesEl.innerHTML=tempMailMessageCodes.map((code,i)=>`<button class="tm-copy-code" type="button" data-code-index="${i}" onclick="copyTempMessageCode(${i},this)">${tempMailSafe(code)}</button>`).join('');}
+      modal.classList.add('show');
+    }
+  }catch(e){setTempStatus('Gagal membuka pesan: '+(e?.message||'Request gagal.'));}
+}
+function closeTempMessage(){document.getElementById('tempMailModal')?.classList.remove('show');tempMailMessageLink='';tempMailMessageCodes=[];}
+async function copyTempMessageLink(){
+  if(!tempMailMessageLink){setTempStatus('Link tidak ditemukan di email.');return;}
+  try{
+    await navigator.clipboard.writeText(tempMailMessageLink);
+    const b=document.getElementById('tempCopyLinkBtn');if(b){const old=b.textContent;b.textContent='✓ Copied';setTimeout(()=>b.textContent=old,1400);}
+    setTempStatus('Link dari email berhasil disalin ✓');
+  }catch(e){
+    const ta=document.createElement('textarea');ta.value=tempMailMessageLink;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');setTempStatus('Link dari email berhasil disalin ✓');}catch{setTempStatus('Tidak bisa menyalin link otomatis.');}ta.remove();
+  }
+}
+async function copyTempMessageCode(index,button){
+  const code=tempMailMessageCodes?.[index];
+  if(!code)return;
+  try{
+    await navigator.clipboard.writeText(code);
+  }catch(e){
+    const ta=document.createElement('textarea');ta.value=code;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch{setTempStatus('Tidak bisa menyalin kode otomatis.');}ta.remove();
+  }
+  if(button){const old=button.textContent;button.textContent='✓ '+code;button.classList.add('copied');setTimeout(()=>{button.textContent=old;button.classList.remove('copied')},1400);}
+  setTempStatus('Kode '+code+' berhasil disalin ✓');
+}
+async function copyTempEmail(){
+  if(!tempMailAddress){setTempStatus('Belum ada email untuk disalin.');return;}
+  try{await navigator.clipboard.writeText(tempMailAddress);setTempStatus('Alamat email disalin ✓');}
+  catch(e){setTempStatus('Tidak bisa menyalin otomatis.');}
+}
+
+/* === GEMINI AI === */
+const GEMINI_MODEL = 'gemini-3.7-flash';
+const GEMINI_KEY_STORAGE = 'am_premiums_gemini_api_key';
+const GEMINI_DEFAULT_KEY = '';
+function getGeminiApiKey(){ return localStorage.getItem(GEMINI_KEY_STORAGE) || GEMINI_DEFAULT_KEY; }
+function setGeminiApiKey(){
+  const current=getGeminiApiKey();
+  const key=prompt('Masukkan Gemini API Key baru:', current);
+  if(key===null)return false;
+  const clean=key.trim();
+  if(!clean){localStorage.removeItem(GEMINI_KEY_STORAGE);return false;}
+  localStorage.setItem(GEMINI_KEY_STORAGE,clean);
+  const status=document.getElementById('aiStatus');
+  if(status)status.textContent='API key Gemini tersimpan ✓';
+  return true;
+}
+let geminiHistory = [];
+
+function openGeminiAI(){
+  showPage('geminiai');
+  setTimeout(()=>document.getElementById('aiInput')?.focus(),120);
+}
+function addAIMessage(text,type){
+  const chat=document.getElementById('aiChat'); if(!chat)return;
+  const div=document.createElement('div'); div.className='ai-msg '+type; div.textContent=text;
+  chat.appendChild(div); chat.scrollTop=chat.scrollHeight;
+}
+async function sendGeminiAI(){
+  const input=document.getElementById('aiInput'); const btn=document.getElementById('aiSend'); const status=document.getElementById('aiStatus');
+  if(!input||!btn)return;
+  const text=input.value.trim(); if(!text)return;
+  addAIMessage(text,'user'); input.value=''; btn.disabled=true; if(status)status.textContent='Gemini sedang mengetik...';
+  try{
+    const apiKey=getGeminiApiKey();
+    if(!apiKey){
+      addAIMessage('Gemini belum dikonfigurasi oleh admin.','bot');
+      return;
+    }
+    const contents=[...geminiHistory,{role:'user',parts:[{text}]}];
+    const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${encodeURIComponent(apiKey)}`,{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({contents, generationConfig:{temperature:.7,maxOutputTokens:1024}})
+    });
+    const j=await r.json();
+    if(!r.ok) throw new Error(j?.error?.message||`HTTP ${r.status}`);
+    const reply=j?.candidates?.[0]?.content?.parts?.map(p=>p.text||'').join('').trim();
+    if(!reply) throw new Error('Gemini tidak memberikan jawaban.');
+    geminiHistory.push({role:'user',parts:[{text}]},{role:'model',parts:[{text:reply}]});
+    if(geminiHistory.length>20) geminiHistory=geminiHistory.slice(-20);
+    addAIMessage(reply,'bot');
+  }catch(e){
+    console.error('Gemini error:',e);
+    const msg=e?.message||'Request gagal.';
+    addAIMessage('Gagal menghubungi Gemini: '+msg,'bot');
+    if(/HTTP (400|401|403)|API key|API_KEY_INVALID|invalid.*key|permission/i.test(msg)){
+      setTimeout(()=>setGeminiApiKey(),150);
+    }
+  }finally{
+    btn.disabled=false; if(status)status.textContent=''; input.focus();
+  }
+}
+(function initGeminiInput(){
+  const input=document.getElementById('aiInput');
+  input?.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendGeminiAI();}});
+})();
+
+async function openGempa(){
+  showPage('gempa');
+  loadGempa();
+}
+function gempaValue(obj, keys){
+  for(const k of keys){ if(obj && obj[k]!=null && obj[k]!== '') return obj[k]; }
+  return '-';
+}
+function gempaSafe(v){
+  return String(v ?? '-').replace(/[&<>"']/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[s]));
+}
+async function loadGempa(){
+  const el=document.getElementById('gempaContent');
+  if(!el)return;
+  el.innerHTML='<div class="gempa-card"><div class="gempa-head"><div class="gempa-brand"><div class="gempa-brand-icon">🌋</div><div><b>Memuat InfoGempa</b><small>Mengambil data terbaru BMKG...</small></div></div></div></div>';
+  try{
+    const r=await fetch('https://data.bmkg.go.id/DataMKG/TEWS/autogempa.json',{cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const j=await r.json();
+    const d=j.result||j.data||j;
+
+    // API BMKG bisa mengirim gempa terbaru sebagai object maupun array.
+    let g=d?.Infogempa?.gempa||d?.gempa||d?.Infogempa||d;
+    if(Array.isArray(g)) g=g[0];
+    if(!g||typeof g!=='object'||(!g.Magnitude&&!g.magnitude&&!g.Wilayah&&!g.wilayah))
+      throw new Error('Data gempa tidak ditemukan');
+
+    const v=(...k)=>{
+      for(const x of k) if(g?.[x]!=null && g[x]!=='') return g[x];
+      return '-';
+    };
+    const tanggal=v('Tanggal','tanggal');
+    const jam=v('Jam','jam');
+    const waktu=(tanggal!=='-'&&jam!=='-')?`${tanggal} • ${jam}`:v('DateTime','Waktu','datetime');
+    const mag=v('Magnitude','magnitude','Mag','mag');
+    const wilayah=v('Wilayah','wilayah','Lokasi','lokasi');
+    const kedalaman=v('Kedalaman','kedalaman','Depth','depth');
+    const lintang=v('Lintang','lintang');
+    const bujur=v('Bujur','bujur');
+    const koordinat=v('Coordinates','coordinates','Koordinat','koordinat');
+    const potensi=v('Potensi','potensi');
+    const dirasakan=v('Dirasakan','dirasakan');
+
+    el.innerHTML=`
+      <div class="gempa-card">
+        <div class="gempa-head">
+          <div class="gempa-brand">
+            <div class="gempa-brand-icon">🌋</div>
+            <div><b>InfoGempa</b><small>Data terbaru BMKG</small></div>
+          </div>
+          <div class="gempa-mag">M ${gempaSafe(mag)}</div>
+        </div>
+
+        <div class="gempa-location">
+          <small>📍 LOKASI GEMPA</small>
+          <b>${gempaSafe(wilayah)}</b>
+        </div>
+
+        <div class="gempa-fields">
+          <div class="gempa-field"><small>🕐 WAKTU</small><b>${gempaSafe(waktu)}</b></div>
+          <div class="gempa-field"><small>📏 KEDALAMAN</small><b>${gempaSafe(kedalaman)}</b></div>
+          <div class="gempa-field"><small>↕ LINTANG</small><b>${gempaSafe(lintang)}</b></div>
+          <div class="gempa-field"><small>↔ BUJUR</small><b>${gempaSafe(bujur)}</b></div>
+          ${koordinat!=='-'?`<div class="gempa-field"><small>◎ KOORDINAT</small><b>${gempaSafe(koordinat)}</b></div>`:''}
+        </div>
+
+        <div class="gempa-potensi"><small>⚠ POTENSI</small><b>${gempaSafe(potensi)}</b></div>
+        ${dirasakan!=='-'?`<div class="gempa-dirasa"><small>📳 DIRASAKAN</small><b>${gempaSafe(dirasakan)}</b></div>`:''}
+      </div>`;
+  }catch(e){
+    console.error(e);
+    el.innerHTML=`<div class="gempa-card"><div class="gempa-brand"><div class="gempa-brand-icon">⚠️</div><div><b>Gagal memuat data</b><small>Data BMKG belum dapat diambil.</small></div></div></div>`;
+  }
+}
+
+
+</script>
+</body>
+</html>
