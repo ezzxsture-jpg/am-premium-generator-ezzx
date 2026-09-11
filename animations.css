@@ -1,0 +1,88 @@
+/* AM PREMIUMS - UI animations only
+   No API, login, auth, or feature logic is changed here. */
+
+:root{--am-ease:cubic-bezier(.22,1,.36,1)}
+
+/* Page opening animation */
+.page.qsr-enter{
+  animation:amPageIn .42s var(--am-ease) both;
+}
+@keyframes amPageIn{
+  from{opacity:0;transform:translateY(14px) scale(.985);filter:blur(3px)}
+  to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+}
+
+/* Cards / feature blocks */
+.page.qsr-enter .card,
+.page.qsr-enter .feature,
+.page.qsr-enter .tool-item,
+.page.qsr-enter .surah-item,
+.page.qsr-enter .cnn-card,
+.page.qsr-enter .tv-item{
+  animation:amCardIn .45s var(--am-ease) both;
+}
+.page.qsr-enter .card{animation-delay:.04s}
+.page.qsr-enter .feature{animation-delay:.08s}
+.page.qsr-enter .tool-item{animation-delay:.06s}
+@keyframes amCardIn{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Buttons */
+button,.action,.back-btn,.tempmail-btn,.login-submit{
+  transition:transform .18s var(--am-ease),box-shadow .22s ease,filter .22s ease;
+}
+button:hover,.action:hover,.back-btn:hover,.tempmail-btn:hover{
+  transform:translateY(-2px);
+}
+button:active,.action:active,.back-btn:active,.tempmail-btn:active{
+  transform:scale(.97);
+}
+
+/* Subtle shine on primary actions */
+.action,.login-submit,.tempmail-btn:not(.secondary){
+  position:relative;
+  overflow:hidden;
+}
+.action::after,.login-submit::after,.tempmail-btn:not(.secondary)::after{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 -80%;
+  width:45%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),transparent);
+  transform:skewX(-18deg);
+  pointer-events:none;
+}
+.action:hover::after,.login-submit:hover::after,.tempmail-btn:not(.secondary):hover::after{
+  animation:amShine .65s ease;
+}
+@keyframes amShine{to{left:135%}}
+
+/* Tool items */
+.tool-item{
+  transition:transform .2s var(--am-ease),border-color .2s ease,box-shadow .2s ease;
+}
+.tool-item:hover{
+  transform:translateY(-3px);
+}
+
+/* Temp Mail modal */
+#tempMailModal.show .tm-modal-card{
+  animation:amModalIn .3s var(--am-ease) both;
+}
+@keyframes amModalIn{
+  from{opacity:0;transform:translateY(12px) scale(.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+/* Keep Quran reader stable/lightweight */
+#quran .quran-reader .card,
+#quran .ayah{animation:none!important;transition:none!important;will-change:auto!important}
+
+@media(prefers-reduced-motion:reduce){
+  .page.qsr-enter,.page.qsr-enter .card,.page.qsr-enter .feature,.page.qsr-enter .tool-item,
+  .page.qsr-enter .surah-item,.page.qsr-enter .cnn-card,.page.qsr-enter .tv-item,
+  #tempMailModal.show .tm-modal-card{animation:none!important}
+  button,.action,.back-btn,.tempmail-btn,.login-submit{transition:none!important}
+}
